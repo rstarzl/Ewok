@@ -1,4 +1,6 @@
 package Ewok.RegionFilter;
+
+import java.util.ArrayList;
 //
 //
 //
@@ -9,9 +11,8 @@ package Ewok.RegionFilter;
 //
 //
 
-
-
-
 public interface RegionFilter {
-	public void filter(HTMLContent html);
+	public ArrayList<String> filter(HTMLContent html); //인터페이스
+		
+	
 }

@@ -3,7 +3,7 @@ package Ewok.Render;
 //
 //
 //  @ Project : Ewok
-//  @ File Name : NaverNewsParser.java
+//  @ File Name : DaumNewsParser.java
 //  @ Date : 2014-09-29
 //  @ Author : Member
 //
@@ -12,7 +12,7 @@ package Ewok.Render;
 
 
 
-public class NaverNewsParser implements Parser {
+public class DaumNewsRender implements Render {
 	public void parse() {
 	
 	}

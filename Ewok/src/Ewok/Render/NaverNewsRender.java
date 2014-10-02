@@ -3,7 +3,7 @@ package Ewok.Render;
 //
 //
 //  @ Project : Ewok
-//  @ File Name : NateNewsParser.java
+//  @ File Name : NaverNewsParser.java
 //  @ Date : 2014-09-29
 //  @ Author : Member
 //
@@ -12,7 +12,7 @@ package Ewok.Render;
 
 
 
-public class NateNewsParser implements Parser {
+public class NaverNewsRender implements Render {
 	public void parse() {
 	
 	}

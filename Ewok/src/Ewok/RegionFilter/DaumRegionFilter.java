@@ -1,4 +1,6 @@
 package Ewok.RegionFilter;
+
+import java.util.ArrayList;
 //
 //
 //
@@ -13,7 +15,8 @@ package Ewok.RegionFilter;
 
 
 public class DaumRegionFilter implements RegionFilter {
-	public void filter(HTMLContent html) {
+	public ArrayList<String> filter(HTMLContent html) {
+		return null;
 	
 	}
 }

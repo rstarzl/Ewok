@@ -1,5 +1,7 @@
 package Ewok.RegionFilter;
 
+import java.util.ArrayList;
+
 //
 //
 //
@@ -14,7 +16,8 @@ package Ewok.RegionFilter;
 
 
 public class NateRegionFilter implements RegionFilter {
-	public void filter(HTMLContent html) {
+	public ArrayList<String> filter(HTMLContent html) {
+		return null;
 	
 	}
 }
