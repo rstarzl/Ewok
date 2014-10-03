@@ -12,7 +12,7 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
 /*
   @ Project : Ewok
   @ File Name : NaverRegionFilter.java
-  @ Date : 2014-10-02
+  @ Date : 2014-10-03
   @ Author : Kiheung Park
 */
 
@@ -36,53 +36,16 @@ public class NaverRegionFilter implements RegionFilter {
 
 	// OPTION2: For extracting the targeted URLs from the specific region
 	public ArrayList<String> filter2(HTMLContent html) {
-		// News Article URLs in the content list section; <div id="section_body"> ... </div>
-		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("section_body");
-		String filteredURLByHref;
-		for(DomElement div : html.regionFilteredList) {
-			for(DomElement ul : div.getChildElements()){
-				for(DomElement li : ul.getChildElements()){
-					filteredURLByHref = li.getFirstElementChild().getAttribute("href");
-					if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
-						urlList.add(filteredURLByHref);
-					}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
-						urlList.add("http://news.naver.com" + filteredURLByHref);						
-					}
-				}
-			}
-		}
-
-		// Page navigation by page number URLs below the section body; <div id=paging> ... </div>
-		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("paging");
-		for(DomElement div : html.regionFilteredList){
-			for(DomElement a : div.getChildElements()){
-				if(a.getLocalName().matches("a")){
-					filteredURLByHref = a.getAttribute("href");
-					if(filteredURLByHref.contains("#&")){
-						urlList.add(html.urlAddress.toString()+filteredURLByHref);
-					}
-				}
-			}
-		}
-				
-		// Page navigation by day URLs below the page numbers; <div id=pagenavi_day> ... </div>
-		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("pagenavi_day");
-		for(DomElement div : html.regionFilteredList){
-			for(DomElement a : div.getChildElements()){
-				if(a.getLocalName().matches("a")){
-					filteredURLByHref = a.getAttribute("href");
-					if(filteredURLByHref.contains("#&")){
-						urlList.add(html.urlAddress.toString()+filteredURLByHref);
-					}
-				}
-			}
-		}
-
+		getRenderURLs(html, "section_body"); // News Article URLs in the content list section; <div id="section_body"> ... </div>
+		getRegionURLs(html, "paging"); // Page navigation by page number URLs below the section body; <div id=paging> ... </div>
+		getRegionURLs(html, "pagenavi_day"); // Page navigation by day URLs below the page numbers; <div id=pagenavi_day> ... </div>
+		
 		return urlList;
 	}
 
-	private void getRenderURLs(HTMLContent html, List<DomElement> elements) {
-		html.regionFilteredList = elements;
+	// Extract targeted URLs for render
+	private void getRenderURLs(HTMLContent html, String elementsById){
+		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName(elementsById);
 		String filteredURLByHref;
 		for(DomElement div : html.regionFilteredList) {
 			for(DomElement ul : div.getChildElements()){
@@ -91,12 +54,26 @@ public class NaverRegionFilter implements RegionFilter {
 					if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
 						urlList.add(filteredURLByHref);
 					}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
-						urlList.add("http://news.naver.com" + filteredURLByHref);						
+						urlList.add("http://news.naver.com" + filteredURLByHref);			
 					}
 				}
 			}
 		}
-
 	}
-
+	
+	// Extract region filtered URLs in which recursively used for extracting render URLs
+	private void getRegionURLs(HTMLContent html, String elementsById) {
+		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName(elementsById);
+		String filteredURLByHref;
+		for(DomElement div : html.regionFilteredList){
+			for(DomElement a : div.getChildElements()){
+				if(a.getLocalName().matches("a")){
+					filteredURLByHref = a.getAttribute("href");
+					if(filteredURLByHref.contains("#&")){
+						urlList.add(html.urlAddress.toString()+filteredURLByHref);
+					}
+				}
+			}
+		}
+	}
 }

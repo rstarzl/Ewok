@@ -1,4 +1,6 @@
 package Ewok.Render;
+
+import Ewok.RegionFilter.HTMLContent;
 //
 //
 //
@@ -13,7 +15,8 @@ package Ewok.Render;
 
 
 public class DaumNewsRender implements Render {
-	public void parse() {
+	public Article render(String targetedURL) {
+		return null;
 	
 	}
 }

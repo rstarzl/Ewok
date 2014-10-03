@@ -24,16 +24,17 @@ import com.gargoylesoftware.htmlunit.javascript.JavaScriptEngine;
 import com.gargoylesoftware.htmlunit.xml.XmlPage;
 
 /*
- * HTMLUNIT에 URL을 넣었을 때 나오는 자료구조를 담는 자료구조 
- * HTMLUNIT에 버그가 발생했거나 업데이트 시 유지 보수를 위해 존재하는 class
- * 
- */
+@ Project : Ewok
+@ File Name : HTMLContent.java
+@ Date : 2014-10-03
+@ Author : Kiheung Park
+*/
 public class HTMLContent {
     public List<DomElement> regionFilteredList;
     public HtmlPage pageHTML = null;
     public URL urlAddress = null;
     String sourceURL;
-    String targetContents;
+    public String targetContents;
 
 	public HTMLContent(String url){
 		
@@ -50,6 +51,7 @@ public class HTMLContent {
 
 			pageHTML = webClient.getPage(url);
 			urlAddress = new URL(url);
+			targetContents = urlAddress.toString();// for render method?
 			
 			pageXML = pageHTML.asXml();
 			StringWebResponse response = new StringWebResponse(pageXML, urlAddress);
