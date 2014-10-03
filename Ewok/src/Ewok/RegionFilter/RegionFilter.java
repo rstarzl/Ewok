@@ -12,7 +12,7 @@ import java.util.ArrayList;
 //
 
 public interface RegionFilter {
-	public ArrayList<String> filter(HTMLContent html); //인터페이스
+	public ArrayList<String> filter1(HTMLContent html); //인터페이스
 		
 	
 }

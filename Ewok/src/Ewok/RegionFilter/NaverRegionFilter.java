@@ -1,6 +1,7 @@
 package Ewok.RegionFilter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.gargoylesoftware.htmlunit.JavaScriptPage;
 import com.gargoylesoftware.htmlunit.TextPage;
@@ -8,60 +9,94 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.xml.XmlPage;
 
-//
-//
-//
-//  @ Project : Ewok
-//  @ File Name : NaverRegionFilter.java
-//  @ Date : 2014-10-02
-//  @ Author : Kiheung Park
-//
-//
-
+/*
+  @ Project : Ewok
+  @ File Name : NaverRegionFilter.java
+  @ Date : 2014-10-02
+  @ Author : Kiheung Park
+*/
 
 public class NaverRegionFilter implements RegionFilter {
-	ArrayList<String> URLList = new ArrayList<String>();
-	
-	// For extracting all URLs in given HTMLpage
-	public ArrayList<String> filter(HTMLContent html) {
-		html.regionFilteredList = html.startPage.getElementsByTagName("a");
-//		html.regionFilteredList.add(html.startPageXML.);
+	ArrayList<String> urlList = new ArrayList<String>();
+
+	// OPTION1: For extracting all the targeted URLs in given HTMLpage
+	public ArrayList<String> filter1(HTMLContent html) {
+		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String filteredURLByHref;
-		for(DomElement e : html.regionFilteredList){
+		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
-        	if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
-        		URLList.add(filteredURLByHref);
-        	}else if(filteredURLByHref.contains("_paging")){
-        		URLList.add(filteredURLByHref);
-        	}
-        }
-		return URLList;
+			if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
+				urlList.add(filteredURLByHref);
+			}else if (filteredURLByHref.contains("#&")) {
+				urlList.add(html.urlAddress.toString()+filteredURLByHref);
+			}
+		}
+		return urlList;
 	}
-	
-	// For extracting URLs from the specific region
+
+	// OPTION2: For extracting the targeted URLs from the specific region
 	public ArrayList<String> filter2(HTMLContent html) {
-		html.regionFilteredList = html.startPage.getElementsByIdAndOrName("section_body");
-		for(DomElement e : html.regionFilteredList){
-        	String filteredURLByHref = e.getAttribute("href");
-        	String filteredURLByClass = e.getAttribute("class");
-        	if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
-        		URLList.add(filteredURLByHref);
-        	}else if(filteredURLByClass.contains("_paging")){
-        		URLList.add(filteredURLByClass);        		
-        	}else if(filteredURLByClass.contains("_dateNavigation")){
-        		URLList.add(filteredURLByClass);        		        		
-        	}
-        }
-		return URLList;
+		// News Article URLs in the content list section; <div id="section_body"> ... </div>
+		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("section_body");
+		String filteredURLByHref;
+		for(DomElement div : html.regionFilteredList) {
+			for(DomElement ul : div.getChildElements()){
+				for(DomElement li : ul.getChildElements()){
+					filteredURLByHref = li.getFirstElementChild().getAttribute("href");
+					if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
+						urlList.add(filteredURLByHref);
+					}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
+						urlList.add("http://news.naver.com" + filteredURLByHref);						
+					}
+				}
+			}
+		}
+
+		// Page navigation by page number URLs below the section body; <div id=paging> ... </div>
+		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("paging");
+		for(DomElement div : html.regionFilteredList){
+			for(DomElement a : div.getChildElements()){
+				if(a.getLocalName().matches("a")){
+					filteredURLByHref = a.getAttribute("href");
+					if(filteredURLByHref.contains("#&")){
+						urlList.add(html.urlAddress.toString()+filteredURLByHref);
+					}
+				}
+			}
+		}
+				
+		// Page navigation by day URLs below the page numbers; <div id=pagenavi_day> ... </div>
+		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName("pagenavi_day");
+		for(DomElement div : html.regionFilteredList){
+			for(DomElement a : div.getChildElements()){
+				if(a.getLocalName().matches("a")){
+					filteredURLByHref = a.getAttribute("href");
+					if(filteredURLByHref.contains("#&")){
+						urlList.add(html.urlAddress.toString()+filteredURLByHref);
+					}
+				}
+			}
+		}
+
+		return urlList;
 	}
-/*
-	public String getPageAsText(){
-		  if (getContentPage() instanceof HtmlPage)   return ((HtmlPage)getContentPage()).asXml();
-		  if (getContentPage() instanceof TextPage)   return ((TextPage)getContentPage()).getContent();
-		  if (getContentPage() instanceof XmlPage)   return ((XmlPage)getContentPage()).asXml();
-		  if (getContentPage() instanceof JavaScriptPage)   return ((JavaScriptPage)getContentPage()).getContent();
-		  throw new IllegalStateException("This page can not be converted to text.  Page type is " + getContentPage().getClass().getName());
+
+	private void getRenderURLs(HTMLContent html, List<DomElement> elements) {
+		html.regionFilteredList = elements;
+		String filteredURLByHref;
+		for(DomElement div : html.regionFilteredList) {
+			for(DomElement ul : div.getChildElements()){
+				for(DomElement li : ul.getChildElements()){
+					filteredURLByHref = li.getFirstElementChild().getAttribute("href");
+					if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
+						urlList.add(filteredURLByHref);
+					}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
+						urlList.add("http://news.naver.com" + filteredURLByHref);						
+					}
+				}
+			}
+		}
+
 	}
-*/	
-	
+
 }

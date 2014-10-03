@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 
 public class NateRegionFilter implements RegionFilter {
-	public ArrayList<String> filter(HTMLContent html) {
+	public ArrayList<String> filter1(HTMLContent html) {
 		return null;
 	
 	}
