@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
-// TODO : DB Á¾·ù¿¡ µû¶ó Ãß»óÅ¬·¡½º·Î ºĞÈ­½ÃÄÑ¾ßÇÔ.¾Æ,,,,,,,½´¹ú ÀÎÅÍÆäÀÌ½º......... 
+// TODO : DB ì¢…ë¥˜ì— ë”°ë¼ ì¶”ìƒí´ë˜ìŠ¤ë¡œ ë¶„í™”ì‹œì¼œì•¼í•¨.ì•„,,,,,,,ìŠˆë²Œ ì¸í„°í˜ì´ìŠ¤......... 
 public class DBEntry extends HashMap<String, DBEntry>{
 	private String parentKey;
 	private String key;
 	private String data;
 
 	/**
-	 * ÃÖÃÊ »ı¼ºÀÚ¸¸, ·çÆ® »ı¼ºÀü¿ë
+	 * ìµœì´ˆ ìƒì„±ìë§Œ, ë£¨íŠ¸ ìƒì„±ì „ìš©
 	 */
 	public DBEntry(){
 		super();
@@ -21,7 +21,7 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ÀÏ¹İ ¸ñÀû »ı¼ºÀÚ 1
+	 * ì¼ë°˜ ëª©ì  ìƒì„±ì 1
 	 * @param key
 	 * @param entry
 	 */
@@ -33,7 +33,7 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ÀÏ¹İ ¸ñÀû »ı¼ºÀÚ 2
+	 * ì¼ë°˜ ëª©ì  ìƒì„±ì 2
 	 * @param key
 	 * @param entry
 	 */
@@ -53,7 +53,7 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ÇöÀç ³ëµå¿¡ ¼ÓÇÑ Data¸¸ °¡Á®¿È. 
+	 * í˜„ì¬ ë…¸ë“œì— ì†í•œ Dataë§Œ ê°€ì ¸ì˜´. 
 	 * @return
 	 */
 	public String	getData(){
@@ -69,8 +69,8 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ÇÏÀ§ ¸ğµç µ¥ÀÌÅÍ Áß¿¡¼­ ÃÖÁ¾ Value ÀÎ StringÀ» ¹­¾î¼­ Àü´Ş.
-	 * TODO : Test ÇÊ¿ä, ¸®Ä¿½Ãºê·Î ±¸Çö.
+	 * í•˜ìœ„ ëª¨ë“  ë°ì´í„° ì¤‘ì—ì„œ ìµœì¢… Value ì¸ Stringì„ ë¬¶ì–´ì„œ ì „ë‹¬.
+	 * TODO : Test í•„ìš”, ë¦¬ì»¤ì‹œë¸Œë¡œ êµ¬í˜„.
 	 * @return
 	 */
 	public SubData getSubData(){
@@ -92,7 +92,7 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ÀÌ¹Ì Á¸ÀçÇÏ´Â Å°¸¦ ³ÖÀ¸¸é ±âÁ¸ °ª »èÁ¦ ÈÄ Ãß°¡.
+	 * ì´ë¯¸ ì¡´ì¬í•˜ëŠ” í‚¤ë¥¼ ë„£ìœ¼ë©´ ê¸°ì¡´ ê°’ ì‚­ì œ í›„ ì¶”ê°€.
 	 * @param key
 	 * @param entry
 	 */
@@ -103,13 +103,13 @@ public class DBEntry extends HashMap<String, DBEntry>{
 	}
 	
 	/**
-	 * ºÎ¸ğ Å°¸¦ ÀÔ·ÂÇÏ¸é ÇÏÀ§ ¸ğµç ³ëµå¸¦ µÚÁ®¼­ DBEntry °¡Á®¿È. ¾øÀ¸¸é null ¸®ÅÏ.
-	 * TODO : Å×½ºÆ® ÇÊ¿ä, ¸®Ä¿½ÃºêÀÓ.
+	 * ë¶€ëª¨ í‚¤ë¥¼ ì…ë ¥í•˜ë©´ í•˜ìœ„ ëª¨ë“  ë…¸ë“œë¥¼ ë’¤ì ¸ì„œ DBEntry ê°€ì ¸ì˜´. ì—†ìœ¼ë©´ null ë¦¬í„´.
+	 * TODO : í…ŒìŠ¤íŠ¸ í•„ìš”, ë¦¬ì»¤ì‹œë¸Œì„.
 	 * @param key
 	 * @return
 	 */
 	public DBEntry	findByParentKey(String key){
-		//ÀÚ±â²¨ ºÎÅÍ µÚÁü.
+		//ìê¸°êº¼ ë¶€í„° ë’¤ì§.
 		if (this.key.equals(key)){
 			return	this;
 		}

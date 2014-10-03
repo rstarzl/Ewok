@@ -9,18 +9,18 @@ import Ewok.DB.DBEntry.SubData;
 public class DBTest {
 
 //	@Test
-//	// ¸Ş¸ğ¸® µğºñ, 1µª½º ±âº» Å×½ºÆ®.
+//	// ë©”ëª¨ë¦¬ ë””ë¹„, 1ëìŠ¤ ê¸°ë³¸ í…ŒìŠ¤íŠ¸.
 //	public void test() {
 //		MemPhysicalDB memPhysicalDB = new MemPhysicalDB();
 //		
-//		//¾²±â
+//		//ì“°ê¸°
 //		for (int testNum = 0; testNum < 100; testNum++){
 //			memPhysicalDB.add(new DBEntry("root", String.valueOf(testNum), String.valueOf(testNum)));
 //		}
 //		
 //		SubData sunData = memPhysicalDB.getDBPoint().getSubData();
 //		
-//		// ÀĞ±â
+//		// ì½ê¸°
 //		for (int testNum = 0; testNum < 100; testNum++){
 //			System.out.println(sunData.get(testNum));
 //		}
@@ -28,11 +28,11 @@ public class DBTest {
 	
 	
 	@Test
-	// ¸Ş¸ğ¸® µğºñ, ¸ÖÆ¼ µª½º ±âº» Å×½ºÆ®.
+	// ë©”ëª¨ë¦¬ ë””ë¹„, ë©€í‹° ëìŠ¤ ê¸°ë³¸ í…ŒìŠ¤íŠ¸.
 	public void test2() {
 		MemPhysicalDB memPhysicalDB = new MemPhysicalDB();
 		
-		//¾²±â
+		//ì“°ê¸°
 		assertFalse("fail", !memPhysicalDB.add(new DBEntry("root", "1", "1")));
 		assertFalse("fail", !memPhysicalDB.add(new DBEntry("1", "1_1", "1_1")));
 		assertFalse("fail", !memPhysicalDB.add(new DBEntry("1", "1_2", "1_2")));
@@ -43,7 +43,7 @@ public class DBTest {
 		
 		SubData sunData = memPhysicalDB.getDBPoint().getSubData();
 		
-		// ÀĞ±â
+		// ì½ê¸°
 		for (String testData : sunData){
 			System.out.println(testData);
 		}
