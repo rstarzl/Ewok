@@ -10,7 +10,12 @@ public class RenderTest {
 /* Daum News */
 //	String targetedURL = "http://media.daum.net/society/all/newsview?newsid=20141004112006560";
 //	String targetedURL = "http://media.daum.net/economic/all/newsview?newsid=20141004120703352";
-	String targetedURL = "http://media.daum.net/editorial/all/newsview?newsid=20141004033119842";
+//	String targetedURL = "http://media.daum.net/editorial/all/newsview?newsid=20141004033119842";
+	
+/* Nate News */
+//	String targetedURL = "http://news.nate.com/view/20141002n24969?mid=n0201";
+	String targetedURL = "http://news.nate.com/view/20141005n01131?mid=n0401";
+	
 /*	
 	@org.junit.Test
 	public void test1() {
@@ -20,16 +25,20 @@ public class RenderTest {
 	}
 */	
 	
+/*	
 	@org.junit.Test
 	public void test2() {
 		DaumNewsRender daumNews = new DaumNewsRender();
 		Article result = daumNews.render(targetedURL);
 		System.out.println(result);
 	}
-
+*/
+	
 	@org.junit.Test
 	public void test3() {
-		
+		NateNewsRender nateNews = new NateNewsRender();
+		Article result = nateNews.render(targetedURL);
+		System.out.println(result);
 	}
 
 }

@@ -11,14 +11,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.xerces.parsers.XMLParser;
 import org.junit.Test;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.ImmediateRefreshHandler;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
+import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.SilentCssErrorHandler;
 import com.gargoylesoftware.htmlunit.StringWebResponse;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebClientOptions;
+import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HTMLParser;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -34,45 +39,43 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
 public class HTMLContent {
     public List<DomElement> regionFilteredList;
     public HtmlPage pageHTML = null;
+    public XmlPage pageXml = null;
+    public Page page = null;
     public URL urlAddress = null;
     String sourceURL;
     public String targetContents;
     public int depth;
 
 	public HTMLContent(String url){
-		
-	    WebClient webClient = new WebClient();
-	    JavaScriptEngine engine = new JavaScriptEngine(webClient);
-	    String pageXML = "";
 	    
 		try {
+			urlAddress = new URL(url);
+			WebRequest webRequest = new WebRequest(urlAddress);
+//			webRequest.setCharset("utf-8");
+			WebClient webClient;
+		    if(url.contains("nate")){
+				webClient = new WebClient(BrowserVersion.CHROME);		    	
+		    }else{
+			    webClient = new WebClient();		    	
+		    }
+		    JavaScriptEngine engine = new JavaScriptEngine(webClient);
+//		    webClient.waitForBackgroundJavaScript(50000);
+		    String xmlString = "";
+		    
 			webClient.getOptions().setThrowExceptionOnScriptError(false);
 			webClient.getCookieManager().setCookiesEnabled(false);
 			webClient.getOptions().setJavaScriptEnabled(true);
 			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
 			webClient.setJavaScriptEngine(engine);
-			pageHTML = webClient.getPage(url);
-			urlAddress = new URL(url);
+
+			pageHTML = webClient.getPage(webRequest);
+			page = webClient.getPage(webRequest);
 			targetContents = urlAddress.toString();// for render method?
 			
-			pageXML = pageHTML.asXml();
-			
-			// DEBUG
-			FileWriter fw = new FileWriter("test.txt");
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(pageXML);
-			bw.close();
-			fw.close();
-//			System.out.println(pageXML);
-			
-			StringWebResponse response = new StringWebResponse(pageXML, urlAddress);
+			xmlString = pageHTML.asXml();
+
+			StringWebResponse response = new StringWebResponse(xmlString, urlAddress);
 			pageHTML = HTMLParser.parseXHtml(response, webClient.getCurrentWindow());
-			
-			FileWriter fw2 = new FileWriter("test2.txt");
-			BufferedWriter bw2 = new BufferedWriter(fw);
-			bw.write(pageHTML.toString());
-			bw.close();
-			fw.close();
 			
 		} catch (FailingHttpStatusCodeException e) {
 			// TODO Auto-generated catch block
@@ -84,7 +87,7 @@ public class HTMLContent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 	
 }

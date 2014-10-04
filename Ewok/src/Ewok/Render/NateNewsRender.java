@@ -1,5 +1,14 @@
 package Ewok.Render;
 
+import java.io.IOException;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.DomElement;
+import com.gargoylesoftware.htmlunit.html.HtmlDivision;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+
 import Ewok.RegionFilter.HTMLContent;
 //
 //
@@ -15,8 +24,35 @@ import Ewok.RegionFilter.HTMLContent;
 
 
 public class NateNewsRender implements Render {
+	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) {
-		return null;
-	
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+		Article renderArticle = new Article();
+		
+		try {
+			targetedPage = webClient.getPage(targetedURL);
+		} catch (FailingHttpStatusCodeException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// TITLE 
+		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/h3")).asText();
+		
+		// DATE 
+		for(DomElement e : targetedPage.getElementsByTagName("span")){
+			if(e.getAttribute("class").contains("firstDate") || e.getAttribute("class").contains("lastDate")){
+				renderArticle.date = e.getElementsByTagName("em").get(0).asText();
+				break;
+			}
+		}
+		
+		// PRESS
+		renderArticle.press = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/p/span/a")).asText();
+
+		// Contents
+		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("realArtcContents")).asText();
+		
+		return renderArticle;
 	}
 }

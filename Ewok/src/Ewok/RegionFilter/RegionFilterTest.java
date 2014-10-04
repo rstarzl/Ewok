@@ -50,7 +50,8 @@ public class RegionFilterTest {
 //	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont#page=2&type=tit_cont?regdate=20141004#page=1&type="); // page by date
 	
 	// Nate News
-	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // 정치
+//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // 정치
+	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // 다른 날짜
 
 /*
 	@org.junit.Test
@@ -65,7 +66,9 @@ public class RegionFilterTest {
 			}
 		}
 	}
+*/
 
+/*
 	@org.junit.Test
 	public void test2() {
 		NaverRegionFilter naverRF = new NaverRegionFilter();
@@ -81,7 +84,7 @@ public class RegionFilterTest {
 	}
 */
 	
-/*	
+/*
 	@org.junit.Test
 	public void test3() {
 		DaumRegionFilter daumRF = new DaumRegionFilter();
@@ -95,6 +98,7 @@ public class RegionFilterTest {
 		}
 	}
 */
+
 	
 	@org.junit.Test
 	public void test4() {
@@ -108,4 +112,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
+
+
+
 }
