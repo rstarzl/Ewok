@@ -2,6 +2,8 @@ package Ewok.RegionFilter;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -35,6 +37,7 @@ public class HTMLContent {
     public URL urlAddress = null;
     String sourceURL;
     public String targetContents;
+    public int depth;
 
 	public HTMLContent(String url){
 		
@@ -48,14 +51,28 @@ public class HTMLContent {
 			webClient.getOptions().setJavaScriptEnabled(true);
 			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
 			webClient.setJavaScriptEngine(engine);
-
 			pageHTML = webClient.getPage(url);
 			urlAddress = new URL(url);
 			targetContents = urlAddress.toString();// for render method?
 			
 			pageXML = pageHTML.asXml();
+			
+			// DEBUG
+			FileWriter fw = new FileWriter("test.txt");
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(pageXML);
+			bw.close();
+			fw.close();
+//			System.out.println(pageXML);
+			
 			StringWebResponse response = new StringWebResponse(pageXML, urlAddress);
 			pageHTML = HTMLParser.parseXHtml(response, webClient.getCurrentWindow());
+			
+			FileWriter fw2 = new FileWriter("test2.txt");
+			BufferedWriter bw2 = new BufferedWriter(fw);
+			bw.write(pageHTML.toString());
+			bw.close();
+			fw.close();
 			
 		} catch (FailingHttpStatusCodeException e) {
 			// TODO Auto-generated catch block

@@ -10,7 +10,6 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 public class DaumRegionFilter implements RegionFilter {
 	ArrayList<String> urlList = new ArrayList<String>();
 	
-	// 
 	public ArrayList<String> filter1(HTMLContent html) {
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String daum = "http://media.daum.net/";
