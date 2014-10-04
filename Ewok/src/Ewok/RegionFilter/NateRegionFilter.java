@@ -8,6 +8,7 @@ import java.util.ArrayList;
 //  @ Author : Kiheung Park
 public class NateRegionFilter implements RegionFilter {
 	public ArrayList<String> filter1(HTMLContent html) {
+		
 		return null;
 	
 	}

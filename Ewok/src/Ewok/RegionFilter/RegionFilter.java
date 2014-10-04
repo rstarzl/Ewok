@@ -8,7 +8,6 @@ import java.util.ArrayList;
 //  @ Author : Kiheung Park
 
 public interface RegionFilter {
-	public ArrayList<String> filter1(HTMLContent html); //인터페이스
-		
+	public ArrayList<String> filter1(HTMLContent html); 
 	
 }
