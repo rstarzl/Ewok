@@ -1,8 +1,8 @@
 package Ewok.DB;
 
-import net.sourceforge.htmlunit.corejs.javascript.tools.shell.Global;
+import java.util.concurrent.Callable;
+
 import Ewok.GlobalConfigure;
-import Ewok.RegionFilter.HTMLContent;
 //
 //
 //
@@ -16,17 +16,17 @@ import Ewok.RegionFilter.HTMLContent;
 
 
 
-public class DB {
+public class DB implements Callable {
 	private PhysicalDB dbPoint;
 	private CacheTable cacheTable;
 	
-	public DB(){
+	public DB(String rootName){
 		/**
 		 * Setting currunt selected DB .
 		 */
 		switch (GlobalConfigure.getSelectedDb()){
 		case MEM:
-			dbPoint = new MemPhysicalDB();
+			dbPoint = new MemPhysicalDB(rootName);
 			break;
 		case FILE:
 		case MYSQL:
@@ -39,6 +39,16 @@ public class DB {
 		}
 	}
 	
+	public Object call(){
+		while(true){
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public boolean add(DBEntry	content) {
 		return dbPoint.add(content);
 	}
@@ -47,7 +57,7 @@ public class DB {
 		return	dbPoint.delete(content);
 	}
 	
-	public DBEntry query(DBEntry	content) {
-		return dbPoint.query(content);
+	public DBEntry query(String	key) {
+		return dbPoint.query(key);
 	}
 }

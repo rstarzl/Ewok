@@ -19,6 +19,15 @@ public class DBEntry extends HashMap<String, DBEntry>{
 		key = "root";
 		data = null;
 	}
+	/**
+	 * 최초 생성자만, 루트 생성전용
+	 */
+	public DBEntry(String rootName){
+		super();
+		parentKey = null;
+		key = rootName;
+		data = null;
+	}
 	
 	/**
 	 * 일반 목적 생성자 1
@@ -102,6 +111,15 @@ public class DBEntry extends HashMap<String, DBEntry>{
 		this.put(entry.key, entry);
 	}
 	
+	
+	public DBEntry queryData(DBEntry	entry){
+		return	null;
+	}
+	
+	public void deleteData(DBEntry	entry){
+		this.remove(entry.key);
+	}
+	
 	/**
 	 * 부모 키를 입력하면 하위 모든 노드를 뒤져서 DBEntry 가져옴. 없으면 null 리턴.
 	 * TODO : 테스트 필요, 리커시브임.
@@ -131,6 +149,34 @@ public class DBEntry extends HashMap<String, DBEntry>{
 //			}
 //		}
 
+		return null;
+	}
+	
+	/**
+	 * 현재 엔트리에서 하위 키 검색. 하위키는 유니크성 보장.
+	 * @param key
+	 * @return
+	 */
+	public DBEntry	findEnrtyByKey(String key){
+		return this.get(key);
+	}
+	
+	/**
+	 * TODO : 미구현
+	 * @param key
+	 * @return
+	 */
+	public ArrayList<DBEntry>	findEnrtyArrayByKey(String key){
+		ArrayList<DBEntry>	ret = new ArrayList<DBEntry>();
+
+		for (String targetKey : this.keySet()){
+			DBEntry findIt = this.get(targetKey).findByParentKey(key);
+			if (findIt == null){
+				continue;
+			} else {
+				return	null;
+			}
+		}
 		return null;
 	}
 	
