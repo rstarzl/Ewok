@@ -16,12 +16,6 @@ import Ewok.RegionFilter.HTMLContent;
 //
 
 public class TargetQueueProcessor extends QueueProcessor implements Runnable {	
-	//public List<HTMLContent> queueList = new ArrayList<HTMLContent>();
-	
-	public TargetQueueProcessor(){
-		
-	}
-
 	public void run() {
 		while(true){
 			HTMLContent content = pop(queueList);
