@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <enumeration id="1" language="java" name="Ewok.GlobalConfigure.TYPE_OF_DB" project="Ewok" 
+    file="/Ewok/src/Ewok/GlobalConfigure.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="164" x="2918" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="2" language="java" name="Ewok.TestGlobalContext" project="Ewok" 
+    file="/Ewok/src/Ewok/TestGlobalContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="127" x="733" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Ewok.Checker.SimilarityContentChecker" project="Ewok" 
+    file="/Ewok/src/Ewok/Checker/SimilarityContentChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="169" x="4445" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Ewok.DB.MemPhysicalDB" project="Ewok" file="/Ewok/src/Ewok/DB/MemPhysicalDB.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="143" x="2306" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="Ewok.DB.PhysicalDB" project="Ewok" file="/Ewok/src/Ewok/DB/PhysicalDB.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="143" x="2002" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="6" language="java" name="Ewok.RegionFilter.RegionFilter" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/RegionFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="213" x="3384" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="Ewok.Checker.DepthChecker" project="Ewok" 
+    file="/Ewok/src/Ewok/Checker/DepthChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="4654" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="Ewok.Processor.RenderingQueueProcessor" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/RenderingQueueProcessor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="179" x="5179" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="Ewok.Processor.TargetQueueProcessor" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/TargetQueueProcessor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="157" x="4982" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Ewok.Utils.XMLReader" project="Ewok" file="/Ewok/src/Ewok/Utils/XMLReader.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="237" x="1169" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="Ewok.WorkingURL.TestHtmlUnit" project="Ewok" 
+    file="/Ewok/src/Ewok/WorkingURL/TestHtmlUnit.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="184" x="369" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="Ewok.Render.Article" project="Ewok" file="/Ewok/src/Ewok/Render/Article.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="102" x="900" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="Ewok.RegionFilter.RegionFilterTest" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/RegionFilterTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="115" x="2489" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="Ewok" project="Ewok" file="/Ewok/src/Ewok.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="1446" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="Ewok.Processor.QueueEntry" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/QueueEntry.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="193" x="2644" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="Ewok.Render.RenderTest" project="Ewok" 
+    file="/Ewok/src/Ewok/Render/RenderTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="120" x="209" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="Ewok.DB.CacheTable" project="Ewok" file="/Ewok/src/Ewok/DB/CacheTable.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="90" x="1634" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="Ewok.WorkingURL.URLExtractor" project="Ewok" 
+    file="/Ewok/src/Ewok/WorkingURL/URLExtractor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="100" x="593" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="Ewok.WorkingURL.DownloadContent" project="Ewok" 
+    file="/Ewok/src/Ewok/WorkingURL/DownloadContent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="124" x="45" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="Ewok.DB.URLDB" project="Ewok" file="/Ewok/src/Ewok/DB/URLDB.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="198" x="1764" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="Ewok.Render.NateNewsRender" project="Ewok" 
+    file="/Ewok/src/Ewok/Render/NateNewsRender.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="140" x="4085" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="Ewok.DB.DBEntry.SubData" project="Ewok" file="/Ewok/src/Ewok/DB/DBEntry.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="169" x="2185" y="945"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="Ewok.RegionFilter.NateRegionFilter" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/NateRegionFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="213" x="3652" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="Ewok.Render.NaverNewsRender" project="Ewok" 
+    file="/Ewok/src/Ewok/Render/NaverNewsRender.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="140" x="4265" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="Ewok.DB.DBTest" project="Ewok" file="/Ewok/src/Ewok/DB/DBTest.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="1599" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="Ewok.DB.URL" project="Ewok" file="/Ewok/src/Ewok/DB/URL.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="148" x="2730" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="Ewok.CrawlerDriver" project="Ewok" file="/Ewok/src/Ewok/CrawlerDriver.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="154" x="2112" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="Ewok.Processor.ClassifierQueueProcessor" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/ClassifierQueueProcessor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="175" x="5398" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="Ewok.Processor.QueueProcessor" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/QueueProcessor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="150" x="5104" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="Ewok.DB.DB" project="Ewok" file="/Ewok/src/Ewok/DB/DB.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="143" x="1726" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="Ewok.GlobalConfigure" project="Ewok" file="/Ewok/src/Ewok/GlobalConfigure.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="173" x="2918" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="Ewok.Render.DaumNewsRender" project="Ewok" 
+    file="/Ewok/src/Ewok/Render/DaumNewsRender.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="140" x="3905" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="Ewok.Checker.Checker" project="Ewok" file="/Ewok/src/Ewok/Checker/Checker.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="165" x="4445" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="Ewok.Utils.ExceptionInvalidForm" project="Ewok" 
+    file="/Ewok/src/Ewok/Utils/ExceptionInvalidForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="163" x="1909" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="Ewok.ProcessorList" project="Ewok" file="/Ewok/src/Ewok/ProcessorList.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="175" x="5613" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="Ewok.Processor.QueueList" project="Ewok" 
+    file="/Ewok/src/Ewok/Processor/QueueList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="4855" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="Ewok.RegionFilter.HTMLContent" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/HTMLContent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="201" x="2489" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="Ewok.Checker.WorkingChecker" project="Ewok" 
+    file="/Ewok/src/Ewok/Checker/WorkingChecker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="4244" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="39" language="java" name="Ewok.Render.Render" project="Ewok" file="/Ewok/src/Ewok/Render/Render.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="128" x="4076" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="40" language="java" name="Ewok.GlobalContext" project="Ewok" file="/Ewok/src/Ewok/GlobalContext.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="325" x="5400" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="Ewok.Test" project="Ewok" file="/Ewok/src/Ewok/Test.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="87" x="1042" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="Ewok.DB.DBEntry" project="Ewok" file="/Ewok/src/Ewok/DB/DBEntry.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="264" x="2185" y="536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="Ewok.RegionFilter.NaverRegionFilter" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/NaverRegionFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="228" x="3384" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="Ewok.RegionFilter.DaumRegionFilter" project="Ewok" 
+    file="/Ewok/src/Ewok/RegionFilter/DaumRegionFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="213" x="3131" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="45">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="dbPoint"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="49">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="50" name="SELECTED_DB"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <realization id="53">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <association id="54">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="55" name="qpClassifier"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="58" name="qpClassifier"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <generalization id="61">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <realization id="62">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="63">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <generalization id="64">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <association id="65">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="66" name="qpRender"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="68">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="69">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="70" name="dbPoint"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="72">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="73">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="74" name="qpTarget"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="76">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="77">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="78" name="queueList"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="80">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <association id="81">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="82" name="qpRender"/>      
+      <multiplicity id="83" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <association id="85">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="86" name="qpTarget"/>      
+      <multiplicity id="87" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="89" name="url"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="92" name="cacheTable"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="95" name="test"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <realization id="98">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <nesting id="99">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <association id="100">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="101" name="htmlContent"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

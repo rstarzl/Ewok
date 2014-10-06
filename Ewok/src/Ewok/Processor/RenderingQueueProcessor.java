@@ -3,6 +3,7 @@ package Ewok.Processor;
 import java.util.ArrayList;
 import java.util.List;
 
+import Ewok.GlobalContext;
 import Ewok.RegionFilter.HTMLContent;
 //
 //
@@ -19,30 +20,35 @@ public class RenderingQueueProcessor extends QueueProcessor {
 		super(id);
 	}
 	
-//	static List<HTMLContent> queueList = new ArrayList<HTMLContent>();
-	
-	public RenderingQueueProcessor(){
-	}
-	
+	/* @ modified by JS */
 	public void run() {
 	
 		while(true){
-			HTMLContent content = pop(queueList);
-			if(content!=null){
-				System.out.println("render : "+getURL(content));
-				boolean result;
-				//call render
-				//result = render(content);
+			QueueEntry	workingItem = this.pop();
+			if (workingItem != null){
+//				if(content.isContent){
+				// workingItem에 작업 내용 체워서 아래 함수 이용 큐 어싸인.
+					GlobalContext.getAvailableRenderingQL().push(workingItem);
+//				}else{
+					GlobalContext.getAvailableTargetQL().push(workingItem);
+//				}
 			}
-			
-			/* @added by JS */
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			/* @added by JS */
+
+			sleep(10);
 		}	
 	}
+	/* @ modified by JS */
+	
+//	public void run() {
+//		
+//		while(true){
+//			HTMLContent content = pop(queueList);
+//			if(content!=null){
+//				System.out.println("render : "+getURL(content));
+//				boolean result;
+//				//call render
+//				//result = render(content);
+//			}
+//		}	
+//	}
 }

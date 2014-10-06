@@ -49,15 +49,15 @@ public class GlobalContext {
 	/* Getter and Setter*/
 	
 	
-	/* Each QP QueueList getter */
-	public static QueueList getAvailableRenderingQL(){
-		return	qpRender.getAllocatableQP().getQueueList();
+	/* Each Available Queue getter */
+	public static RenderingQueueProcessor getAvailableRenderingQL(){
+		return	qpRender.getAllocatableQP();
 	}
-	public static QueueList getAvailableTargetQL(){
-		return	qpTarget.getAllocatableQP().getQueueList();
+	public static TargetQueueProcessor getAvailableTargetQL(){
+		return	qpTarget.getAllocatableQP();
 	}
-	public static QueueList getAvailableClassifierQL(){
-		return	qpClassifier.getAllocatableQP().getQueueList();
+	public static ClassifierQueueProcessor getAvailableClassifierQL(){
+		return	qpClassifier.getAllocatableQP();
 	}
 	/* Each QP QueueList getter */
 	

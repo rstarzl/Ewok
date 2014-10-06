@@ -1,4 +1,5 @@
 package Ewok.Checker;
+import Ewok.Processor.QueueEntry;
 //
 //
 //
@@ -12,13 +13,14 @@ import Ewok.RegionFilter.*;
 
 
 
-public class Checker {
+public abstract class Checker {
 	private Object condition;
 	protected void checkAndDrop() {
-
+		;
 	}
-	
 	protected void setCondition() {
-	
+		;
 	}
+	
+	public	abstract boolean check(QueueEntry entry);
 }

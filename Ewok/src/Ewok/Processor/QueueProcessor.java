@@ -2,6 +2,7 @@ package Ewok.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 
 import Ewok.RegionFilter.HTMLContent;
@@ -19,7 +20,6 @@ import Ewok.RegionFilter.HTMLContent;
 public abstract class QueueProcessor implements Callable{
 	protected	QueueList	queueList = new QueueList();
 	private int	id;
-//	public List<HTMLContent> queueList;
 	
 	public QueueProcessor(int id){
 		this.id = id;
@@ -27,61 +27,39 @@ public abstract class QueueProcessor implements Callable{
 	public int getID(){
 		return	this.id;
 	}
-	
-	public int getQSize(){
-		return	queueList.size();
-	}
-	
 	public QueueList	getQueueList(){
 		return	queueList;
-	}
-		
-	public void push(List<HTMLContent> queueList, HTMLContent content) {
-		queueList.add(content);
-	}
-	
-	protected HTMLContent pop(List<HTMLContent> queueList) {
-		if(queueList.isEmpty()){
-			return null;
-		}
-		HTMLContent content = queueList.get(0);
-		queueList.remove(0);
-		return content;
-	}
-	
-	protected String getURL(HTMLContent content) {
-		return content.url;
-	}
-	
-	public void setURL(HTMLContent content, String url) {
-		content.url = url;
-	}
-	
-	protected int getDepth(HTMLContent content) {
-		return content.depth;
-	}
-	
-	protected void setDepth(HTMLContent content, int depth) {
-		content.depth = depth;
-	}
-	
-	protected boolean getIsContent(HTMLContent content) {
-		return content.isContent;
-	}
-	
-	protected void setIsContent(HTMLContent content, boolean isContent) {
-		content.isContent = isContent;
 	}
 	
 	public void sleep(int time){
 	    try {
-
-	      Thread.sleep(time);
-
-	    } catch (InterruptedException e) { }
-
+	    	Thread.sleep(time);
+	    } catch (InterruptedException e) {
+	    	;
+	    }
 	}
-
+	
+	/* Function Overloading, but no modify original */
+	public QueueEntry pop(){
+		QueueEntry	entry;
+		
+		try {
+			entry = queueList.pop();
+		} catch (NoSuchElementException e){
+			entry = null;
+		}
+		
+		return	entry;
+	}
+	
+	public void push(QueueEntry entry){
+		this.queueList.push(entry);
+	}
+	
+	public int getQSize(){
+		return	this.queueList.size();
+	}
+	/* Function Overloading */
 	
 	public abstract void run();
 	
@@ -96,4 +74,49 @@ public abstract class QueueProcessor implements Callable{
 		
 		return null;
 	}
+	
+	
+	
+//	
+//	public void push(List<HTMLContent> queueList, HTMLContent content) {
+//		queueList.add(content);
+//	}
+//	
+//	protected HTMLContent pop(List<HTMLContent> queueList) {
+//		if(queueList.isEmpty()){
+//			return null;
+//		}
+//		HTMLContent content = queueList.get(0);
+//		queueList.remove(0);
+//		return content;
+//	}
+//	
+//	protected String getURL(HTMLContent content) {
+//		return content.url;
+//	}
+//	
+//	public void setURL(HTMLContent content, String url) {
+//		content.url = url;
+//	}
+//	
+//	protected int getDepth(HTMLContent content) {
+//		return content.depth;
+//	}
+//	
+//	protected void setDepth(HTMLContent content, int depth) {
+//		content.depth = depth;
+//	}
+//	
+//	protected boolean getIsContent(HTMLContent content) {
+//		return content.isContent;
+//	}
+//	
+//	protected void setIsContent(HTMLContent content, boolean isContent) {
+//		content.isContent = isContent;
+//	}
+//	
+//	
+
+	
+
 }

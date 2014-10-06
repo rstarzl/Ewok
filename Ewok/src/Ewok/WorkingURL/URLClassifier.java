@@ -5,7 +5,7 @@ import Ewok.Processor.QueueProcessor;
 //
 //
 //  @ Project : Ewok
-//  @ File Name : URLClassifier(QP»ó¼Ó).java
+//  @ File Name : URLClassifier(QPï¿½ï¿½ï¿½).java
 //  @ Date : 2014-09-29
 //  @ Author : Member
 //
@@ -14,8 +14,8 @@ import Ewok.Processor.QueueProcessor;
 
 
 
-public class URLClassifier extends QueueProcessor {
-	public void run() {
-	
-	}
-}
+//public class URLClassifier extends QueueProcessor {
+//	public void run() {
+//	
+//	}
+//}

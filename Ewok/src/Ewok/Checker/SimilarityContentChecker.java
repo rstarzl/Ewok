@@ -1,5 +1,7 @@
 package Ewok.Checker;
 
+import Ewok.Processor.QueueEntry;
+
 //
 //
 //
@@ -20,5 +22,11 @@ public class SimilarityContentChecker extends Checker {
 	
 	private void isDuplication() {
 	
+	}
+
+	@Override
+	public boolean check(QueueEntry entry) {
+		
+		return false;
 	}
 }

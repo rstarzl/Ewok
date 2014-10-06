@@ -1,4 +1,5 @@
 package Ewok.Checker;
+import Ewok.Processor.QueueEntry;
 //
 //
 //
@@ -8,20 +9,28 @@ package Ewok.Checker;
 //  @ Author : Member
 //
 //
-import Ewok.RegionFilter.*;
 
 
 
 public class DepthChecker extends Checker {
-	public void doJob() {
-	
-	}
-	
-	private boolean isDepthLimit(HTMLContent URL) {
-		if(URL.Depth == 0){
-			return 
+
+//	private boolean isDepthLimit(HTMLContent URL) {
+//		if(URL.Depth == 0){
+//			return 
+//		}
+//		
+//		Depth.Depth = Depth.Depth - 1;  //Input depth is lowered by one.
+//	}
+
+	@Override
+	public boolean check(QueueEntry entry) {
+		// First ......Decrease count.
+		entry.decreaseDepthCount();
+		// and,,,,check depth count. if -1, go to infinity.
+		if (entry.getDepth() == 0){
+			return false;	// drop.
 		}
 		
-		Depth.Depth = Depth.Depth - 1;  //Input depth is lowered by one.
+		return true;
 	}
 }
