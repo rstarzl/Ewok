@@ -2,6 +2,7 @@ package Ewok.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import Ewok.CrawlerDriver;
 import Ewok.RegionFilter.HTMLContent;
@@ -12,10 +13,14 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ File Name : TargetQueueProcessor.java
 //  @ Date : 2014-09-29
 //  @ Author : HJ Shin
-//
+//	// Modified by JS
 //
 
-public class TargetQueueProcessor extends QueueProcessor implements Runnable {	
+public class TargetQueueProcessor extends QueueProcessor {
+	public TargetQueueProcessor(int id){
+		super(id);
+	}
+	
 	public void run() {
 		while(true){
 			HTMLContent content = pop(queueList);
@@ -28,6 +33,15 @@ public class TargetQueueProcessor extends QueueProcessor implements Runnable {
 				URLList.add("url2");
 				URLList.add("url3");
 				pushAllURL(URLList);
+				
+				/* @added by JS */
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/* @added by JS */
 			}
 		}
 	}

@@ -1,7 +1,12 @@
 package Ewok;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import Ewok.Processor.ClassifierQueueProcessor;
+import Ewok.Processor.QueueList;
+import Ewok.Processor.RenderingQueueProcessor;
+import Ewok.Processor.TargetQueueProcessor;
 import Ewok.Utils.ExceptionInvalidForm;
 import Ewok.Utils.XMLReader;
 
@@ -13,6 +18,13 @@ public class GlobalContext {
 	static private int	urlClassifierQPCount;
 	static private LinkedList<String> seedList = new LinkedList<String>();
 	
+	/* QP Lists */
+	static private	ProcessorList<RenderingQueueProcessor>	qpRender  = new ProcessorList<RenderingQueueProcessor>();
+	static private ProcessorList<TargetQueueProcessor>		qpTarget = new ProcessorList<TargetQueueProcessor>();
+	static private ProcessorList<ClassifierQueueProcessor>	qpClassifier = new ProcessorList<ClassifierQueueProcessor>();
+	/* QP Lists */
+	
+	/* Getter and Setter*/
 	public static String getFilePath() {
 		return filePath;
 	}
@@ -34,6 +46,35 @@ public class GlobalContext {
 	public static LinkedList<String> getSeedList(){
 		return	seedList;
 	}
+	/* Getter and Setter*/
+	
+	
+	/* Each QP QueueList getter */
+	public static QueueList getAvailableRenderingQL(){
+		return	qpRender.getAllocatableQP().getQueueList();
+	}
+	public static QueueList getAvailableTargetQL(){
+		return	qpTarget.getAllocatableQP().getQueueList();
+	}
+	public static QueueList getAvailableClassifierQL(){
+		return	qpClassifier.getAllocatableQP().getQueueList();
+	}
+	/* Each QP QueueList getter */
+	
+	
+	/* Each QP getter */
+	public static ProcessorList<RenderingQueueProcessor> getRenderingQP(){
+		return	qpRender;
+	}
+	public static ProcessorList<TargetQueueProcessor> getTargetQP(){
+		return	qpTarget;
+	}
+	public static ProcessorList<ClassifierQueueProcessor> getClassifierQP(){
+		return	qpClassifier;
+	}
+	/* Each QP getter */
+	
+	
 	
 	public static void	readConfigFile(){
 		// path validation check.
@@ -67,10 +108,12 @@ public class GlobalContext {
 	}
 	private static void defaultSetting() {
 		// TODO Auto-generated method stub
-		// ±âº»°æ·Î¿¡ xml File »ý¼ºÇØ¼­ ´Ù½Ã ·Îµå ½ÃÅ´..
-		// file »ý¼ºÇÏ´Â ±â´É ¸¸µé¾î¾ßÇÔ.
+		// ï¿½âº»ï¿½ï¿½Î¿ï¿½ xml File ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ù½ï¿½ ï¿½Îµï¿½ ï¿½ï¿½Å´..
+		// file ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		filePath = "./Ewok.Config";
 	}
+	
+
 	
 	
 	

@@ -2,6 +2,7 @@ package Ewok.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import Ewok.RegionFilter.HTMLContent;
 
@@ -12,17 +13,29 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ File Name : QueueProcessor.java
 //  @ Date : 2014-09-29
 //  @ Author : HJ Shin
-//
+//	@ Modifier : JS
 //
 
-public class QueueProcessor {
-	public List<HTMLContent> queueList;
+public abstract class QueueProcessor implements Callable{
+	protected	QueueList	queueList = new QueueList();
+	private int	id;
+//	public List<HTMLContent> queueList;
 	
-	public QueueProcessor(){
-		queueList = new ArrayList<HTMLContent>();
+	public QueueProcessor(int id){
+		this.id = id;
+	}
+	public int getID(){
+		return	this.id;
 	}
 	
+	public int getQSize(){
+		return	queueList.size();
+	}
 	
+	public QueueList	getQueueList(){
+		return	queueList;
+	}
+		
 	public void push(List<HTMLContent> queueList, HTMLContent content) {
 		queueList.add(content);
 	}
@@ -69,4 +82,18 @@ public class QueueProcessor {
 
 	}
 
+	
+	public abstract void run();
+	
+	@Override
+	/**
+	 *
+	 * Added by JS. For multi-core tasking.
+	 *
+	 */
+	public Object call() throws Exception {
+		run();
+		
+		return null;
+	}
 }

@@ -14,7 +14,11 @@ import Ewok.RegionFilter.HTMLContent;
 //
 //
 
-public class RenderingQueueProcessor extends QueueProcessor implements Runnable {
+public class RenderingQueueProcessor extends QueueProcessor {
+	public RenderingQueueProcessor(int id){
+		super(id);
+	}
+	
 //	static List<HTMLContent> queueList = new ArrayList<HTMLContent>();
 	
 	public RenderingQueueProcessor(){
@@ -30,6 +34,15 @@ public class RenderingQueueProcessor extends QueueProcessor implements Runnable 
 				//call render
 				//result = render(content);
 			}
+			
+			/* @added by JS */
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/* @added by JS */
 		}	
 	}
 }

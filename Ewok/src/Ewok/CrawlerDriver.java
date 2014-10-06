@@ -1,26 +1,59 @@
 package Ewok;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import Ewok.Processor.ClassifierQueueProcessor;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.RegionFilter.HTMLContent;
 
-public class CrawlerDriver {
-	public static TargetQueueProcessor tp = new TargetQueueProcessor();
-	public static ClassifierQueueProcessor cp = new ClassifierQueueProcessor();
-	public static RenderingQueueProcessor rp = new RenderingQueueProcessor();
+
+public class CrawlerDriver extends Thread{
+	private ExecutorService eservice;
+			
+	public CrawlerDriver(){
+		int nrOfProcessors = Runtime.getRuntime().availableProcessors();
+		eservice = Executors.newFixedThreadPool(nrOfProcessors);
+		// Q 3개만 쓰레드로 돌게, DB는 Q에 붙여서 우선..
+		
+		/* Running Target Queue */
+		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
+			TargetQueueProcessor	qp = new TargetQueueProcessor(queueIndex);
+			GlobalContext.getTargetQP().add(qp);
+			eservice.submit(qp);
+		}
+		/* Running Target Queue */
+		
+		
+		/* Running Classifier Queue */
+		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
+			ClassifierQueueProcessor	qp = new ClassifierQueueProcessor(queueIndex);
+			GlobalContext.getClassifierQP().add(qp);
+			eservice.submit(qp);
+		}
+		/* Running Classifier Queue */
+		
+		
+		/* Running Rendering Queue */
+		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
+			RenderingQueueProcessor	qp = new RenderingQueueProcessor(queueIndex);
+			GlobalContext.getRenderingQP().add(qp);
+			eservice.submit(qp);
+		}
+		/* Running Rendering Queue */
+	}
 	
-	public void run(){
-		Thread target = new Thread(tp);
-		Thread classifier = new Thread(cp);
-		Thread render = new Thread(rp);
-		
-		target.start();
-		classifier.start();
-		render.start();
-		
-		HTMLContent content = new HTMLContent();
-		tp.setURL(content, "www.naver.com");	
-		tp.push(tp.queueList, content);	
+	
+	@Override
+	public void run() {
+		while(true){
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

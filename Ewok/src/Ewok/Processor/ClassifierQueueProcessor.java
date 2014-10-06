@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import Ewok.CrawlerDriver;
 import Ewok.RegionFilter.HTMLContent;
 
-public class ClassifierQueueProcessor extends QueueProcessor implements Runnable {
+public class ClassifierQueueProcessor extends QueueProcessor{
+	public ClassifierQueueProcessor(int id){
+		super(id);
+	}
+	
 	public void run() {
 		while(true){
 			HTMLContent content = pop(queueList);
@@ -17,6 +21,15 @@ public class ClassifierQueueProcessor extends QueueProcessor implements Runnable
 					CrawlerDriver.tp.push(CrawlerDriver.tp.queueList, content);
 				}
 			}
+			
+			/* @added by JS */
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/* @added by JS */
 		}
 	}
 
