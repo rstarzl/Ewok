@@ -8,7 +8,7 @@ package Ewok.Checker;
 //  @ Author : Member
 //
 //
-
+import Ewok.RegionFilter.*;
 
 
 
@@ -17,7 +17,11 @@ public class DepthChecker extends Checker {
 	
 	}
 	
-	private void isDepthLimit() {
-	
+	private boolean isDepthLimit(HTMLContent URL) {
+		if(URL.Depth == 0){
+			return 
+		}
+		
+		Depth.Depth = Depth.Depth - 1;  //Input depth is lowered by one.
 	}
 }

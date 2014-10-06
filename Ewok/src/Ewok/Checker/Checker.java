@@ -8,14 +8,14 @@ package Ewok.Checker;
 //  @ Author : Member
 //
 //
-
+import Ewok.RegionFilter.*;
 
 
 
 public class Checker {
 	private Object condition;
 	protected void checkAndDrop() {
-	
+
 	}
 	
 	protected void setCondition() {
