@@ -13,7 +13,7 @@ public class CrawlerDriver extends Thread{
 	public CrawlerDriver(){
 		int nrOfProcessors = Runtime.getRuntime().availableProcessors();
 		eservice = Executors.newFixedThreadPool(nrOfProcessors);
-		// Q 3°³ ¾²·¹µå·Î µ¹¸±²¨°í,,,,,DB´Â ¿ì¼± Q¾È¿¡ Æ÷ÇÔ½ÃÅ°´Â °É·Î.
+		// Q 3ê°œë§Œ ì“°ë ˆë“œë¡œ ëŒê²Œ, DBëŠ” Qì— ë¶™ì—¬ì„œ ìš°ì„ ..
 	}
 	
 	
