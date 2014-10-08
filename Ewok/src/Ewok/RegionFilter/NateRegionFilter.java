@@ -13,9 +13,8 @@ import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLAnchorElement;
 //  @ Date : 2014-10-04
 //  @ Author : Kiheung Park
 public class NateRegionFilter implements RegionFilter {
-	ArrayList<String> urlList = new ArrayList<String>();
-
-	public ArrayList<String> filter1(HTMLContent html) {	
+	public ArrayList<String> filter(HTMLContent html) {
+		ArrayList<String> urlList = new ArrayList<String>();
 		String nate = "http://news.nate.com";
 		String filteredURLByHref;
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");

@@ -1,7 +1,11 @@
 package Ewok;
 
 import static org.junit.Assert.*;
-
+/**
+ * 
+ * @author JS
+ *
+ */
 public class Test {
 
 	@org.junit.Test

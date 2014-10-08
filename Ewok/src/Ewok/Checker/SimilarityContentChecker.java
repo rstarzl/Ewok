@@ -16,6 +16,8 @@ import Ewok.Processor.QueueEntry;
 
 
 public class SimilarityContentChecker extends Checker {
+	// Using Meaningful DB
+	
 	public void doJob() {
 	
 	}
@@ -26,7 +28,8 @@ public class SimilarityContentChecker extends Checker {
 
 	@Override
 	public boolean check(QueueEntry entry) {
-		
+		// sim -> true
+		// non-sim -> false
 		return false;
 	}
 }

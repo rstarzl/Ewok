@@ -5,7 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Ewok.DB.DBEntry.SubData;
-
+/**
+ * 
+ * @author JS
+ *
+ */
 public class DBTest {
 
 //	@Test

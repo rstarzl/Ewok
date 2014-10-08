@@ -1,9 +1,17 @@
 package Ewok.DB;
 
+import Ewok.GlobalContext.TYPE_OF_SITE;
+/**
+ * 
+ * @author JS
+ *
+ */
 public class URL {
 	private String[] childNames = {"URL", "siteName"};
-	String url;
-	String siteName;
+	private String url;
+	private TYPE_OF_SITE	siteName;
+	
+	
 	private String nodeName;
 	
 		
@@ -13,6 +21,16 @@ public class URL {
 		this.siteName = extractSiteName();
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public TYPE_OF_SITE getSiteName() {
+		return siteName;
+	}
+
 	public String getNodeName(){
 		return	this.nodeName;
 	}
@@ -26,7 +44,7 @@ public class URL {
 		return	this.url;
 	}
 	public String get2ndChildValue(){
-		return	this.siteName;
+		return	this.siteName.toString();	//TODO : must check.
 	}
 	
 		
@@ -35,7 +53,17 @@ public class URL {
 	 * TODO:정규식으로 구현
 	 * @return
 	 */
-	private String extractSiteName(){
-		return	"Non";
+	private TYPE_OF_SITE extractSiteName(){
+		if (this.url.contains("naver")){
+			return	TYPE_OF_SITE.NAVER;
+		}
+		if (this.url.contains("nate")){
+			return	TYPE_OF_SITE.NATE;
+		}
+		if (this.url.contains("daum")){
+			return	TYPE_OF_SITE.DAUM;
+		}
+		
+		return TYPE_OF_SITE.NON;
 	}
 }

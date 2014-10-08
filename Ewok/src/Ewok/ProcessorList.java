@@ -3,7 +3,12 @@ package Ewok;
 import java.util.ArrayList;
 
 import Ewok.Processor.QueueProcessor;
-
+/**
+ * 
+ * @author JS
+ *
+ * @param <TypeOfQP>
+ */
 public class ProcessorList <TypeOfQP extends QueueProcessor> extends ArrayList<QueueProcessor> {
 	public ProcessorList(){
 		super();

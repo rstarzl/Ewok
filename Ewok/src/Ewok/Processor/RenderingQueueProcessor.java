@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Ewok.GlobalContext;
+import Ewok.Checker.SimilarityContentChecker;
 import Ewok.RegionFilter.HTMLContent;
+import Ewok.Render.RenderDriver;
 //
 //
 //
@@ -12,10 +14,13 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ File Name : ParsingQueueProcessor.java
 //  @ Date : 2014-09-29
 //  @ Author : HJ Shin
-//
+//	@ Modifier : JS
 //
 
 public class RenderingQueueProcessor extends QueueProcessor {
+	SimilarityContentChecker	similarityContentChecker = new SimilarityContentChecker();
+	RenderDriver				render = new RenderDriver();
+	
 	public RenderingQueueProcessor(int id){
 		super(id);
 	}
@@ -24,17 +29,21 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	public void run() {
 	
 		while(true){
+			sleep(10);
+			
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
-//				if(content.isContent){
-				// workingItem에 작업 내용 체워서 아래 함수 이용 큐 어싸인.
-					GlobalContext.getAvailableRenderingQL().push(workingItem);
-//				}else{
-					GlobalContext.getAvailableTargetQL().push(workingItem);
-//				}
+				// 1. render contents
+				render.render(workingItem);
+				
+				// 2. checking similarity
+				if (similarityContentChecker.check(workingItem)){
+					continue;
+				}
+				
+				// 3. DB Access
+				
 			}
-
-			sleep(10);
 		}	
 	}
 	/* @ modified by JS */

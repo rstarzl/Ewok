@@ -6,7 +6,9 @@ import java.util.concurrent.Callable;
 
 import Ewok.CrawlerDriver;
 import Ewok.GlobalContext;
+import Ewok.Checker.DepthChecker;
 import Ewok.RegionFilter.HTMLContent;
+import Ewok.RegionFilter.RegionFilterDriver;
 //
 //
 //
@@ -18,24 +20,40 @@ import Ewok.RegionFilter.HTMLContent;
 //
 
 public class TargetQueueProcessor extends QueueProcessor {
+	private	DepthChecker		depthChecker = new DepthChecker();
+	private RegionFilterDriver	regionFilter = new RegionFilterDriver();
+	
 	public TargetQueueProcessor(int id){
 		super(id);
+	}
+	
+	@Override
+	public void push(QueueEntry entry){
+		// Depth checking. and drop.
+		if (!depthChecker.check(entry)){
+			return;	// drop.
+		}
+		super.push(entry);
 	}
 	
 	/* @ modified by JS */
 	public void run() {
 		while(true){
+			sleep(10);
+			
+			// workingItem에 작업 내용 체워서 아래 함수 이용 큐 어싸인.
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
-//				if(content.isContent){
-				// workingItem에 작업 내용 체워서 아래 함수 이용 큐 어싸인.
-					GlobalContext.getAvailableRenderingQL().push(workingItem);
-//				}else{
-					GlobalContext.getAvailableTargetQL().push(workingItem);
-//				}
-			}
+				// 1. Getting URL.
+				ArrayList <String> linkList = regionFilter.filter(workingItem);
 
-			sleep(10);
+				// 2. Assigning Work.
+				for (String workingURL : linkList){
+					QueueEntry	entry = new QueueEntry();
+					entry.setSiteURL(workingURL);
+					GlobalContext.getAvailableClassifierQL().push(entry);
+				}
+			}
 		}
 	}
 	/* @ modified by JS */

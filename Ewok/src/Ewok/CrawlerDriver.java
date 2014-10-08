@@ -8,7 +8,11 @@ import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.RegionFilter.HTMLContent;
 
-
+/**
+ * 
+ * @author JS
+ *
+ */
 public class CrawlerDriver extends Thread{
 	private ExecutorService eservice;
 			

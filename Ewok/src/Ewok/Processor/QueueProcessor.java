@@ -18,7 +18,7 @@ import Ewok.RegionFilter.HTMLContent;
 //
 
 public abstract class QueueProcessor implements Callable{
-	protected	QueueList	queueList = new QueueList();
+	private	QueueList	queueList = new QueueList();
 	private int	id;
 	
 	public QueueProcessor(int id){

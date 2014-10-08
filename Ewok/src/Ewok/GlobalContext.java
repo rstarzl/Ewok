@@ -3,14 +3,24 @@ package Ewok;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import Ewok.GlobalConfigure.TYPE_OF_DB;
 import Ewok.Processor.ClassifierQueueProcessor;
 import Ewok.Processor.QueueList;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.Utils.ExceptionInvalidForm;
 import Ewok.Utils.XMLReader;
-
+/**
+ * 
+ * @author JS
+ *
+ */
 public class GlobalContext {
+	/* Setting variable for Workflow. */
+	public static enum TYPE_OF_SITE {NAVER, NATE, DAUM, NON};
+	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.DAUM, TYPE_OF_SITE.NATE, TYPE_OF_SITE.DAUM};
+	/* Setting variable for Workflow. */
+	
 	static private String filePath = "";
 	static private int	depthLimit;
 	static private int	renderQPCount;

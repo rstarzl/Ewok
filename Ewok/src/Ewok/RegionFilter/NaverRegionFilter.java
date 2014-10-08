@@ -14,13 +14,19 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
   @ File Name : NaverRegionFilter.java
   @ Date : 2014-10-03
   @ Author : Kiheung Park
+  @ Modifier : JS
 */
 
 public class NaverRegionFilter implements RegionFilter {
-	ArrayList<String> urlList = new ArrayList<String>();
+	
+	public ArrayList<String> filter(HTMLContent html) {
+		filter1(html);
+	}
 
 	// OPTION1: For extracting all the targeted URLs in given HTMLpage
 	public ArrayList<String> filter1(HTMLContent html) {
+		ArrayList<String> urlList = new ArrayList<String>();
+		
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
@@ -36,15 +42,17 @@ public class NaverRegionFilter implements RegionFilter {
 
 	// OPTION2: For extracting the targeted URLs from the specific region
 	public ArrayList<String> filter2(HTMLContent html) {
-		getRenderURLs(html, "section_body"); // News Article URLs in the content list section; <div id="section_body"> ... </div>
-		getRegionURLs(html, "paging"); // Page navigation by page number URLs below the section body; <div id=paging> ... </div>
-		getRegionURLs(html, "pagenavi_day"); // Page navigation by day URLs below the page numbers; <div id=pagenavi_day> ... </div>
+		ArrayList<String> urlList = new ArrayList<String>();
+		
+		getRenderURLs(html, "section_body", urlList); // News Article URLs in the content list section; <div id="section_body"> ... </div>
+		getRegionURLs(html, "paging", urlList); // Page navigation by page number URLs below the section body; <div id=paging> ... </div>
+		getRegionURLs(html, "pagenavi_day", urlList); // Page navigation by day URLs below the page numbers; <div id=pagenavi_day> ... </div>
 		
 		return urlList;
 	}
 
 	// Extract targeted URLs for render
-	private void getRenderURLs(HTMLContent html, String elementsById){
+	private void getRenderURLs(HTMLContent html, String elementsById, ArrayList<String> urlList){
 		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName(elementsById);
 		String filteredURLByHref;
 		for(DomElement div : html.regionFilteredList) {
@@ -62,7 +70,7 @@ public class NaverRegionFilter implements RegionFilter {
 	}
 	
 	// Extract region filtered URLs in which recursively used for extracting render URLs
-	private void getRegionURLs(HTMLContent html, String elementsById) {
+	private void getRegionURLs(HTMLContent html, String elementsById, ArrayList<String> urlList) {
 		html.regionFilteredList = html.pageHTML.getElementsByIdAndOrName(elementsById);
 		String filteredURLByHref;
 		for(DomElement div : html.regionFilteredList){

@@ -1,7 +1,10 @@
 package Ewok.DB;
 
-import java.util.HashMap;
-
+/**
+ * 
+ * @author JS
+ *
+ */
 public class MemPhysicalDB implements PhysicalDB{
 	private DBEntry	dbPoint;
 	

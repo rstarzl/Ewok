@@ -11,7 +11,11 @@ import Ewok.Processor.QueueEntry;
 //
 import Ewok.RegionFilter.*;
 
-
+/**
+ * 
+ * @author JS
+ *
+ */
 
 public abstract class Checker {
 	private Object condition;
