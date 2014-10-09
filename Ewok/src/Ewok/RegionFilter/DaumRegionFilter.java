@@ -8,9 +8,9 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 //@ Date : 2014-10-03
 //@ Author : Kiheung Park
 public class DaumRegionFilter implements RegionFilter {
-	public ArrayList<String> filter(HTMLContent html) {
+	public ArrayList<String> filter(String urlAddress) {
+		HTMLContent html = new HTMLContent(urlAddress);
 		ArrayList<String> urlList = new ArrayList<String>();
-		
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String daum = "http://media.daum.net/";
 		String filteredURLByHref;

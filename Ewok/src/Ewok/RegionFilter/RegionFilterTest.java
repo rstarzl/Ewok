@@ -30,28 +30,28 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
 public class RegionFilterTest {
 
 /*	Naver News */
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100"); // Á¤Ä¡ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101"); // °æÁ¦ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=102"); // »çÈ¸ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=103"); // »ýÈ°/¹®È­ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=104"); // ¼¼°è 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=1"); // ´Ù¸¥ ³¯Â¥
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=2"); // ´Ù¸¥ ÆäÀÌÁö
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100"); // ï¿½ï¿½Ä¡ 
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101"); // ï¿½ï¿½ï¿½ï¿½ 
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=102"); // ï¿½ï¿½È¸ 
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=103"); // ï¿½ï¿½È°/ï¿½ï¿½È­ 
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=104"); // ï¿½ï¿½ï¿½ï¿½ 
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=1"); // ï¿½Ù¸ï¿½ ï¿½ï¿½Â¥
+//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=2"); // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	// Daum News
-//	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont"); //»çÈ¸
-//	HTMLContent test = new HTMLContent("http://media.daum.net/politics/all/#page=1&type=tit_cont"); //Á¤Ä¡
-//	HTMLContent test = new HTMLContent("http://media.daum.net/economic/all/#page=1&type=tit_cont"); //°æÁ¦
-//	HTMLContent test = new HTMLContent("http://media.daum.net/foreign/all/#page=1&type=tit_cont"); //±¹Á¦
-//	HTMLContent test = new HTMLContent("http://media.daum.net/culture/all/#page=1&type=tit_cont"); //¹®È­/»ýÈ°
+//	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont"); //ï¿½ï¿½È¸
+//	HTMLContent test = new HTMLContent("http://media.daum.net/politics/all/#page=1&type=tit_cont"); //ï¿½ï¿½Ä¡
+//	HTMLContent test = new HTMLContent("http://media.daum.net/economic/all/#page=1&type=tit_cont"); //ï¿½ï¿½ï¿½ï¿½
+//	HTMLContent test = new HTMLContent("http://media.daum.net/foreign/all/#page=1&type=tit_cont"); //ï¿½ï¿½ï¿½ï¿½
+//	HTMLContent test = new HTMLContent("http://media.daum.net/culture/all/#page=1&type=tit_cont"); //ï¿½ï¿½È­/ï¿½ï¿½È°
 //	HTMLContent test = new HTMLContent("http://media.daum.net/digital/all/#page=1&type=tit_cont"); //Tech
-//	HTMLContent test = new HTMLContent("http://media.daum.net/editorial/all/#page=1&type=tit_cont"); //Ä®·³
+//	HTMLContent test = new HTMLContent("http://media.daum.net/editorial/all/#page=1&type=tit_cont"); //Ä®ï¿½ï¿½
 //	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont#page=2&type=tit_cont"); // page number click
 //	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont#page=2&type=tit_cont?regdate=20141004#page=1&type="); // page by date
 	
 	// Nate News
-//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // Á¤Ä¡
-	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // ´Ù¸¥ ³¯Â¥
+//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // ï¿½ï¿½Ä¡
+	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // ï¿½Ù¸ï¿½ ï¿½ï¿½Â¥
 
 /*
 	@org.junit.Test
@@ -99,7 +99,7 @@ public class RegionFilterTest {
 	}
 */
 
-	
+/*	
 	@org.junit.Test
 	public void test4() {
 		NateRegionFilter nateRF = new NateRegionFilter();
@@ -112,6 +112,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
+*/
 
 
 

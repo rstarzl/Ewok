@@ -19,8 +19,9 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
 
 public class NaverRegionFilter implements RegionFilter {
 	
-	public ArrayList<String> filter(HTMLContent html) {
-		filter1(html);
+	public ArrayList<String> filter(String urlAddress) {
+		HTMLContent html = new HTMLContent(urlAddress);
+		return filter1(html);
 	}
 
 	// OPTION1: For extracting all the targeted URLs in given HTMLpage

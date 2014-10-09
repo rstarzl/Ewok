@@ -10,7 +10,7 @@ import Ewok.Processor.QueueEntry;
 //  @ Author : Kiheung Park
 
 public interface RegionFilter {
-	public ArrayList<String> filter(HTMLContent html);
+	public ArrayList<String> filter(String urlAddress);
 
 //	public ArrayList<String> filter(QueueEntry entry); 
 }
