@@ -9,6 +9,7 @@ package Ewok.Checker;
 //
 //
 import Ewok.Processor.QueueEntry;
+import Ewok.DB.*;
 
 
 
@@ -19,7 +20,17 @@ public class WorkingChecker extends Checker {
 	public boolean check(QueueEntry entry) {
 		// Using Regular expression.
 		// TODO Auto-generated method stub
-		return false;
+		boolean URLchecking = false;
+		URL url;
+		
+		URLDB DBcheckURL = new URLDB();
+		url = DBcheckURL.queryURLFromUrlString(entry.getUrl().getUrl());
+		
+		if(url == null){
+			URLchecking = true;
+		}
+		
+		return URLchecking;
 	}
 
 //	public boolean doJob(HTMLContent URL) { // Input : URL , true : it is not a duplicate , false : it should be dropped
