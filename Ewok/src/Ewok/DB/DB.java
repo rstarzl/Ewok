@@ -18,6 +18,7 @@ import Ewok.GlobalConfigure;
 
 public class DB implements Callable {
 	private PhysicalDB dbPoint;
+	private MySQLDB MySQLPoint;
 	private CacheTable cacheTable;
 	
 	public DB(String rootName){
@@ -30,6 +31,7 @@ public class DB implements Callable {
 			break;
 		case FILE:
 		case MYSQL:
+			MySQLPoint = new MySQLDB(rootName);
 		case CASSANDRA:
 		case MONGODB:
 		default : 
