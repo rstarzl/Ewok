@@ -2,24 +2,26 @@ package Ewok.RegionFilter;
 
 import java.util.ArrayList;
 
+import Ewok.RegionFilter.URLInfo.URLType;
+
 import com.gargoylesoftware.htmlunit.html.DomElement;
 //@ Project : Ewok
 //@ File Name : DaumRegionFilter.java
 //@ Date : 2014-10-03
 //@ Author : Kiheung Park
 public class DaumRegionFilter implements RegionFilter {
-	public ArrayList<String> filter(String urlAddress) {
+	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
-		ArrayList<String> urlList = new ArrayList<String>();
+		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String daum = "http://media.daum.net/";
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
 			if(filteredURLByHref.contains("/v/") && !filteredURLByHref.contains("RIGHT_")){ // For extracting render URLs but excluding sorted list URLs on right side of the page
-				urlList.add(daum + filteredURLByHref);
+				urlList.add(new URLInfo(daum + filteredURLByHref, URLType.NewsArticle));
 			}else if (filteredURLByHref.contains("#page=")) { // For extracting page navigation URLs by both page numbers and dates
-				urlList.add(html.urlAddress.toString()+filteredURLByHref);
+				urlList.add(new URLInfo(html.urlAddress.toString()+filteredURLByHref, URLType.PageNavi));
 			}
 		}
 		return urlList;

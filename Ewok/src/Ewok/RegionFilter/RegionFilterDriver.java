@@ -32,7 +32,7 @@ public class RegionFilterDriver {
 		}
 	}
 
-	public ArrayList<String> filter(QueueEntry entry) {
+	public ArrayList<URLInfo> filter(QueueEntry entry) {
 		// TODO : default action.
 //		if (!regionFilters.containsKey(entry.getSiteName())){
 //			;

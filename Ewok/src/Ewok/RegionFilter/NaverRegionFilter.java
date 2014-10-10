@@ -2,6 +2,8 @@ package Ewok.RegionFilter;
 
 import java.util.ArrayList;
 
+import Ewok.RegionFilter.URLInfo.URLType;
+
 import com.gargoylesoftware.htmlunit.html.DomElement;
 
 /*
@@ -14,23 +16,24 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 
 public class NaverRegionFilter implements RegionFilter {
 	
-	public ArrayList<String> filter(String urlAddress) {
+	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
 		return filter1(html);
 	}
 
 	// OPTION1: For extracting all the targeted URLs in given HTMLpage
-	public ArrayList<String> filter1(HTMLContent html) {
-		ArrayList<String> urlList = new ArrayList<String>();
+	public ArrayList<URLInfo> filter1(HTMLContent html) {
+		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();
 		
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
 			if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
-				urlList.add(filteredURLByHref);
+				urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
 			}else if (filteredURLByHref.contains("#&")) {
-				urlList.add(html.urlAddress.toString()+filteredURLByHref);
+				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
+				urlList.add(new URLInfo(html.urlAddress.toString()+filteredURLByHref, URLType.PageNavi));
 			}
 		}
 		return urlList;

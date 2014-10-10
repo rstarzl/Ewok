@@ -11,6 +11,7 @@ import Ewok.GlobalContext;
 import Ewok.Checker.DepthChecker;
 import Ewok.RegionFilter.HTMLContent;
 import Ewok.RegionFilter.RegionFilterDriver;
+import Ewok.RegionFilter.URLInfo;
 //
 //
 //
@@ -53,10 +54,10 @@ public class TargetQueueProcessor extends QueueProcessor {
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. Getting URL.
-				ArrayList <String> linkList = regionFilter.filter(workingItem);
+				ArrayList <URLInfo> linkList = regionFilter.filter(workingItem);
 
 				// 2. Assigning Work.
-				for (String workingURL : linkList){
+				for (URLInfo workingURL : linkList){
 					QueueEntry	entry = new QueueEntry(workingURL);
 //					entry.setSiteURL(workingURL);
 //					System.out.println(entry);
