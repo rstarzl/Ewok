@@ -31,7 +31,7 @@ public class CrawlerDriver extends Thread{
 		
 		
 		/* Running Classifier Queue */
-		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
+		for (int queueIndex = 0; queueIndex < GlobalContext.getUrlClassifierQPCount(); queueIndex++){
 			ClassifierQueueProcessor	qp = new ClassifierQueueProcessor(queueIndex);
 			GlobalContext.getClassifierQP().add(qp);
 			eservice.submit(qp);
@@ -40,7 +40,7 @@ public class CrawlerDriver extends Thread{
 		
 		
 		/* Running Rendering Queue */
-		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
+		for (int queueIndex = 0; queueIndex < GlobalContext.getRenderQPCount(); queueIndex++){
 			RenderingQueueProcessor	qp = new RenderingQueueProcessor(queueIndex);
 			GlobalContext.getRenderingQP().add(qp);
 			eservice.submit(qp);
