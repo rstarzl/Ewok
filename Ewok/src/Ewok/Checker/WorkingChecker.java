@@ -28,9 +28,9 @@ public class WorkingChecker extends Checker {
 		boolean URLchecking = false;
 		ArrayList<QueueEntry> url;
 		
-		url = GlobalContext.getURLDB().query(entry.getUrl().getUrl());
+		String urlCheck = entry.getSiteURL();
 		
-		if(url == null){
+		if(urlCheck.contains(s)
 			URLchecking = true;
 		}
 		

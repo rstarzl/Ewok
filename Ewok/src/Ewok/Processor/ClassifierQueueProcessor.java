@@ -27,6 +27,9 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 			return;	// drop.
 		}
 		super.push(entry);
+		
+		//DB에 url을 저장하는 동작은 target/render queue에 push할 때 duplicate이 아닌 경우에만 db에 저장한다.(효정)
+		GlobalContext.getURLDB().add(entry);
 	}
 	
 	/* @ modified by JS */
@@ -44,7 +47,6 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 					
 					GlobalContext.getAvailableTargetQL().push(workingItem);
 				}
-				GlobalContext.getURLDB().add(workingItem);
 			}
 
 			
