@@ -17,13 +17,23 @@ public class CrawlerDriver extends Thread{
 	private ExecutorService eservice;
 			
 	public CrawlerDriver(){
+		
+		/* Connect DB */
+		GlobalContext.connectDB();
+		/* Connect DB */
+		
+		/* Connect LogFiles */
+		GlobalContext.connectLogFiles();
+		/* Connect LogFiles */
+		
+		
 		int nrOfProcessors = Runtime.getRuntime().availableProcessors();
 		eservice = Executors.newFixedThreadPool(nrOfProcessors);
 		// Q 3개만 쓰레드로 돌게, DB는 Q에 붙여서 우선..
 		
 		/* Running Target Queue */
 		for (int queueIndex = 0; queueIndex < GlobalContext.getTargetQPCount(); queueIndex++){
-			TargetQueueProcessor	qp = new TargetQueueProcessor(queueIndex);
+			TargetQueueProcessor	qp = new TargetQueueProcessor("TP" ,queueIndex);
 			GlobalContext.getTargetQP().add(qp);
 			eservice.submit(qp);
 		}
@@ -32,7 +42,7 @@ public class CrawlerDriver extends Thread{
 		
 		/* Running Classifier Queue */
 		for (int queueIndex = 0; queueIndex < GlobalContext.getUrlClassifierQPCount(); queueIndex++){
-			ClassifierQueueProcessor	qp = new ClassifierQueueProcessor(queueIndex);
+			ClassifierQueueProcessor	qp = new ClassifierQueueProcessor("CP", queueIndex);
 			GlobalContext.getClassifierQP().add(qp);
 			eservice.submit(qp);
 		}
@@ -41,16 +51,11 @@ public class CrawlerDriver extends Thread{
 		
 		/* Running Rendering Queue */
 		for (int queueIndex = 0; queueIndex < GlobalContext.getRenderQPCount(); queueIndex++){
-			RenderingQueueProcessor	qp = new RenderingQueueProcessor(queueIndex);
+			RenderingQueueProcessor	qp = new RenderingQueueProcessor("RQ", queueIndex);
 			GlobalContext.getRenderingQP().add(qp);
 			eservice.submit(qp);
 		}
 		/* Running Rendering Queue */
-		
-		
-		/* Connect DB */
-		GlobalContext.connectDB();
-		/* Connect DB */
 	}
 	
 	

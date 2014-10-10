@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 
+import Ewok.GlobalContext;
 import Ewok.RegionFilter.HTMLContent;
 
 //
@@ -19,10 +20,12 @@ import Ewok.RegionFilter.HTMLContent;
 
 public abstract class QueueProcessor implements Callable{
 	private	QueueList	queueList = new QueueList();
+	private String qpName;
 	private int	id;
-	
-	public QueueProcessor(int id){
+		
+	public QueueProcessor(String qp, int id){
 		this.id = id;
+		this.qpName = qp;
 	}
 	public int getID(){
 		return	this.id;
@@ -41,6 +44,8 @@ public abstract class QueueProcessor implements Callable{
 	
 	/* Function Overloading, but no modify original */
 	public synchronized QueueEntry pop(){
+		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is locked.");
+		
 		QueueEntry	entry;
 		
 		try {
@@ -49,11 +54,14 @@ public abstract class QueueProcessor implements Callable{
 			entry = null;
 		}
 		
+		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is unlocked.");
 		return	entry;
 	}
 	
 	public synchronized void push(QueueEntry entry){
+		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is locked.");
 		this.queueList.push(entry);
+		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is unlocked.");
 	}
 	
 	public synchronized int getQSize(){

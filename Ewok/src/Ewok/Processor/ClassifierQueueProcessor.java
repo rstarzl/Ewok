@@ -16,8 +16,8 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 	private	DuplicationURLChecker		duplicationURLChecker = new DuplicationURLChecker();
 	private WorkingChecker				workingChecker = new WorkingChecker();
 	
-	public ClassifierQueueProcessor(int id){
-		super(id);
+	public ClassifierQueueProcessor(String qp, int id){
+		super(qp, id);
 	}
 	
 	@Override

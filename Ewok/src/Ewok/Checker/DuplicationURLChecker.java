@@ -24,5 +24,4 @@ public class DuplicationURLChecker extends Checker {
 		}
 //		return	false;
 	}
-
 }

@@ -26,8 +26,8 @@ public class TargetQueueProcessor extends QueueProcessor {
 	private	DepthChecker		depthChecker = new DepthChecker();
 	private RegionFilterDriver	regionFilter = new RegionFilterDriver();
 	
-	public TargetQueueProcessor(int id){
-		super(id);
+	public TargetQueueProcessor(String qp, int id){
+		super(qp, id);
 		
 		// TODO: temp code.
 //		QueueEntry	entry = new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");

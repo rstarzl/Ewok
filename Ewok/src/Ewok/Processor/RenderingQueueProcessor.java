@@ -21,8 +21,8 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	SimilarityContentChecker	similarityContentChecker = new SimilarityContentChecker();
 	RenderDriver				render = new RenderDriver();
 	
-	public RenderingQueueProcessor(int id){
-		super(id);
+	public RenderingQueueProcessor(String qp, int id){
+		super(qp, id);
 	}
 	
 	/* @ modified by JS */
