@@ -14,7 +14,7 @@ public class DaumRegionFilter implements RegionFilter {
 		HTMLContent html = new HTMLContent(urlAddress);
 		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
-		String daum = "http://media.daum.net/";
+		String daum = "http://media.daum.net";
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
