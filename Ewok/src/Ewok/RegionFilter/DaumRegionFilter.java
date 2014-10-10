@@ -21,7 +21,8 @@ public class DaumRegionFilter implements RegionFilter {
 			if(filteredURLByHref.contains("/v/") && !filteredURLByHref.contains("RIGHT_")){ // For extracting render URLs but excluding sorted list URLs on right side of the page
 				urlList.add(new URLInfo(daum + filteredURLByHref, URLType.NewsArticle));
 			}else if (filteredURLByHref.contains("#page=")) { // For extracting page navigation URLs by both page numbers and dates
-				urlList.add(new URLInfo(html.urlAddress.toString()+filteredURLByHref, URLType.PageNavi));
+				String temp = html.urlAddress.toString();
+				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("/all/"))+filteredURLByHref, URLType.PageNavi));
 			}
 		}
 		return urlList;

@@ -128,7 +128,7 @@ public class MySQLDB {
 	public static void connectMySQLDB(){
 		java.sql.Statement stmt;
 		//String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test";
-		String jdbcUrl = "jdbc:mysql://localhost:3306/test?characterEncoding=utf8";
+		String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test?characterEncoding=utf8";
 		
 		String userID = "root";
 		String userPass = "1q2w3e4r";

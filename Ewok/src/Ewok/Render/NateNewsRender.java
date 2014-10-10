@@ -26,6 +26,9 @@ import Ewok.RegionFilter.HTMLContent;
 public class NateNewsRender implements Render {
 	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) {
+		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
+	    java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
+	    
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		Article renderArticle = new Article();
 		
@@ -52,6 +55,9 @@ public class NateNewsRender implements Render {
 
 		// Contents
 		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("realArtcContents")).asText();
+		
+		webClient.closeAllWindows();
+
 		
 		return renderArticle;
 	}

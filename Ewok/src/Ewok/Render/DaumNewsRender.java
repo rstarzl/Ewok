@@ -17,6 +17,9 @@ import Ewok.RegionFilter.HTMLContent;
 public class DaumNewsRender implements Render {
 	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) {
+		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
+	    java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
+		
 		WebClient webClient = new WebClient();
 		Article renderArticle = new Article();
 		
@@ -43,6 +46,10 @@ public class DaumNewsRender implements Render {
 
 		// Contents
 		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("newsBody")).asText();
+		
+		
+		webClient.closeAllWindows();
+
 		
 		return renderArticle;
 	}
