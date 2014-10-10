@@ -1,8 +1,10 @@
 package Ewok.DB;
 
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 import Ewok.GlobalConfigure;
+import Ewok.GlobalContext;
 //
 //
 //
@@ -12,6 +14,7 @@ import Ewok.GlobalConfigure;
 //  @ Author : Member
 //
 //
+import Ewok.Processor.QueueEntry;
 
 
 
@@ -25,15 +28,19 @@ public class DB implements Callable {
 		/**
 		 * Setting currunt selected DB .
 		 */
-		switch (GlobalConfigure.getSelectedDb()){
+		switch (GlobalContext.getSelectedDb()){
 		case MEM:
 			dbPoint = new MemPhysicalDB(rootName);
 			break;
 		case FILE:
+			break;
 		case MYSQL:
 			MySQLPoint = new MySQLDB(rootName);
+			break;
 		case CASSANDRA:
+			break;
 		case MONGODB:
+			break;
 		default : 
 			System.out.println("Invalid DB.");
 			System.exit(1);
@@ -51,6 +58,7 @@ public class DB implements Callable {
 		}
 	}
 	
+	/* For MemDB. It must be refactory. */
 	public boolean add(DBEntry	content) {
 		return dbPoint.add(content);
 	}
@@ -59,7 +67,26 @@ public class DB implements Callable {
 		return	dbPoint.delete(content);
 	}
 	
-	public DBEntry query(String	key) {
-		return dbPoint.query(key);
+//	public DBEntry query(String	key) {
+//		return dbPoint.query(key);
+//	}
+	/* For MemDB. It must be refactory. */
+	
+	
+	/* For SQLDB. It must be refactory. */
+	public boolean add(QueueEntry data){
+		return	MySQLPoint.add(data);
 	}
+	public boolean delete(QueueEntry data){
+		return	MySQLPoint.delete(data);
+	}
+	public ArrayList<QueueEntry> query(String queryURL){
+		ArrayList<QueueEntry> ret = MySQLPoint.query(queryURL);
+		if (ret.size() == 0){
+			return null;
+		}
+		
+		return	ret;
+	}
+	/* For SQLDB. It must be refactory. */
 }

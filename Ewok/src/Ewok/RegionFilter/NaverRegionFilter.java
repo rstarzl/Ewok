@@ -1,13 +1,8 @@
 package Ewok.RegionFilter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import com.gargoylesoftware.htmlunit.JavaScriptPage;
-import com.gargoylesoftware.htmlunit.TextPage;
 import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.xml.XmlPage;
 
 /*
   @ Project : Ewok

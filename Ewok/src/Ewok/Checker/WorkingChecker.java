@@ -19,16 +19,16 @@ public class WorkingChecker extends Checker {
 	@Override
 	public boolean check(QueueEntry entry) {
 		// Using Regular expression.
-		// TODO Auto-generated method stub
+		// TODO 추후구현
 		boolean URLchecking = false;
 		URL url;
 		
 		URLDB DBcheckURL = new URLDB();
-		url = DBcheckURL.queryURLFromUrlString(entry.getUrl().getUrl());
+//		url = DBcheckURL.queryURLFromUrlString(entry.getUrl().getUrl());
 		
-		if(url == null){
-			URLchecking = true;
-		}
+//		if(url == null){
+//			URLchecking = true;
+//		}
 		
 		return URLchecking;
 	}

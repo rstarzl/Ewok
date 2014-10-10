@@ -14,7 +14,11 @@ public class URL {
 	
 	private String nodeName;
 	
-		
+	@Override
+	public String	toString(){
+		return	"URL : " + url + ", TypeOfSite : " + siteName.toString();
+	}
+	
 	public URL (String url){
 		this.url = url;
 		this.nodeName = url;

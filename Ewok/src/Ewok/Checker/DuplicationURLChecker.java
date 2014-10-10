@@ -1,5 +1,6 @@
 package Ewok.Checker;
 
+import Ewok.GlobalContext;
 import Ewok.Processor.QueueEntry;
 import Ewok.DB.*;
 
@@ -12,23 +13,15 @@ public class DuplicationURLChecker extends Checker {
 
 	@Override
 	public boolean check(QueueEntry entry) {
-		// TODO Auto-generated method stub
 		// URL DB Access.
 
 		// true, duplicated URL
 		// false, non-duplicated URL
-		
-		boolean URLchecking = false;
-		URL url;
-
-		URLDB DBcheckURL = new URLDB();
-		url = DBcheckURL.queryURLFromUrlString(entry.getUrl().getUrl());
-
-		if (url != null) {
-			URLchecking = true;
+		if (GlobalContext.getURLDB().queryURLFromUrlString(entry.getSiteURL()) == null){
+			return	false;
+		} else {
+			return	true;
 		}
-
-		return URLchecking;
 	}
 
 }

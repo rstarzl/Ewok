@@ -11,11 +11,13 @@ import Ewok.Processor.QueueEntry;
 import Ewok.Render.Article;
 
 public class MySQLDB {
-	String 		tableName=null;
-	URLColumm 		uc = new URLColumm();
-	ContentColumn 	cc = new ContentColumn();
-	static String DBName="webcrawler_v01";
-	static java.sql.Connection conn;
+	static private String DBName="webcrawler_v01";
+	static private java.sql.Connection conn;
+	
+	private String 		tableName=null;
+	private URLColumm 		uc = new URLColumm();
+	private ContentColumn 	cc = new ContentColumn();
+	
 	
 	public MySQLDB(String tableName){
 		//tableName : "url" or "content"
@@ -52,6 +54,8 @@ public class MySQLDB {
 			e.printStackTrace();
 			return false;
 		}
+		
+//		System.out.println(data);
 		
 		return true;
 	}

@@ -1,5 +1,8 @@
 package Ewok.Checker;
 
+import java.util.ArrayList;
+
+import Ewok.GlobalContext;
 import Ewok.Processor.QueueEntry;
 import Ewok.DB.*;
 import Ewok.Render.*;
@@ -29,17 +32,14 @@ public class SimilarityContentChecker extends Checker {
 		// sim -> true
 		// non-sim -> false
 
-		boolean Contentchecking = false;
-		Article article;
-
-		MeaningfulDB DBcheckContents = new MeaningfulDB();
-		article = DBcheckContents.queryContentsFromContentString(entry
-				.getArticle().content);
-
-		if (article != null) {
-			Contentchecking = true;
+		ArrayList<QueueEntry> entriesFromDB = GlobalContext.getMeaningfulDB().queryArticleFromUrlString(entry.getSiteURL());
+		
+		for (int index = 0; index < entriesFromDB.size(); index++){
+			if (entry.getArticle().content.equals(entriesFromDB.get(index).getArticle().content)){
+				return	true;
+			}
 		}
 
-		return Contentchecking;
+		return	false;
 	}
 }

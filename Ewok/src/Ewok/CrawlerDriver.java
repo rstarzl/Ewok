@@ -46,6 +46,11 @@ public class CrawlerDriver extends Thread{
 			eservice.submit(qp);
 		}
 		/* Running Rendering Queue */
+		
+		
+		/* Connect DB */
+		GlobalContext.connectDB();
+		/* Connect DB */
 	}
 	
 	

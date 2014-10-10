@@ -16,6 +16,12 @@ public class QueueEntry implements Serializable{
 	private int depth;
 	private Article	article;
 	
+	@Override
+	public String	toString(){
+		return targetAddrInfo.toString() + "\r\n" + article.toString();
+	}
+	
+	
 	/* Getter, Setter */
 	public URL getUrl() {
 		return targetAddrInfo;

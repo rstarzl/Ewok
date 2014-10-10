@@ -1,11 +1,12 @@
 package Ewok;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-import Ewok.GlobalConfigure.TYPE_OF_DB;
+import Ewok.DB.MeaningfulDB;
+import Ewok.DB.MySQLDB;
+import Ewok.DB.URLDB;
 import Ewok.Processor.ClassifierQueueProcessor;
-import Ewok.Processor.QueueList;
+import Ewok.Processor.QueueEntry;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.Utils.ExceptionInvalidForm;
@@ -16,6 +17,11 @@ import Ewok.Utils.XMLReader;
  *
  */
 public class GlobalContext {
+	public GlobalContext(){
+		
+	}
+	
+	
 	/* Setting variable for Workflow. */
 	public static enum TYPE_OF_SITE {NAVER, NATE, DAUM, NON};
 	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.DAUM, TYPE_OF_SITE.NATE, TYPE_OF_SITE.DAUM};
@@ -33,6 +39,15 @@ public class GlobalContext {
 	static private ProcessorList<TargetQueueProcessor>		qpTarget = new ProcessorList<TargetQueueProcessor>();
 	static private ProcessorList<ClassifierQueueProcessor>	qpClassifier = new ProcessorList<ClassifierQueueProcessor>();
 	/* QP Lists */
+	
+	/* DB */
+	public static enum TYPE_OF_DB {MEM, FILE, MYSQL, CASSANDRA, MONGODB};
+	//private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
+	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MYSQL;
+	public static TYPE_OF_DB getSelectedDb() {
+		return SELECTED_DB;
+	}
+	/* DB */
 	
 	/* Getter and Setter*/
 	public static String getFilePath() {
@@ -85,6 +100,22 @@ public class GlobalContext {
 	/* Each QP getter */
 	
 	
+	/* DB Settting */
+	private static MeaningfulDB	meaningfulDB = new MeaningfulDB("MeaningfulDB");
+	private static URLDB			urlDB 		= new URLDB("URLDB");
+	public static void	connectDB(){
+		MySQLDB.connectMySQLDB();		
+	}
+	
+	public static MeaningfulDB getMeaningfulDB(){
+		return	meaningfulDB;
+	}
+	public static URLDB	getURLDB(){
+		return	urlDB;
+	}
+	
+	
+	/* DB Settting */
 	
 	public static void	readConfigFile(){
 		// path validation check.
@@ -114,7 +145,15 @@ public class GlobalContext {
 			if (!seeds[index].trim().equals("")){
 				seedList.push(seeds[index].trim());
 			}
-		}		
+		}
+		
+		// Throw seedlist to targetQP
+		while(!seedList.isEmpty()){
+			QueueEntry	entry = new QueueEntry();
+			entry.setSiteURL(seedList.pop());
+			entry.setDepth(depthLimit);
+			getAvailableTargetQL().push(entry);
+		}
 	}
 	private static void defaultSetting() {
 		// TODO Auto-generated method stub
