@@ -49,14 +49,14 @@ public class URLDB extends DB {
 	
 	/* For SQLDB. It must be refactory. */
 	public boolean addURL(URL url){
-		QueueEntry	entry = new QueueEntry();
-		entry.setUrl(url);
+		QueueEntry	entry = new QueueEntry(url.getUrl());
+//		entry.setUrl(url);
 		return	super.add(entry);
 	}
 	
 	public boolean deleteURL(URL url){
-		QueueEntry	entry = new QueueEntry();
-		entry.setUrl(url);
+		QueueEntry	entry = new QueueEntry(url.getUrl());
+//		entry.setUrl(url);
 		return super.delete(entry);
 	}
 	

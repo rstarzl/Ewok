@@ -147,13 +147,34 @@ public class GlobalContext {
 			}
 		}
 		
-		// Throw seedlist to targetQP
-		while(!seedList.isEmpty()){
-			QueueEntry	entry = new QueueEntry();
-			entry.setSiteURL(seedList.pop());
-			entry.setDepth(depthLimit);
-			getAvailableTargetQL().push(entry);
-		}
+//		// Throw seedlist to targetQP
+//		while(!seedList.isEmpty()){
+//			QueueEntry	entry = new QueueEntry();
+//			entry.setSiteURL(seedList.pop());
+//			entry.setDepth(depthLimit);
+//			getAvailableTargetQL().push(entry);
+//		}
+
+		
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=102
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=103
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=104
+//		http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105
+//		http://media.daum.net/society/all/#page=1&type=tit_cont
+//		http://media.daum.net/politics/all/#page=1&type=tit_cont
+//		http://media.daum.net/economic/all/#page=1&type=tit_cont
+//		http://media.daum.net/foreign/all/#page=1&type=tit_cont
+//		http://media.daum.net/culture/all/#page=1&type=tit_cont
+//		http://media.daum.net/digital/all/#page=1&type=tit_cont
+//		http://media.daum.net/editorial/all/#page=1&type=tit_cont
+//		http://news.nate.com/recent?mid=n0201
+//		http://news.nate.com/recent?mid=n0301
+//		http://news.nate.com/recent?mid=n0401
+//		http://news.nate.com/recent?mid=n0501
+//		http://news.nate.com/recent?mid=n0601
+//		http://news.nate.com/recent?mid=n0701
 	}
 	private static void defaultSetting() {
 		// TODO Auto-generated method stub

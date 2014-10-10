@@ -10,6 +10,8 @@ import Ewok.*;
 
 public class Ewok {
 	public static void main(String[] args){
+		GlobalContext.readConfigFile();
+		
 		CrawlerDriver cd = new CrawlerDriver();
 		
 		cd.run();

@@ -21,7 +21,17 @@ public class QueueEntry implements Serializable{
 		return targetAddrInfo.toString() + "\r\n" + article.toString();
 	}
 	
+	public QueueEntry(String url){
+		this.targetAddrInfo = new URL(url);
+		this.article = new Article();
+	}
+
+	public QueueEntry(){
+		this.targetAddrInfo = new URL("temp");
+		this.article = new Article();
+	}
 	
+
 	/* Getter, Setter */
 	public URL getUrl() {
 		return targetAddrInfo;

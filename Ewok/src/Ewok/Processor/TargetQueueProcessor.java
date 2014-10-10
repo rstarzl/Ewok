@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import org.apache.http.impl.conn.Wire;
+
 import Ewok.CrawlerDriver;
 import Ewok.GlobalContext;
 import Ewok.Checker.DepthChecker;
@@ -25,6 +27,12 @@ public class TargetQueueProcessor extends QueueProcessor {
 	
 	public TargetQueueProcessor(int id){
 		super(id);
+		
+		// TODO: temp code.
+		QueueEntry	entry = new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
+//		entry.setSiteURL("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
+		entry.setDepth(GlobalContext.getDepthLimit());
+		this.push(entry);
 	}
 	
 	@Override
@@ -49,8 +57,9 @@ public class TargetQueueProcessor extends QueueProcessor {
 
 				// 2. Assigning Work.
 				for (String workingURL : linkList){
-					QueueEntry	entry = new QueueEntry();
-					entry.setSiteURL(workingURL);
+					QueueEntry	entry = new QueueEntry(workingURL);
+//					entry.setSiteURL(workingURL);
+//					System.out.println(entry);
 					GlobalContext.getAvailableClassifierQL().push(entry);
 				}
 			}
