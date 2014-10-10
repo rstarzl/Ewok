@@ -40,7 +40,7 @@ public abstract class QueueProcessor implements Callable{
 	}
 	
 	/* Function Overloading, but no modify original */
-	public QueueEntry pop(){
+	public synchronized QueueEntry pop(){
 		QueueEntry	entry;
 		
 		try {
@@ -52,11 +52,11 @@ public abstract class QueueProcessor implements Callable{
 		return	entry;
 	}
 	
-	public void push(QueueEntry entry){
+	public synchronized void push(QueueEntry entry){
 		this.queueList.push(entry);
 	}
 	
-	public int getQSize(){
+	public synchronized int getQSize(){
 		return	this.queueList.size();
 	}
 	/* Function Overloading */

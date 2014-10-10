@@ -6,7 +6,6 @@ import Ewok.DB.MeaningfulDB;
 import Ewok.DB.MySQLDB;
 import Ewok.DB.URLDB;
 import Ewok.Processor.ClassifierQueueProcessor;
-import Ewok.Processor.QueueEntry;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.Utils.ExceptionInvalidForm;
