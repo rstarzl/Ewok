@@ -37,7 +37,7 @@ public class RegionFilterDriver {
 //		if (!regionFilters.containsKey(entry.getSiteName())){
 //			;
 //		}
-		
+		RegionFilter regionFilter = regionFilters.get(entry.getSiteName());
 		return regionFilters.get(entry.getSiteName()).filter(entry.getSiteURL());
 	}
 	

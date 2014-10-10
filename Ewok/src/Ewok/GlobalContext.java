@@ -24,7 +24,7 @@ public class GlobalContext {
 	
 	/* Setting variable for Workflow. */
 	public static enum TYPE_OF_SITE {NAVER, NATE, DAUM, NON};
-	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.DAUM, TYPE_OF_SITE.NATE, TYPE_OF_SITE.DAUM};
+	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.DAUM, TYPE_OF_SITE.NATE, TYPE_OF_SITE.NAVER};
 	/* Setting variable for Workflow. */
 	
 	static private String filePath = "";
