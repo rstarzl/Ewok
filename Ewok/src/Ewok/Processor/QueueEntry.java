@@ -27,6 +27,7 @@ public class QueueEntry implements Serializable{
 	public QueueEntry(String url){
 		this.targetAddrInfo = new URL(url);
 		this.article = new Article();
+		this.depth = 0;
 	}
 
 	public QueueEntry(){

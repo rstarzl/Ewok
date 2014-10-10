@@ -33,7 +33,8 @@ public class NaverRegionFilter implements RegionFilter {
 				urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
 			}else if (filteredURLByHref.contains("#&")) {
 				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
-				urlList.add(new URLInfo(html.urlAddress.toString()+filteredURLByHref, URLType.PageNavi));
+				String temp = html.urlAddress.toString();
+				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+2)+filteredURLByHref, URLType.PageNavi));
 			}
 		}
 		return urlList;

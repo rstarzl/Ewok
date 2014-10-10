@@ -45,11 +45,9 @@ public class MySQLDB {
 		if(tableName.equals("url")){
 			value = getURLColumnValue(data);
 			cmd = "insert into " + tableName +" "+uc.column+" values "+value+";";
-			System.out.println(cmd);
 		}else{
 			value = getContentColumnValue(data);
 			cmd = "insert into " + tableName +" "+cc.column+" values "+value+";";
-			System.out.println(cmd);
 		}
 		
 		try {
