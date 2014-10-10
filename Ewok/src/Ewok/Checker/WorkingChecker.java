@@ -8,6 +8,11 @@ package Ewok.Checker;
 //  @ Author : Member
 //
 //
+import java.util.ArrayList;
+
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
+
+import Ewok.GlobalContext;
 import Ewok.Processor.QueueEntry;
 import Ewok.DB.*;
 
@@ -21,14 +26,13 @@ public class WorkingChecker extends Checker {
 		// Using Regular expression.
 		// TODO 추후구현
 		boolean URLchecking = false;
-		URL url;
+		ArrayList<QueueEntry> url;
 		
-		URLDB DBcheckURL = new URLDB();
-//		url = DBcheckURL.queryURLFromUrlString(entry.getUrl().getUrl());
+		url = GlobalContext.getURLDB().query(entry.getUrl().getUrl());
 		
-//		if(url == null){
-//			URLchecking = true;
-//		}
+		if(url == null){
+			URLchecking = true;
+		}
 		
 		return URLchecking;
 	}

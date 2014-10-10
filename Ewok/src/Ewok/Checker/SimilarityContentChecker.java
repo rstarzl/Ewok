@@ -34,12 +34,10 @@ public class SimilarityContentChecker extends Checker {
 
 		ArrayList<QueueEntry> entriesFromDB = GlobalContext.getMeaningfulDB().queryArticleFromUrlString(entry.getSiteURL());
 		
-		for (int index = 0; index < entriesFromDB.size(); index++){
-			if (entry.getArticle().content.equals(entriesFromDB.get(index).getArticle().content)){
-				return	true;
-			}
+		if(entriesFromDB==null){
+			return false;
+		}else{
+			return true;
 		}
-
-		return	false;
 	}
 }

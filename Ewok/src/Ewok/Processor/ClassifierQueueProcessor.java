@@ -8,6 +8,7 @@ import Ewok.GlobalContext;
 import Ewok.Checker.DepthChecker;
 import Ewok.Checker.DuplicationURLChecker;
 import Ewok.Checker.WorkingChecker;
+import Ewok.DB.URL;
 import Ewok.RegionFilter.HTMLContent;
 import Ewok.RegionFilter.RegionFilterDriver;
 
@@ -33,14 +34,17 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 		while(true){
 			sleep(10);
 			
-			QueueEntry	workingItem = this.pop();
+			QueueEntry	workingItem = this.pop();	
+			
 			if (workingItem != null){
 				// 1. Working URL check.Is it a target news article?
 				if (workingChecker.check(workingItem)){
 					GlobalContext.getAvailableRenderingQL().push(workingItem);
 				} else {
+					
 					GlobalContext.getAvailableTargetQL().push(workingItem);
 				}
+				GlobalContext.getURLDB().add(workingItem);
 			}
 
 			

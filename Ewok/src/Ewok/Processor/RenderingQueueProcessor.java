@@ -30,7 +30,6 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	
 		while(true){
 			sleep(10);
-			
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. render contents
@@ -42,6 +41,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				}
 				
 				// 3. DB Access
+				GlobalContext.getMeaningfulDB().add(workingItem);
 				
 			}
 		}	

@@ -24,7 +24,7 @@ public class GlobalContext {
 	
 	/* Setting variable for Workflow. */
 	public static enum TYPE_OF_SITE {NAVER, NATE, DAUM, NON};
-	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.DAUM, TYPE_OF_SITE.NATE, TYPE_OF_SITE.NAVER};
+	public static final TYPE_OF_SITE SELECTED_SITE[] = {TYPE_OF_SITE.NAVER, TYPE_OF_SITE.NATE, TYPE_OF_SITE.DAUM};
 	/* Setting variable for Workflow. */
 	
 	static private String filePath = "";
@@ -101,8 +101,8 @@ public class GlobalContext {
 	
 	
 	/* DB Settting */
-	private static MeaningfulDB	meaningfulDB = new MeaningfulDB("MeaningfulDB");
-	private static URLDB			urlDB 		= new URLDB("URLDB");
+	private static MeaningfulDB	meaningfulDB = new MeaningfulDB("content");
+	private static URLDB			urlDB 		= new URLDB("url");
 	public static void	connectDB(){
 		MySQLDB.connectMySQLDB();		
 	}

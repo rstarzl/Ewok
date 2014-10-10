@@ -34,13 +34,13 @@ public class RenderDriver {
 	}
 	
 
-	public Article render(QueueEntry entry) {
+	public void render(QueueEntry entry) {
 		// TODO : default action.
 //		if (!regionFilters.containsKey(entry.getSiteName())){
 //			;
 //		}
 		
-		return renders.get(entry.getSiteName()).render(entry.getSiteURL());
+		entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL()));
 	}
 
 }

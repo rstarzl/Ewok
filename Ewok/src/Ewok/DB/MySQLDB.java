@@ -91,12 +91,12 @@ public class MySQLDB {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(cmd);
 			
-			if(tableName.equals("URL")){
+			if(tableName.equals("url")){
 				while(rs.next()){
 					QueueEntry QueueEntrytemp = new QueueEntry();
 					URL urlTemp = new URL(rs.getString(1));
 					QueueEntrytemp.setUrl(urlTemp);
-					result.add(QueueEntrytemp);					
+					result.add(QueueEntrytemp);		
 				}
 			}else{
 				while(rs.next()){
@@ -167,7 +167,7 @@ public class MySQLDB {
 	private String getContentColumnValue(QueueEntry data) {
 		String collectdate="\"test\"";
 		String newsdate="\""+data.getArticle().date+"\"";
-		String pressname="\""+data.getSiteURL()+"\"";
+		String pressname="\""+data.getArticle().press+"\"";
 		String url="\""+data.getUrl().getUrl()+"\"";
 		String title="\""+data.getArticle().title+"\"";
 		String body="\""+data.getArticle().content+"\"";
