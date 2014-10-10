@@ -29,7 +29,9 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	public void run() {
 	
 		while(true){
-			sleep(10);
+			System.gc();
+			
+			sleep(100);
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. render contents

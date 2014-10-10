@@ -67,7 +67,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 	/* @ modified by JS */
 	public void run() {
 		while(true){
-			sleep(10);
+			sleep(100);
 			
 			//GC
 			System.gc();
@@ -82,8 +82,6 @@ public class TargetQueueProcessor extends QueueProcessor {
 				for (URLInfo workingURL : linkList){
 					QueueEntry	entry = new QueueEntry(workingURL.getUrl());
 					entry.setURLInfo(workingURL);
-//					entry.setSiteURL(workingURL);
-//					System.out.println(entry);
 					GlobalContext.getAvailableClassifierQL().push(entry);
 				}
 			}

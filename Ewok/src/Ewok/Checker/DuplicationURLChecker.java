@@ -22,6 +22,7 @@ public class DuplicationURLChecker extends Checker {
 		} else {
 			return	true;
 		}
+//		return	false;
 	}
 
 }

@@ -35,7 +35,7 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 	/* @ modified by JS */
 	public void run() {
 		while(true){
-			sleep(10);
+			sleep(100);
 			
 			QueueEntry	workingItem = this.pop();	
 			

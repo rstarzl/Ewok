@@ -47,7 +47,6 @@ public class HTMLContent {
     public int depth;
 
 	public HTMLContent(String url){
-	    
 		try {
 			java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
 		    java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
