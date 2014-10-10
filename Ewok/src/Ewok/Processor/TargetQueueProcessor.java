@@ -52,7 +52,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0401"));
 		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0501"));
 		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0601"));
-																																			this.push(new QueueEntry("http://news.nate.com/recent?mid=n0701"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0701"));
 	}
 	
 	@Override
