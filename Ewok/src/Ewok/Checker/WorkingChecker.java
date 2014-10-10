@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
 import Ewok.GlobalContext;
 import Ewok.Processor.QueueEntry;
+import Ewok.RegionFilter.URLInfo.URLType;
 import Ewok.DB.*;
 
 
@@ -25,16 +26,12 @@ public class WorkingChecker extends Checker {
 	public boolean check(QueueEntry entry) {
 		// Using Regular expression.
 		// TODO 추후구현
-		boolean URLchecking = false;
-		ArrayList<QueueEntry> url;
 		
-		String urlCheck = entry.getSiteURL();
-		
-		if(urlCheck.contains(s)
-			URLchecking = true;
+		if(entry.getUrlType()==URLType.NewsArticle){
+			return true;
+		}else{
+			return false;
 		}
-		
-		return URLchecking;
 	}
 
 //	public boolean doJob(HTMLContent URL) { // Input : URL , true : it is not a duplicate , false : it should be dropped

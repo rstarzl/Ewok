@@ -44,7 +44,6 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 				if (workingChecker.check(workingItem)){
 					GlobalContext.getAvailableRenderingQL().push(workingItem);
 				} else {
-					
 					GlobalContext.getAvailableTargetQL().push(workingItem);
 				}
 			}

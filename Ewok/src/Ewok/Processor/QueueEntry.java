@@ -5,6 +5,8 @@ import java.io.Serializable;
 import Ewok.GlobalContext.TYPE_OF_SITE;
 import Ewok.DB.URL;
 import Ewok.RegionFilter.HTMLContent;
+import Ewok.RegionFilter.URLInfo;
+import Ewok.RegionFilter.URLInfo.URLType;
 import Ewok.Render.Article;
 /**
  * 
@@ -15,6 +17,7 @@ public class QueueEntry implements Serializable{
 	private URL	targetAddrInfo;
 	private int depth;
 	private Article	article;
+	private URLInfo	info;
 	
 	@Override
 	public String	toString(){
@@ -33,6 +36,9 @@ public class QueueEntry implements Serializable{
 	
 
 	/* Getter, Setter */
+	public URLType getUrlType(){
+		return info.getUrlType();
+	}
 	public URL getUrl() {
 		return targetAddrInfo;
 	}
@@ -62,11 +68,15 @@ public class QueueEntry implements Serializable{
 	public void	setSiteURL(String	url){
 		this.targetAddrInfo.setUrl(url);
 	}
-	
+	public void setURLInfo(URLInfo workingURL) {
+		this.info = workingURL;
+	}	
 	
 	/* Getter, Setter */
 	
 	public int decreaseDepthCount() {
 		return depth--;
 	}
+
+
 }

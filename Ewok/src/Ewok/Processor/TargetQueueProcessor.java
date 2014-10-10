@@ -58,7 +58,8 @@ public class TargetQueueProcessor extends QueueProcessor {
 
 				// 2. Assigning Work.
 				for (URLInfo workingURL : linkList){
-					QueueEntry	entry = new QueueEntry(workingURL);
+					QueueEntry	entry = new QueueEntry(workingURL.getUrl());
+					entry.setURLInfo(workingURL);
 //					entry.setSiteURL(workingURL);
 //					System.out.println(entry);
 					GlobalContext.getAvailableClassifierQL().push(entry);

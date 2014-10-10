@@ -3,7 +3,12 @@ package Ewok.DB;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -39,14 +44,15 @@ public class MySQLDB {
 		
 		if(tableName.equals("url")){
 			value = getURLColumnValue(data);
-			cmd = "insert into " + tableName +" "+uc.column+" values "+value+";";	
+			cmd = "insert into " + tableName +" "+uc.column+" values "+value+";";
+			System.out.println(cmd);
 		}else{
 			value = getContentColumnValue(data);
 			cmd = "insert into " + tableName +" "+cc.column+" values "+value+";";
+			System.out.println(cmd);
 		}
 		
 		try {
-			System.out.println(cmd);
 			stmt = conn.prepareStatement(cmd);
 			stmt.executeUpdate();
 			stmt.close();
@@ -67,7 +73,6 @@ public class MySQLDB {
 
 		try {
 			String cmd = "delete from " + tableName + " where url=" + query + ";";
-			System.out.println(cmd);
 			stmt = conn.prepareStatement(cmd);
 			stmt.executeUpdate();
 			stmt.close();
@@ -87,29 +92,25 @@ public class MySQLDB {
 		ResultSet rs = null;
 		try {
 			String cmd = "select * from " + tableName + " where url=" + query + ";";
-			System.out.println(cmd);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(cmd);
 			
 			if(tableName.equals("url")){
 				while(rs.next()){
 					QueueEntry QueueEntrytemp = new QueueEntry();
-					URL urlTemp = new URL(rs.getString(1));
-					QueueEntrytemp.setUrl(urlTemp);
+					QueueEntrytemp.setSiteURL(rs.getString(1));
 					result.add(QueueEntrytemp);		
 				}
 			}else{
 				while(rs.next()){
 					QueueEntry QueueEntrytemp = new QueueEntry();
-					URL urlTemp = new URL(rs.getString(4));
 					Article articleTemp = new Article();
-					
+					QueueEntrytemp.setSiteURL(rs.getString(5));
 					articleTemp.date = rs.getString(2);
-					articleTemp.press = rs.getString(3);
-					articleTemp.title = rs.getString(5);
-					articleTemp.content = rs.getString(6);
+					articleTemp.press = rs.getString(4);
+					articleTemp.title = unescape(rs.getString(5));
+					articleTemp.content = unescape(rs.getString(6));
 					
-					QueueEntrytemp.setUrl(urlTemp);
 					QueueEntrytemp.setArticle(articleTemp);
 					result.add(QueueEntrytemp);					
 				}
@@ -124,9 +125,13 @@ public class MySQLDB {
 		return result;
 	}
 	
+	
+
 	public static void connectMySQLDB(){
 		java.sql.Statement stmt;
-		String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test";
+		//String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/test?characterEncoding=utf8";
+		
 		String userID = "root";
 		String userPass = "1q2w3e4r";
 		
@@ -146,9 +151,10 @@ public class MySQLDB {
 	}
 	
 	public class ContentColumn {
-		String column = "(collectdate, newsdate, pressname, url, title, body, comments, crawlerversion)";
+		String column = "(collectdate, newsdate, sitename, pressname, url, title, body, comments, crawlerversion)";
 		String collectdate;
 		String newsdate;
+		String sitename;
 		String pressname;
 		String url;
 		String title;
@@ -165,24 +171,40 @@ public class MySQLDB {
 	}
 	
 	private String getContentColumnValue(QueueEntry data) {
-		String collectdate="\"test\"";
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String collectdate="\""+df.format(new Date())+"\"";
 		String newsdate="\""+data.getArticle().date+"\"";
+		String sitename="\""+data.getSiteName()+"\"";
 		String pressname="\""+data.getArticle().press+"\"";
-		String url="\""+data.getUrl().getUrl()+"\"";
-		String title="\""+data.getArticle().title+"\"";
-		String body="\""+data.getArticle().content+"\"";
+		String url="\""+data.getUrl().getUrl()+"\"";	
+		String title = escape(data.getArticle().title);
+		title="\""+title+"\"";
+		String body=escape(data.getArticle().content);
+		body="\""+body+"\"";
 		String comments="\"test\"";
 		String crawlerversion="\"v01\"";
 		
-		String value = "("+collectdate+","+newsdate+","+pressname+","+url+","+title+","+body+","+comments+","+crawlerversion+")"; 
+		String value = "("+collectdate+","+newsdate+","+sitename+","+pressname+","+url+","+title+","+body+","+comments+","+crawlerversion+")"; 
 		
 		return value;
 	}
 
+	private String escape(String text) {
+		String result = StringEscapeUtils.escapeHtml4(text);
+		return result;
+	}
+	
+	private String unescape(String text) {
+		String result = StringEscapeUtils.unescapeHtml4(text);
+		return result;
+	}
+
 	private String getURLColumnValue(QueueEntry data) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
 		String url = "\""+data.getUrl().getUrl()+"\"";
-		String sitename = "\""+data.getSiteURL()+"\"";
-		String time = "\"test\"";
+		String sitename = "\""+data.getSiteName()+"\"";
+		String time =  "\""+df.format(new Date())+"\"";
 		
 		String value = "("+url+","+sitename+","+time+")";
 		
