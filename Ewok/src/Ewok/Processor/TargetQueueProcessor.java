@@ -83,6 +83,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 					QueueEntry	entry = new QueueEntry(workingURL.getUrl());
 					entry.setURLInfo(workingURL);
 					GlobalContext.getAvailableClassifierQL().push(entry);
+					GlobalContext.logCommon("TP : " + entry.getSiteURL());
 				}
 			}
 		}

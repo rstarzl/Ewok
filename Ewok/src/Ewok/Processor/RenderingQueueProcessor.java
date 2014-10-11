@@ -45,6 +45,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				// 3. DB Access
 				GlobalContext.getMeaningfulDB().add(workingItem);
 				
+				GlobalContext.logCommon("RP : " + workingItem.getArticle().title);
 			}
 		}	
 	}

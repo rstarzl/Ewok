@@ -46,6 +46,8 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 				} else {
 					GlobalContext.getAvailableTargetQL().push(workingItem);
 				}
+				
+				GlobalContext.logCommon("CP : " + workingItem.getSiteURL());
 			}
 
 			

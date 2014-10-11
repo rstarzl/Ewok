@@ -18,6 +18,9 @@ public class NaverRegionFilter implements RegionFilter {
 	
 	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
+		
+		html.close();
+		
 		return filter1(html);
 	}
 

@@ -1,5 +1,11 @@
 package Ewok.RegionFilter;
 
+
+//public class HTMLContent {
+//	public String url;
+//	public boolean isContent;
+//	public int depth;
+
 import static org.junit.Assert.*;
 
 import java.io.BufferedWriter;
@@ -45,6 +51,7 @@ public class HTMLContent {
     String sourceURL;
     public String targetContents;
     public int depth;
+    private WebClient webClient;
 
 	public HTMLContent(String url){
 		try {
@@ -54,7 +61,6 @@ public class HTMLContent {
 			urlAddress = new URL(url);
 			WebRequest webRequest = new WebRequest(urlAddress);
 //			webRequest.setCharset("utf-8");
-			WebClient webClient;
 		    if(url.contains("nate")){
 				webClient = new WebClient(BrowserVersion.CHROME);		    	
 		    }else{
@@ -77,11 +83,7 @@ public class HTMLContent {
 			xmlString = pageHTML.asXml();
 
 			StringWebResponse response = new StringWebResponse(xmlString, urlAddress);
-			pageHTML = HTMLParser.parseXHtml(response, webClient.getCurrentWindow());
-			
-//			webClient.closeAllWindows();
-
-			
+			pageHTML = HTMLParser.parseXHtml(response, webClient.getCurrentWindow());	
 		} catch (FailingHttpStatusCodeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,7 +94,9 @@ public class HTMLContent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 	
+	public void close(){
+		webClient.closeAllWindows();	
+	}
 }

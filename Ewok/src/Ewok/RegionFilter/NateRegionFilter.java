@@ -29,6 +29,9 @@ public class NateRegionFilter implements RegionFilter {
 				urlList.add(new URLInfo(nate+filteredURLByHref, URLType.PageNavi));
 			}
 		}
+		
+		html.close();
+		
 		return urlList;
 	}
 	
