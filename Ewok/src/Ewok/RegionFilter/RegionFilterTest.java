@@ -84,20 +84,21 @@ public class RegionFilterTest {
 	}
 */
 	
-/*
+
 	@org.junit.Test
 	public void test3() {
 		DaumRegionFilter daumRF = new DaumRegionFilter();
-		ArrayList<String> testArray = daumRF.filter1(test);
+		ArrayList<URLInfo> testArray = daumRF.filter("http://media.daum.net/society/all/#page=11&type=tit_cont");
+//		ArrayList<URLInfo> testArray = daumRF.filter("http://media.daum.net/society/all/#page=1&type=tit_cont");
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
-				System.out.println(testArray.get(i));
+				System.out.println(testArray.get(i).getUrl() + "\t" +testArray.get(i).getUrlType());
 			} else {
 				fail("filter1 method fail!!!");
 			}
 		}
 	}
-*/
+
 
 /*	
 	@org.junit.Test
