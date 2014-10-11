@@ -161,6 +161,7 @@ public class GlobalContext {
 	private static void logWriter(String msg, BufferedWriter writer) {
 		try {
 			writer.write(msg+"\r\n");
+			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

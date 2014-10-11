@@ -49,7 +49,7 @@ public abstract class QueueProcessor implements Callable{
 		QueueEntry	entry;
 		
 		try {
-			entry = queueList.pop();
+			entry = queueList.removeLast();
 		} catch (NoSuchElementException e){
 			entry = null;
 		}

@@ -1,4 +1,5 @@
 /bin/
+/ClassDiagram.ucls
 /Common.log
-/QueueLock.log
 /TransQueue.log
+/QueueLock.log
