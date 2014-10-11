@@ -19,7 +19,7 @@ public class DaumRegionFilter implements RegionFilter {
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
-			if(filteredURLByHref.contains("/v/") && !filteredURLByHref.contains("RIGHT_")){ // For extracting render URLs but excluding sorted list URLs on right side of the page
+			if(filteredURLByHref.contains("/v/") && !filteredURLByHref.contains("RIGHT_") && !filteredURLByHref.contains("?s=")){ // For extracting render URLs but excluding sorted list URLs on right side of the page
 //				System.out.println(filteredURLByHref);
 				urlList.add(new URLInfo(daum + filteredURLByHref, URLType.NewsArticle));
 //				GlobalContext.logCommon(urlList.get(urlList.size()-1).getUrl());

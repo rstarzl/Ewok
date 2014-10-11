@@ -13,8 +13,15 @@ public class RenderTest {
 //	String targetedURL = "http://media.daum.net/editorial/all/newsview?newsid=20141004033119842";
 	
 /* Nate News */
-//	String targetedURL = "http://news.nate.com/view/20141002n24969?mid=n0201";
-	String targetedURL = "http://news.nate.com/view/20141005n01131?mid=n0401";
+//	String targetedURL = "http://news.nate.com/view/20141002n24969?mid=n0201"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141005n01131?mid=n0401"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141011n07657?mid=n0506"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141011n01753?mid=n0506"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141012n00713?mid=n0401"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141012n00081?mid=n0301"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141012n00196?mid=n0201"; // PASS
+//	String targetedURL = "http://news.nate.com/view/20141011n08655?mid=n0601"; // PASS
+    String targetedURL = "http://news.nate.com/view/20141011n00242?mid=n0701"; // PASS
 	
 /*	
 	@org.junit.Test

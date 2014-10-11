@@ -38,22 +38,9 @@ public class RegionFilterTest {
 //	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=1"); // �ٸ� ��¥
 //	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=2"); // �ٸ� ������
 
-	// Daum News
-//	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont"); //��ȸ
-//	HTMLContent test = new HTMLContent("http://media.daum.net/politics/all/#page=1&type=tit_cont"); //��ġ
-//	HTMLContent test = new HTMLContent("http://media.daum.net/economic/all/#page=1&type=tit_cont"); //����
-//	HTMLContent test = new HTMLContent("http://media.daum.net/foreign/all/#page=1&type=tit_cont"); //����
-//	HTMLContent test = new HTMLContent("http://media.daum.net/culture/all/#page=1&type=tit_cont"); //��ȭ/��Ȱ
-//	HTMLContent test = new HTMLContent("http://media.daum.net/digital/all/#page=1&type=tit_cont"); //Tech
-//	HTMLContent test = new HTMLContent("http://media.daum.net/editorial/all/#page=1&type=tit_cont"); //Į��
-//	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont#page=2&type=tit_cont"); // page number click
-//	HTMLContent test = new HTMLContent("http://media.daum.net/society/all/#page=1&type=tit_cont#page=2&type=tit_cont?regdate=20141004#page=1&type="); // page by date
 	
-	// Nate News
-//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // ��ġ
-//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // �ٸ� ��¥
 
-
+/*
 	@org.junit.Test
 	public void test1() {
 		NaverRegionFilter naverRF = new NaverRegionFilter();
@@ -66,7 +53,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
-
+*/
 
 /*
 	@org.junit.Test
@@ -84,11 +71,14 @@ public class RegionFilterTest {
 	}
 */
 	
-/*
+	// Daum News
+//	String test = "http://media.daum.net/culture/all/#page=1&type=tit_cont"; // FIXED
+	String test = "http://media.daum.net/culture/all/?regdate=20141011#page=1&type="; // 
+
 	@org.junit.Test
 	public void test3() {
 		DaumRegionFilter daumRF = new DaumRegionFilter();
-		ArrayList<URLInfo> testArray = daumRF.filter("http://media.daum.net/society/all/#page=11&type=tit_cont");
+		ArrayList<URLInfo> testArray = daumRF.filter(test);
 //		ArrayList<URLInfo> testArray = daumRF.filter("http://media.daum.net/society/all/#page=1&type=tit_cont");
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
@@ -98,16 +88,22 @@ public class RegionFilterTest {
 			}
 		}
 	}
-*/
 
+	
+	// Nate News
+//	String test = "http://news.nate.com/recent?mid=n0201"; // PASS
+//	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141012&page=2"; // PASS
+//	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141011"; // PASS
+//	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141011&page=5"; // PASS
+//	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141006"; // PASS
 /*	
 	@org.junit.Test
 	public void test4() {
 		NateRegionFilter nateRF = new NateRegionFilter();
-		ArrayList<String> testArray = nateRF.filter1(test);
+		ArrayList<URLInfo> testArray = nateRF.filter(test);
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
-				System.out.println(testArray.get(i));
+				System.out.println(testArray.get(i).getUrl() + "\t" + testArray.get(i).getUrlType());
 			} else {
 				fail("filter1 method fail!!!");
 			}

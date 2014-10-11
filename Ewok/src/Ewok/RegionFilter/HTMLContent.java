@@ -21,8 +21,11 @@ import org.apache.xerces.parsers.XMLParser;
 import org.junit.Test;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.CookieManager;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.ImmediateRefreshHandler;
+import com.gargoylesoftware.htmlunit.IncorrectnessListener;
+import com.gargoylesoftware.htmlunit.IncorrectnessListenerImpl;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.SilentCssErrorHandler;
@@ -60,22 +63,44 @@ public class HTMLContent {
 			
 			urlAddress = new URL(url);
 			WebRequest webRequest = new WebRequest(urlAddress);
-//			webRequest.setCharset("utf-8");
-		    if(url.contains("nate")){
+
+			if(url.contains("nate")){
 				webClient = new WebClient(BrowserVersion.CHROME);		    	
 		    }else{
 			    webClient = new WebClient();		    	
 		    }
-		    JavaScriptEngine engine = new JavaScriptEngine(webClient);
-//		    webClient.waitForBackgroundJavaScript(50000);
+			
 		    String xmlString = "";
 		    
-			webClient.getOptions().setThrowExceptionOnScriptError(false);
-			webClient.getCookieManager().setCookiesEnabled(false);
-			webClient.getOptions().setJavaScriptEnabled(true);
-			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
+//		    final IncorrectnessListener il =  new MyIncorrectnessListener(); // it just quiets errors down
+		    webClient.setIncorrectnessListener(new IncorrectnessListenerImpl()); 
+		    final SilentCssErrorHandler eh = new SilentCssErrorHandler();
+		    
+			JavaScriptEngine engine = new JavaScriptEngine(webClient);
 			webClient.setJavaScriptEngine(engine);
 
+		    webClient.setCssErrorHandler(eh);
+//		    webClient.setThrowExceptionOnScriptError(false);
+			webClient.getOptions().setThrowExceptionOnScriptError(false);
+//			webClient.setThrowExceptionOnFailingStatusCode(false);
+		    webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+//		    webClient.setUseInsecureSSL(true); 
+		    webClient.getOptions().setUseInsecureSSL(true); 
+//		    webClient.setCssEnabled(false);
+		    webClient.getOptions().setCssEnabled(false);
+//		    webClient.setPopupBlockerEnabled(false);
+		    webClient.getOptions().setPopupBlockerEnabled(false);
+//		    webClient.setRedirectEnabled(true); 
+		    webClient.getOptions().setRedirectEnabled(true); 
+//		    webClient.setJavaScriptEnabled(true);
+			webClient.getOptions().setJavaScriptEnabled(true);
+		    CookieManager cm = new CookieManager();
+		    webClient.setCookieManager(cm);
+//			webClient.getCookieManager().setCookiesEnabled(false);
+		    webClient.setJavaScriptTimeout(3600); 
+		    webClient.getOptions().setTimeout(9000); 
+			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
+			
 			pageHTML = webClient.getPage(webRequest);
 			page = webClient.getPage(webRequest);
 			targetContents = urlAddress.toString();// for render method?
