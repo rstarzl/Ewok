@@ -19,8 +19,6 @@ public class NaverRegionFilter implements RegionFilter {
 	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
 		
-		html.close();
-		
 		return filter1(html);
 	}
 
@@ -34,12 +32,18 @@ public class NaverRegionFilter implements RegionFilter {
 			filteredURLByHref = e.getAttribute("href");
 			if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
 				urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
-			}else if (filteredURLByHref.contains("#&")) {
+			}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
+	            filteredURLByHref = "http://news.naver.com"+filteredURLByHref;
+	            urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
+	         }else if (filteredURLByHref.contains("#&")) {
 				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
 				String temp = html.urlAddress.toString();
 				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+5)+filteredURLByHref, URLType.PageNavi));
 			}
 		}
+		
+		html.close();
+		
 		return urlList;
 	}
 	

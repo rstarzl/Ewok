@@ -18,6 +18,7 @@ public class DuplicationURLChecker extends Checker {
 		// true, duplicated URL
 		// false, non-duplicated URL
 		if (GlobalContext.getURLDB().queryURLFromUrlString(entry.getSiteURL()) == null){
+			GlobalContext.getURLDB().add(entry);
 			return	false;
 		} else {
 			return	true;
