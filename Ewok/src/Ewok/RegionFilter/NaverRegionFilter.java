@@ -35,7 +35,7 @@ public class NaverRegionFilter implements RegionFilter {
 			}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
 	            filteredURLByHref = "http://news.naver.com"+filteredURLByHref;
 	            urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
-	         }else if (filteredURLByHref.contains("#&")) {
+	        }else if (filteredURLByHref.contains("#&")) {
 				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
 				String temp = html.urlAddress.toString();
 				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+5)+filteredURLByHref, URLType.PageNavi));
