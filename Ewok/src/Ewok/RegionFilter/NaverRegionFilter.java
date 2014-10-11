@@ -37,11 +37,12 @@ public class NaverRegionFilter implements RegionFilter {
 			}else if (filteredURLByHref.contains("#&")) {
 				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
 				String temp = html.urlAddress.toString();
-				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+2)+filteredURLByHref, URLType.PageNavi));
+				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+5)+filteredURLByHref, URLType.PageNavi));
 			}
 		}
 		return urlList;
 	}
+	
 
 	// OPTION2: For extracting the targeted URLs from the specific region
 	public ArrayList<String> filter2(HTMLContent html) {

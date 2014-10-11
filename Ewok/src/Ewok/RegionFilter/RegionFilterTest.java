@@ -51,22 +51,22 @@ public class RegionFilterTest {
 	
 	// Nate News
 //	HTMLContent test = new HTMLContent("http://news.nate.com/recent?mid=n0201"); // ��ġ
-	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // �ٸ� ��¥
+//	HTMLContent test = new HTMLContent("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141002"); // �ٸ� ��¥
 
-/*
+
 	@org.junit.Test
 	public void test1() {
 		NaverRegionFilter naverRF = new NaverRegionFilter();
-		ArrayList<String> testArray = naverRF.filter1(test);
+		ArrayList<URLInfo> testArray = naverRF.filter("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
-				System.out.println(testArray.get(i));
+				System.out.println(testArray.get(i).getUrl() + "\t" + testArray.get(i).getUrlType());
 			} else {
 				fail("filter1 method fail!!!");
 			}
 		}
 	}
-*/
+
 
 /*
 	@org.junit.Test
@@ -84,7 +84,7 @@ public class RegionFilterTest {
 	}
 */
 	
-
+/*
 	@org.junit.Test
 	public void test3() {
 		DaumRegionFilter daumRF = new DaumRegionFilter();
@@ -98,7 +98,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
-
+*/
 
 /*	
 	@org.junit.Test
