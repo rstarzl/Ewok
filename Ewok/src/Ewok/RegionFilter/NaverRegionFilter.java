@@ -28,14 +28,17 @@ public class NaverRegionFilter implements RegionFilter {
 		
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
 		String filteredURLByHref;
+		String naver = "http://news.naver.com";
+		
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
-			if(filteredURLByHref.contains("http://news.naver.com/main/read.nhn?mode")){
-				urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
-			}else if(filteredURLByHref.contains("/main/read.nhn?mode")){
-	            filteredURLByHref = "http://news.naver.com"+filteredURLByHref;
-	            urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
-	        }else if (filteredURLByHref.contains("#&")) {
+			if(filteredURLByHref.matches(".*/main/read.nhn\\?mode.*")){
+				if(filteredURLByHref.contains("http")){
+					urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));					
+				}else{
+		            urlList.add(new URLInfo(naver + filteredURLByHref, URLType.NewsArticle));					
+				}
+	        }else if (filteredURLByHref.matches(".*#&.*")) {
 				//urlList.add(html.urlAddress.toString()+filteredURLByHref);
 				String temp = html.urlAddress.toString();
 				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("1=1")+5)+filteredURLByHref, URLType.PageNavi));

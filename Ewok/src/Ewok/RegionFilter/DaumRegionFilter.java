@@ -19,15 +19,18 @@ public class DaumRegionFilter implements RegionFilter {
 		String filteredURLByHref;
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
-			if(filteredURLByHref.contains("/v/") && !filteredURLByHref.contains("RIGHT_") && !filteredURLByHref.contains("?s=")){ // For extracting render URLs but excluding sorted list URLs on right side of the page
-//				System.out.println(filteredURLByHref);
-				urlList.add(new URLInfo(daum + filteredURLByHref, URLType.NewsArticle));
-//				GlobalContext.logCommon(urlList.get(urlList.size()-1).getUrl());
-			}else if (filteredURLByHref.contains("#page=")) { // For extracting page navigation URLs by both page numbers and dates
+			// For extracting render URLs but excluding sorted list URLs on right side of the page
+			if(filteredURLByHref.matches(".*/v/[0-9]{17}$")){
+				if(filteredURLByHref.contains("http")){
+					urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
+				}else{
+					urlList.add(new URLInfo(daum + filteredURLByHref, URLType.NewsArticle));	
+				}
+			}else if(filteredURLByHref.matches(".*#page=.*")){
 				String temp = html.urlAddress.toString();
-				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("/all/")+5)+filteredURLByHref, URLType.PageNavi));
-//				GlobalContext.logCommon(urlList.get(urlList.size()-1).getUrl());
+				urlList.add(new URLInfo(temp.substring(0, temp.indexOf("/all/")+5)+filteredURLByHref, URLType.PageNavi));	
 			}
+
 		}
 		
 		html.close();

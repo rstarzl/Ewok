@@ -21,11 +21,16 @@ public class NateRegionFilter implements RegionFilter {
 		String nate = "http://news.nate.com";
 		String filteredURLByHref;
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");
+		
 		for (DomElement e : html.regionFilteredList) {
 			filteredURLByHref = e.getAttribute("href");
-			if(filteredURLByHref.contains("http://news.nate.com/view/") && filteredURLByHref.contains("?mid=")){
-				urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
-			}else if (filteredURLByHref.contains("&date=") || filteredURLByHref.contains("&page=")) {
+			if(filteredURLByHref.matches(".*/view/.*\\?mid=.*")){
+				if(filteredURLByHref.contains("http")){
+					urlList.add(new URLInfo(filteredURLByHref, URLType.NewsArticle));
+				}else{
+					urlList.add(new URLInfo(nate + filteredURLByHref, URLType.NewsArticle));					
+				}
+			}else if (filteredURLByHref.matches(".*\\&date=.*") || filteredURLByHref.matches(".*\\&page=.*")) {
 				urlList.add(new URLInfo(nate+filteredURLByHref, URLType.PageNavi));
 			}
 		}

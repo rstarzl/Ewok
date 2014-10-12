@@ -30,21 +30,12 @@ import com.gargoylesoftware.htmlunit.xml.XmlPage;
 public class RegionFilterTest {
 
 /*	Naver News */
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100"); // ��ġ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101"); // ���� 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=102"); // ��ȸ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=103"); // ��Ȱ/��ȭ 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=104"); // ���� 
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=1"); // �ٸ� ��¥
-//	HTMLContent test = new HTMLContent("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=2"); // �ٸ� ������
-
-	
-
+//	String test = "http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100#&date=2014-10-02 00:00:00&page=2";
 /*
 	@org.junit.Test
 	public void test1() {
 		NaverRegionFilter naverRF = new NaverRegionFilter();
-		ArrayList<URLInfo> testArray = naverRF.filter("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
+		ArrayList<URLInfo> testArray = naverRF.filter(test);
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
 				System.out.println(testArray.get(i).getUrl() + "\t" + testArray.get(i).getUrlType());
@@ -97,7 +88,7 @@ public class RegionFilterTest {
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141011&page=5"; // PASS
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141006"; // PASS
 	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"; // 
-	
+
 	@org.junit.Test
 	public void test4() {
 		NateRegionFilter nateRF = new NateRegionFilter();
