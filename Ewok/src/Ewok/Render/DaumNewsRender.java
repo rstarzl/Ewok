@@ -30,6 +30,10 @@ public class DaumNewsRender implements Render {
 			e.printStackTrace();
 		}
 		
+		if(targetedPage.getUrl().toString().contains("entertain")){
+			throw new NonTargetException();
+		}
+		
 		// TITLE 
 		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[2]/h2")).asText();
 		
