@@ -73,8 +73,8 @@ public class RegionFilterTest {
 	
 	// Daum News
 //	String test = "http://media.daum.net/culture/all/#page=1&type=tit_cont"; // FIXED
-	String test = "http://media.daum.net/culture/all/?regdate=20141011#page=1&type="; // 
-
+//	String test = "http://media.daum.net/culture/all/?regdate=20141011#page=1&type="; // 
+/*
 	@org.junit.Test
 	public void test3() {
 		DaumRegionFilter daumRF = new DaumRegionFilter();
@@ -88,7 +88,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
-
+*/
 	
 	// Nate News
 //	String test = "http://news.nate.com/recent?mid=n0201"; // PASS
@@ -96,7 +96,8 @@ public class RegionFilterTest {
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141011"; // PASS
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141011&page=5"; // PASS
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141006"; // PASS
-/*	
+	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"; // 
+	
 	@org.junit.Test
 	public void test4() {
 		NateRegionFilter nateRF = new NateRegionFilter();
@@ -109,7 +110,7 @@ public class RegionFilterTest {
 			}
 		}
 	}
-*/
+
 
 
 
