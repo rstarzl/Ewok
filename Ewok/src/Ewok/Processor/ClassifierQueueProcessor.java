@@ -34,25 +34,8 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 	
 	/* @ modified by JS */
 	public void run() {
-		while(true){
-			sleep(100);
-			
-			QueueEntry	workingItem = this.pop();	
-			
-			if (workingItem != null){
-				// 1. Working URL check.Is it a target news article?
-				if (workingChecker.check(workingItem)){
-//					GlobalContext.getURLDB().add(workingItem);
-					GlobalContext.getAvailableRenderingQL().push(workingItem);
-				} else {
-					GlobalContext.getAvailableTargetQL().push(workingItem);
-				}
-				
-				GlobalContext.logCommon("CP : " + workingItem.getSiteURL() + "\t" + workingItem.getUrlType() + "\t" + this.getQSize());
-			}
-
-			
-			
+		while(true){			
+			internalRun();
 //			HTMLContent content = pop(queueList);
 //			if(content!=null){
 //				System.out.println("class : "+getURL(content));
@@ -65,6 +48,26 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 		}
 	}
 	/* @ modified by JS */
+
+	public void internalRun() {
+		while(this.getQSize() != 0){
+			sleep(100);
+			
+			QueueEntry	workingItem = this.pop();	
+			
+			if (workingItem != null){
+				// 1. Working URL check.Is it a target news article?
+				if (workingChecker.check(workingItem)){
+	//					GlobalContext.getURLDB().add(workingItem);
+					GlobalContext.getAvailableRenderingQL().push(workingItem);
+				} else {
+					GlobalContext.getAvailableTargetQL().push(workingItem);
+				}
+				
+				GlobalContext.logCommon("CP : " + workingItem.getSiteURL() + "\t" + workingItem.getUrlType() + "\t" + this.getQSize());
+			}
+		}
+	}
 
 
 }

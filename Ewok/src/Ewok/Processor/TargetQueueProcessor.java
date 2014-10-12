@@ -1,15 +1,9 @@
 package Ewok.Processor;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
 
-import org.apache.http.impl.conn.Wire;
-
-import Ewok.CrawlerDriver;
 import Ewok.GlobalContext;
 import Ewok.Checker.DepthChecker;
-import Ewok.RegionFilter.HTMLContent;
 import Ewok.RegionFilter.RegionFilterDriver;
 import Ewok.RegionFilter.URLInfo;
 //
@@ -70,7 +64,13 @@ public class TargetQueueProcessor extends QueueProcessor {
 	
 	/* @ modified by JS */
 	public void run() {
-		while(true){
+		while(true){			
+			internalRun();
+		}
+	}
+	
+	public void internalRun(){
+		while(this.getQSize() != 0){
 			sleep(100);
 			
 			//GC
@@ -80,8 +80,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. Getting URL.
-				ArrayList <URLInfo> urlResult = regionFilter.filter(workingItem);
-				ArrayList <URLInfo> linkList = (ArrayList <URLInfo>)urlResult.clone();
+				ArrayList <URLInfo> linkList = regionFilter.filter(workingItem);
 				// 2. Assigning Work.
 				for (URLInfo workingURL : linkList){
 					QueueEntry	entry = new QueueEntry(workingURL.getUrl());

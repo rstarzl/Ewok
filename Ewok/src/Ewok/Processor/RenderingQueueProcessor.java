@@ -30,9 +30,17 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	public void run() {
 	
 		while(true){
+			internalRun();
+		}	
+	}
+	/* @ modified by JS */
+
+	public void internalRun() {
+		while(this.getQSize() != 0){
 			System.gc();
 			
 			sleep(100);
+			
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. render contents
@@ -47,7 +55,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				
 				// 2. checking similarity
 				if (similarityContentChecker.check(workingItem)){
-					continue;
+					return;
 				}
 				
 				// 3. DB Access
@@ -55,9 +63,8 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				
 				GlobalContext.logCommon("RP : " + workingItem.getArticle().title + "\t" + this.getQSize());
 			}
-		}	
+		}
 	}
-	/* @ modified by JS */
 	
 //	public void run() {
 //		

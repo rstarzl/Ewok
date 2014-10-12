@@ -25,8 +25,36 @@ public class CrawlerDriver extends Thread{
 		/* Connect LogFiles */
 		GlobalContext.connectLogFiles();
 		/* Connect LogFiles */
+	}
+
+
+	private void nonThreadWork() {
+		/* Instance Target Queue */
+		TargetQueueProcessor	tp = new TargetQueueProcessor("TP" ,0);
+		GlobalContext.getTargetQP().add(tp);
+		/* Instance Target Queue */
+	
+		
+		/* Instance Classifier Queue */
+		ClassifierQueueProcessor	cp = new ClassifierQueueProcessor("CP", 0);
+		GlobalContext.getClassifierQP().add(cp);
+		/* Instance Classifier Queue */
 		
 		
+		/* Instance Rendering Queue */
+		RenderingQueueProcessor	rp = new RenderingQueueProcessor("RQ", 0);
+		GlobalContext.getRenderingQP().add(rp);
+		/* Instance Rendering Queue */
+				
+		while(true){
+			GlobalContext.getAvailableTargetQL().internalRun();
+			GlobalContext.getAvailableClassifierQL().internalRun();
+			GlobalContext.getAvailableRenderingQL().internalRun();
+		}
+	}
+
+
+	private void threadWork() {
 		int nrOfProcessors = Runtime.getRuntime().availableProcessors();
 		eservice = Executors.newFixedThreadPool(nrOfProcessors);
 		// Q 3개만 쓰레드로 돌게, DB는 Q에 붙여서 우선..
@@ -61,13 +89,8 @@ public class CrawlerDriver extends Thread{
 	
 	@Override
 	public void run() {
-		while(true){
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		// TODO:external control method
+//		threadWork();
+		nonThreadWork();
 	}
 }
