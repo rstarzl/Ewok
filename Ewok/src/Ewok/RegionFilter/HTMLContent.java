@@ -83,7 +83,7 @@ public class HTMLContent {
 //		    webClient.setThrowExceptionOnScriptError(false);
 			webClient.getOptions().setThrowExceptionOnScriptError(false);
 //			webClient.setThrowExceptionOnFailingStatusCode(false);
-		    webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+		    webClient.getOptions().setThrowExceptionOnFailingStatusCode(true);
 //		    webClient.setUseInsecureSSL(true); 
 		    webClient.getOptions().setUseInsecureSSL(true); 
 //		    webClient.setCssEnabled(false);

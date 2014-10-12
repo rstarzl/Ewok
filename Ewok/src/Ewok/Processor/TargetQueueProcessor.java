@@ -41,15 +41,15 @@ public class TargetQueueProcessor extends QueueProcessor {
 //		this.push(new QueueEntry("http://media.daum.net/culture/all/#page=1&type=tit_cont"));
 //		this.push(new QueueEntry("http://media.daum.net/digital/all/#page=1&type=tit_cont"));
 //		this.push(new QueueEntry("http://media.daum.net/editorial/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0201"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0301"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0401"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0501"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0601"));
-//		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0701"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0201"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0301"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0401"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0501"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0601"));
+		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0701"));
 
 	
-		this.push(new QueueEntry("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"));
+//		this.push(new QueueEntry("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"));
 }
 	
 	@Override

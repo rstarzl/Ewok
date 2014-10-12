@@ -40,7 +40,7 @@ public class NateNewsRender implements Render {
 		}
 		
 		// TITLE
-		if(targetedPage.getUrl().toString().contains("sports.news")){
+		if(targetedPage.getUrl().toString().contains("sports.news") || targetedPage.getUrl().toString().contains("pann.nate") || targetedPage.getUrl().toString().contains("style.nate")){
 			throw new NonTargetException();
 		}
 		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/h3")).asText();

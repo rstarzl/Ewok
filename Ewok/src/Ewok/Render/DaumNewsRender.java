@@ -30,7 +30,7 @@ public class DaumNewsRender implements Render {
 			e.printStackTrace();
 		}
 		
-		if(targetedPage.getUrl().toString().contains("entertain")){
+		if(targetedPage.getUrl().toString().contains("entertain") || targetedPage.getUrl().toString().contains("sports")){
 			throw new NonTargetException();
 		}
 		

@@ -14,6 +14,7 @@ import Ewok.RegionFilter.HTMLContent;
  *
  */
 public class CrawlerDriver extends Thread{
+//public class CrawlerDriver {
 	private ExecutorService eservice;
 			
 	public CrawlerDriver(){
