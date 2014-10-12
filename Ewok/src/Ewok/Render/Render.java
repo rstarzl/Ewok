@@ -11,5 +11,5 @@ import Ewok.RegionFilter.HTMLContent;
 */
 
 public interface Render {
-	public Article render(String targetedURL); // Interface
+	public Article render(String targetedURL) throws NonTargetException; // Interface
 }

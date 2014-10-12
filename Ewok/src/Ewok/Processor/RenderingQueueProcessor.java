@@ -6,6 +6,7 @@ import java.util.List;
 import Ewok.GlobalContext;
 import Ewok.Checker.SimilarityContentChecker;
 import Ewok.RegionFilter.HTMLContent;
+import Ewok.Render.NonTargetException;
 import Ewok.Render.RenderDriver;
 //
 //
@@ -35,7 +36,14 @@ public class RenderingQueueProcessor extends QueueProcessor {
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. render contents
-				render.render(workingItem);
+				try {
+					render.render(workingItem);
+				} catch (NonTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					GlobalContext.logCommon(workingItem.getSiteURL() + "<-- Sport section article");
+					continue;
+				}
 				
 				// 2. checking similarity
 				if (similarityContentChecker.check(workingItem)){

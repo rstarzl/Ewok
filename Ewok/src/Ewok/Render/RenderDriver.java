@@ -34,12 +34,11 @@ public class RenderDriver {
 	}
 	
 
-	public void render(QueueEntry entry) {
+	public void render(QueueEntry entry) throws NonTargetException{
 		// TODO : default action.
 //		if (!regionFilters.containsKey(entry.getSiteName())){
 //			;
 //		}
-		
 		entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL()));
 	}
 

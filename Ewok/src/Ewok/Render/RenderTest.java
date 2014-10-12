@@ -21,8 +21,8 @@ public class RenderTest {
 //	String targetedURL = "http://news.nate.com/view/20141012n00081?mid=n0301"; // PASS
 //	String targetedURL = "http://news.nate.com/view/20141012n00196?mid=n0201"; // PASS
 //	String targetedURL = "http://news.nate.com/view/20141011n08655?mid=n0601"; // PASS
-    String targetedURL = "http://news.nate.com/view/20141011n00242?mid=n0701"; // PASS
-	
+//    String targetedURL = "http://news.nate.com/view/20141011n00242?mid=n0701"; // PASS
+    String targetedURL = "http://news.nate.com/view/20141008n44046?mid=n0201"; //
 /*	
 	@org.junit.Test
 	public void test1() {
@@ -44,7 +44,13 @@ public class RenderTest {
 	@org.junit.Test
 	public void test3() {
 		NateNewsRender nateNews = new NateNewsRender();
-		Article result = nateNews.render(targetedURL);
+		Article result = null;
+		try {
+			result = nateNews.render(targetedURL);
+		} catch (NonTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(result);
 	}
 

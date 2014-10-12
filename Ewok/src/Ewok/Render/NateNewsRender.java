@@ -25,7 +25,7 @@ import Ewok.RegionFilter.HTMLContent;
 
 public class NateNewsRender implements Render {
 	HtmlPage targetedPage = null;
-	public Article render(String targetedURL) {
+	public Article render(String targetedURL) throws NonTargetException {
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
 	    java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
 	    
@@ -39,7 +39,10 @@ public class NateNewsRender implements Render {
 			e.printStackTrace();
 		}
 		
-		// TITLE 
+		// TITLE
+		if(targetedPage.getUrl().toString().contains("sports.news")){
+			throw new NonTargetException();
+		}
 		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/h3")).asText();
 		
 		// DATE 
