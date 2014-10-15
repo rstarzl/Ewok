@@ -14,7 +14,7 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ File Name : NaverNewsParser.java
 //  @ Date : 2014-10-03
 //  @ Author : Kiheung Park
-public class NaverNewsRender implements Render {
+public class NaverNewsRender extends Render {
 	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) throws NonTargetException{
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);

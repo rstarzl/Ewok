@@ -14,7 +14,7 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ File Name : DaumNewsParser.java
 //  @ Date : 2014-09-29
 //  @ Author : Member
-public class DaumNewsRender implements Render {
+public class DaumNewsRender extends Render {
 	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) throws NonTargetException{
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);

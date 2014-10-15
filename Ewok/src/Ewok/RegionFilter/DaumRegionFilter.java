@@ -10,7 +10,7 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 //@ File Name : DaumRegionFilter.java
 //@ Date : 2014-10-03
 //@ Author : Kiheung Park
-public class DaumRegionFilter implements RegionFilter {
+public class DaumRegionFilter extends RegionFilter {
 	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
 		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();

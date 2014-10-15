@@ -14,7 +14,7 @@ import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLAnchorElement;
 //  @ File Name : NateRegionFilter.java
 //  @ Date : 2014-10-04
 //  @ Author : Kiheung Park
-public class NateRegionFilter implements RegionFilter {
+public class NateRegionFilter extends RegionFilter {
 	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);
 		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();

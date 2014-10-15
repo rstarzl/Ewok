@@ -1,5 +1,6 @@
 package Ewok.Render;
 
+import java.lang.Thread.State;
 import java.util.HashMap;
 
 import Ewok.GlobalContext;
@@ -34,12 +35,30 @@ public class RenderDriver {
 	}
 	
 
-	public void render(QueueEntry entry) throws NonTargetException{
-		// TODO : default action.
-//		if (!regionFilters.containsKey(entry.getSiteName())){
-//			;
-//		}
-		entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL()));
+	public void render(QueueEntry entry) throws RenderTerminatedException{
+		Render	rendering = renders.get(entry.getSiteName());
+		
+		//셋팅.
+		rendering.setParam(entry.getSiteURL());
+		
+		//실행
+		rendering.start();
+		
+		try {
+			rendering.join(GlobalContext.WAIT_TIME_SECEND * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			throw new RenderTerminatedException();
+		}
+		
+		// 겟..... 결과가 짝이 안맞으면 익셉션.
+		Article result = rendering.getResult();
+		if (result != null){
+			entry.setArticle(result);
+		} else {
+			throw new RenderTerminatedException();
+		}
+//		entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL()));
 	}
 
 }

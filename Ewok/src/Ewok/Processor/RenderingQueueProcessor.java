@@ -8,6 +8,7 @@ import Ewok.Checker.SimilarityContentChecker;
 import Ewok.RegionFilter.HTMLContent;
 import Ewok.Render.NonTargetException;
 import Ewok.Render.RenderDriver;
+import Ewok.Render.RenderTerminatedException;
 //
 //
 //
@@ -46,7 +47,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				// 1. render contents
 				try {
 					render.render(workingItem);
-				} catch (NonTargetException e) {
+				} catch (RenderTerminatedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					GlobalContext.logCommon(workingItem.getSiteURL() + "<-- Sport section article");

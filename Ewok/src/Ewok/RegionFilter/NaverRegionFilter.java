@@ -14,7 +14,7 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
   @ Modifier : JS
 */
 
-public class NaverRegionFilter implements RegionFilter {
+public class NaverRegionFilter extends RegionFilter {
 	
 	public ArrayList<URLInfo> filter(String urlAddress) {
 		HTMLContent html = new HTMLContent(urlAddress);

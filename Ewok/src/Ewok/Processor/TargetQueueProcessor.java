@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Ewok.GlobalContext;
 import Ewok.Checker.DepthChecker;
+import Ewok.RegionFilter.FilterTerminatedException;
 import Ewok.RegionFilter.RegionFilterDriver;
 import Ewok.RegionFilter.URLInfo;
 //
@@ -80,7 +81,13 @@ public class TargetQueueProcessor extends QueueProcessor {
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){
 				// 1. Getting URL.
-				ArrayList <URLInfo> linkList = regionFilter.filter(workingItem);
+				ArrayList<URLInfo> linkList = new ArrayList<URLInfo>();
+				try {
+					linkList = regionFilter.filter(workingItem);
+				} catch (FilterTerminatedException e) {
+					e.printStackTrace();
+					continue;
+				}
 				// 2. Assigning Work.
 				for (URLInfo workingURL : linkList){
 					QueueEntry	entry = new QueueEntry(workingURL.getUrl());

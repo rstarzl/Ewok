@@ -23,7 +23,7 @@ import Ewok.RegionFilter.HTMLContent;
 
 
 
-public class NateNewsRender implements Render {
+public class NateNewsRender extends Render {
 	HtmlPage targetedPage = null;
 	public Article render(String targetedURL) throws NonTargetException {
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
