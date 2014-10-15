@@ -134,7 +134,7 @@ public class GlobalContext {
 	private static URLDB urlDB = new URLDB("url");
 
 	public static void connectDB() {
-		MySQLDB.connectMySQLDB();
+//		MySQLDB.connectMySQLDB();
 	}
 
 	public static MeaningfulDB getMeaningfulDB() {
