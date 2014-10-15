@@ -60,7 +60,7 @@ public class GlobalContext {
 	};
 
 	// private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
-	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.NON;
+	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
 
 	public static TYPE_OF_DB getSelectedDb() {
 		return SELECTED_DB;
