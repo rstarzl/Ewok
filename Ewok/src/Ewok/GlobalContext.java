@@ -52,11 +52,11 @@ public class GlobalContext {
 
 	/* DB */
 	public static enum TYPE_OF_DB {
-		MEM, FILE, MYSQL, CASSANDRA, MONGODB
+		MEM, FILE, MYSQL, CASSANDRA, MONGODB, NON
 	};
 
 	// private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
-	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MYSQL;
+	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.NON;
 
 	public static TYPE_OF_DB getSelectedDb() {
 		return SELECTED_DB;

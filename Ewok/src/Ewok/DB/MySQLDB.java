@@ -15,7 +15,7 @@ import com.mysql.jdbc.PreparedStatement;
 import Ewok.Processor.QueueEntry;
 import Ewok.Render.Article;
 
-public class MySQLDB {
+public class MySQLDB implements PhysicalDB{
 	static private String DBName="webcrawler_v01";
 	static private java.sql.Connection conn;
 	

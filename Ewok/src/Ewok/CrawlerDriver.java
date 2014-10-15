@@ -6,7 +6,6 @@ import java.util.concurrent.Executors;
 import Ewok.Processor.ClassifierQueueProcessor;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
-import Ewok.RegionFilter.HTMLContent;
 
 /**
  * 
@@ -91,7 +90,7 @@ public class CrawlerDriver extends Thread{
 	@Override
 	public void run() {
 		// TODO:external control method
-//		//threadWork();
-		nonThreadWork();
+		threadWork();
+//		nonThreadWork();
 	}
 }

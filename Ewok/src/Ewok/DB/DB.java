@@ -19,9 +19,8 @@ import Ewok.Processor.QueueEntry;
 
 
 
-public class DB implements Callable {
+public class DB implements Callable, PhysicalDB{
 	private PhysicalDB dbPoint;
-	private MySQLDB MySQLPoint;
 	private CacheTable cacheTable;
 	
 	public DB(String rootName){
@@ -35,11 +34,14 @@ public class DB implements Callable {
 		case FILE:
 			break;
 		case MYSQL:
-			MySQLPoint = new MySQLDB(rootName);
+			dbPoint = new MySQLDB(rootName);
 			break;
 		case CASSANDRA:
 			break;
 		case MONGODB:
+			break;
+		case NON:
+			
 			break;
 		default : 
 			System.out.println("Invalid DB.");
@@ -58,35 +60,22 @@ public class DB implements Callable {
 		}
 	}
 	
-	/* For MemDB. It must be refactory. */
-	public boolean add(DBEntry	content) {
-		return dbPoint.add(content);
-	}
 	
-	public boolean delete(DBEntry	content) {
-		return	dbPoint.delete(content);
-	}
-	
-//	public DBEntry query(String	key) {
-//		return dbPoint.query(key);
-//	}
-	/* For MemDB. It must be refactory. */
-	
-	
-	/* For SQLDB. It must be refactory. */
+	@Override
 	public boolean add(QueueEntry data){
-		return	MySQLPoint.add(data);
+		return	dbPoint.add(data);
 	}
+	@Override
 	public boolean delete(QueueEntry data){
-		return	MySQLPoint.delete(data);
+		return	dbPoint.delete(data);
 	}
+	@Override
 	public ArrayList<QueueEntry> query(String queryURL){
-		ArrayList<QueueEntry> ret = MySQLPoint.query(queryURL);
+		ArrayList<QueueEntry> ret = dbPoint.query(queryURL);
 		if (ret.size() == 0){
 			return null;
 		}
 		
 		return	ret;
 	}
-	/* For SQLDB. It must be refactory. */
 }

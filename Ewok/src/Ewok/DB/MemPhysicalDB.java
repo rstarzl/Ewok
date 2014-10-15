@@ -1,5 +1,9 @@
 package Ewok.DB;
 
+import java.util.ArrayList;
+
+import Ewok.Processor.QueueEntry;
+
 /**
  * 
  * @author JS
@@ -18,7 +22,6 @@ public class MemPhysicalDB implements PhysicalDB{
 	}
 	
 
-	@Override
 	/**
 	 * 키이름이 있어야 함. 같은 레벨에서의 키이름은 유일해야함.
 	 * 만일 키 이름이 없을 경우 add 할 수 없음.
@@ -37,7 +40,6 @@ public class MemPhysicalDB implements PhysicalDB{
 	 * 키이름이 있어야 함. 같은 레벨에서의 키이름은 유일해야함.
 	 * 만일 키 이름이 없을 경우 add 할 수 없음.
 	 */
-	@Override
 	public boolean delete(DBEntry content) {
 		DBEntry	parentEntry = this.dbPoint.findByParentKey(content.getParentKey());
 		
@@ -50,8 +52,25 @@ public class MemPhysicalDB implements PhysicalDB{
 	}
 
 	
+//	public DBEntry query(String key) {
+//		return	this.dbPoint.findEnrtyByKey(key);
+//	}
+
 	@Override
-	public DBEntry query(String key) {
-		return	this.dbPoint.findEnrtyByKey(key);
+	public boolean add(QueueEntry content) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean delete(QueueEntry content) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public ArrayList<QueueEntry> query(String key) {
+		// TODO Auto-generated method stub
+		return new ArrayList<QueueEntry>();
 	}
 }
