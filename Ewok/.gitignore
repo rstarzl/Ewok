@@ -1,1 +1,4 @@
 /bin/
+/Common.log
+/QueueLock.log
+/TransQueue.log
