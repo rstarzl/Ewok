@@ -22,6 +22,7 @@ import Ewok.Render.RenderTerminatedException;
 public class RenderingQueueProcessor extends QueueProcessor {
 	SimilarityContentChecker	similarityContentChecker = new SimilarityContentChecker();
 	RenderDriver				render = new RenderDriver();
+	long						collectedArticleCount = 0;
 	
 	public RenderingQueueProcessor(String qp, int id){
 		super(qp, id);
@@ -70,6 +71,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				GlobalContext.getMeaningfulDB().add(workingItem);
 				GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL());
 				GlobalContext.logCommon("RP : " + workingItem.getArticle().title + "\t" + this.getQSize());
+				System.out.print("CollectedArticleCount : " + (collectedArticleCount++) + "\r");
 			}
 		}
 	}
