@@ -29,23 +29,26 @@ public class NaverNewsRender extends Render {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// TITLE 
-		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div/table/tbody/tr/td[2]/div/div[2]/div[2]/h3")).asText();
-		
-		// DATE 
-		for(DomElement e : targetedPage.getElementsByTagName("span")){
-			if(e.getAttribute("class").contains("t11")){
-				renderArticle.date = e.asText();
+		try {
+			// TITLE 
+			renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div/table/tbody/tr/td[2]/div/div[2]/div[2]/h3")).asText();
+			
+			// DATE 
+			for(DomElement e : targetedPage.getElementsByTagName("span")){
+				if(e.getAttribute("class").contains("t11")){
+					renderArticle.date = e.asText();
+				}
 			}
+			
+			// PRESS
+			renderArticle.press = ((DomElement) targetedPage.getFirstByXPath("html/body/div/table/tbody/tr/td[2]/div/div[2]/div/a/img")).getAttribute("title");
+	
+			// Contents
+			renderArticle.content = ((HtmlDivision) targetedPage.getElementById("articleBody")).asText();
+		} catch (NullPointerException e){
+			webClient.closeAllWindows();
+			throw new NonTargetException();
 		}
-		
-		// PRESS
-		renderArticle.press = ((DomElement) targetedPage.getFirstByXPath("html/body/div/table/tbody/tr/td[2]/div/div[2]/div/a/img")).getAttribute("title");
-
-		// Contents
-		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("articleBody")).asText();
-		
 		webClient.closeAllWindows();
 		
 		return renderArticle;

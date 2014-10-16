@@ -30,6 +30,7 @@ public class DaumNewsRender extends Render {
 			e.printStackTrace();
 		}
 		
+		try {
 		if(targetedPage.getUrl().toString().contains("entertain") || targetedPage.getUrl().toString().contains("sports")){
 			throw new NonTargetException();
 		}
@@ -50,11 +51,14 @@ public class DaumNewsRender extends Render {
 
 		// Contents
 		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("newsBody")).asText();
-		
+		} catch (NullPointerException e){
+			webClient.closeAllWindows();
+			
+			throw new NonTargetException();
+		}
 		
 		webClient.closeAllWindows();
 
-		
 		return renderArticle;
 	}
 }

@@ -39,28 +39,33 @@ public class NateNewsRender extends Render {
 			e.printStackTrace();
 		}
 		
-		// TITLE
-		if(targetedPage.getUrl().toString().contains("sports.news") || targetedPage.getUrl().toString().contains("pann.nate") || targetedPage.getUrl().toString().contains("style.nate")){
-			throw new NonTargetException();
-		}
-		renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/h3")).asText();
-		
-		// DATE 
-		for(DomElement e : targetedPage.getElementsByTagName("span")){
-			if(e.getAttribute("class").contains("firstDate") || e.getAttribute("class").contains("lastDate")){
-				renderArticle.date = e.getElementsByTagName("em").get(0).asText();
-				break;
+		try {
+			// TITLE
+			if(targetedPage.getUrl().toString().contains("sports.news") || targetedPage.getUrl().toString().contains("pann.nate") || targetedPage.getUrl().toString().contains("style.nate")){
+				throw new NonTargetException();
 			}
-		}
-		
-		// PRESS
-		renderArticle.press = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/p/span/a")).asText();
+			renderArticle.title = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/h3")).asText();
+			
+			// DATE 
+			for(DomElement e : targetedPage.getElementsByTagName("span")){
+				if(e.getAttribute("class").contains("firstDate") || e.getAttribute("class").contains("lastDate")){
+					renderArticle.date = e.getElementsByTagName("em").get(0).asText();
+					break;
+				}
+			}
+			
+			// PRESS
+			renderArticle.press = ((DomElement) targetedPage.getFirstByXPath("html/body/div[2]/div[3]/div/div/div/p/span/a")).asText();
+	
+			// Contents
+			renderArticle.content = ((HtmlDivision) targetedPage.getElementById("realArtcContents")).asText();
+		} catch (NullPointerException e){
+			webClient.closeAllWindows();
+			
+			throw new NonTargetException();
+		} 
 
-		// Contents
-		renderArticle.content = ((HtmlDivision) targetedPage.getElementById("realArtcContents")).asText();
-		
 		webClient.closeAllWindows();
-
 		
 		return renderArticle;
 	}

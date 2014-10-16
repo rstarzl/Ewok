@@ -1,5 +1,6 @@
 package Ewok.Render;
 
+import Ewok.Processor.QueueEntry;
 import Ewok.RegionFilter.HTMLContent;
 
 public class RenderTest {
@@ -22,7 +23,7 @@ public class RenderTest {
 //	String targetedURL = "http://news.nate.com/view/20141012n00196?mid=n0201"; // PASS
 //	String targetedURL = "http://news.nate.com/view/20141011n08655?mid=n0601"; // PASS
 //    String targetedURL = "http://news.nate.com/view/20141011n00242?mid=n0701"; // PASS
-    String targetedURL = "http://news.nate.com/view/20141008n44046?mid=n0201"; //
+    String targetedURL = "http://news.nate.com/view/20141012n15039?mid=n0501"; //
 /*	
 	@org.junit.Test
 	public void test1() {
@@ -43,15 +44,27 @@ public class RenderTest {
 	
 	@org.junit.Test
 	public void test3() {
-		NateNewsRender nateNews = new NateNewsRender();
-		Article result = null;
+		RenderDriver driver = new RenderDriver();
+		
+		QueueEntry entry = new QueueEntry(targetedURL);
+		
 		try {
-			result = nateNews.render(targetedURL);
-		} catch (NonTargetException e) {
+			driver.render(entry);
+		} catch (RenderTerminatedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(result);
+		System.out.println(1);
+		
+		QueueEntry entry1 = new QueueEntry("http://news.nate.com/view/20141002n24969?mid=n0201");
+		
+		try {
+			driver.render(entry1);
+		} catch (RenderTerminatedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(2);
 	}
 
 }
