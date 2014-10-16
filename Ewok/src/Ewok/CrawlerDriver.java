@@ -1,5 +1,7 @@
 package Ewok;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -50,6 +52,7 @@ public class CrawlerDriver extends Thread{
 			GlobalContext.getAvailableTargetQL().internalRun();
 			GlobalContext.getAvailableClassifierQL().internalRun();
 			GlobalContext.getAvailableRenderingQL().internalRun();
+			GlobalContext.reSnapShotEachQueue();
 		}
 	}
 
@@ -90,7 +93,7 @@ public class CrawlerDriver extends Thread{
 	@Override
 	public void run() {
 		// TODO:external control method
-		threadWork();
-//		nonThreadWork();
+//		threadWork();
+		nonThreadWork();
 	}
 }

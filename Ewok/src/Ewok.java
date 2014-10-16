@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import Ewok.Processor.ClassifierQueueProcessor;
 import Ewok.Processor.QueueProcessor;
@@ -16,10 +18,13 @@ public class Ewok {
 		
 		// Added for Q snap-shot
 		if (args.length > 0){
-			// TODO : DB rollback Code.
-			// TODO : 각 큐마다 스냅샷 찍을것,.
+			Rollback	rollback = new Rollback(args[0]);
+			//DB rollback Code.
+			rollback.rollbackEachQ();
+		} else {
+			Rollback	rollback = new Rollback("seed");
+			rollback.rollbackEachQ();
 		}
-			
 		
 		cd.run();
 	}

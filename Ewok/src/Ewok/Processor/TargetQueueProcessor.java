@@ -23,35 +23,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 	
 	public TargetQueueProcessor(String qp, int id){
 		super(qp, id);
-		
-		// TODO: temp code.
-//		QueueEntry	entry = new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
-//		entry.setSiteURL("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100");
-//		entry.setDepth(GlobalContext.getDepthLimit());
-		
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=100"));
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101"));
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=102"));
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=103"));
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=104"));
-//		this.push(new QueueEntry("http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105"));
-//		this.push(new QueueEntry("http://media.daum.net/society/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/politics/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/economic/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/foreign/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/culture/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/digital/all/#page=1&type=tit_cont"));
-//		this.push(new QueueEntry("http://media.daum.net/editorial/all/#page=1&type=tit_cont"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0201"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0301"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0401"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0501"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0601"));
-		this.push(new QueueEntry("http://news.nate.com/recent?mid=n0701"));
-
-	
-//		this.push(new QueueEntry("http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"));
-}
+	}
 	
 	@Override
 	public void push(QueueEntry entry){
@@ -60,7 +32,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 			return;	// drop.
 		}
 		super.push(entry);
-//		GlobalContext.getURLDB().add(entry);
+		GlobalContext.snapShotWriter("+, TP, " + entry.getSiteURL());
 	}
 	
 	/* @ modified by JS */
@@ -95,6 +67,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 					GlobalContext.logCommon("TP : " + entry.getSiteURL() + "\t" +entry.getUrlType() + "\t" + this.getQSize());
 					GlobalContext.getAvailableClassifierQL().push(entry);
 				}
+				GlobalContext.snapShotWriter("-, TP, " + workingItem.getSiteURL());
 			}
 		}
 	}

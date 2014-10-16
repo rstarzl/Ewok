@@ -27,6 +27,12 @@ public class RenderingQueueProcessor extends QueueProcessor {
 		super(qp, id);
 	}
 	
+	@Override
+	public void push(QueueEntry entry){
+		super.push(entry);
+		GlobalContext.snapShotWriter("+, RP, " + entry.getSiteURL());
+	}
+	
 	/* @ modified by JS */
 	public void run() {
 	
@@ -51,6 +57,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					GlobalContext.logCommon(workingItem.getSiteURL() + "<-- Sport section article");
+					GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL());
 					continue;
 				}
 				
@@ -61,7 +68,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				
 				// 3. DB Access
 				GlobalContext.getMeaningfulDB().add(workingItem);
-				
+				GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL());
 				GlobalContext.logCommon("RP : " + workingItem.getArticle().title + "\t" + this.getQSize());
 			}
 		}

@@ -1,6 +1,9 @@
 package Ewok;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -27,6 +30,55 @@ public class GlobalContext {
 
 	}
 
+	/* Temp Snapshot */
+	private static BufferedReader snapShotReader = null;
+	private static BufferedWriter snapShotWriter = null;
+	
+	public static BufferedReader loadSnapShot(String fileName) {
+		try {
+			snapShotReader = new BufferedReader(new FileReader("fileName"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return snapShotReader;
+	}
+	public static void createSnapShot() {
+		try {
+			snapShotWriter = new BufferedWriter(new FileWriter("SnapShot", false));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void reSnapShotEachQueue(){
+		createSnapShot();
+		TargetQueueProcessor	tp = getAvailableTargetQL();
+		while(tp.getQSize() != 0){
+			tp.push(tp.pop());
+		}
+		
+		ClassifierQueueProcessor	cp = getAvailableClassifierQL();
+		while(cp.getQSize() != 0){
+			cp.push(cp.pop());
+		}
+		
+		RenderingQueueProcessor	rp = getAvailableRenderingQL();
+		while(rp.getQSize() != 0){
+			rp.push(rp.pop());
+		}
+	}
+	
+	public static void snapShotWriter(String msg) {
+		try {
+			snapShotWriter.write(msg+"\r\n");
+			snapShotWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/* Temp Snapshot */
+	
+	
 	/* Setting variable for Workflow. */
 	public static enum TYPE_OF_SITE {
 		NAVER, NATE, DAUM, NON
