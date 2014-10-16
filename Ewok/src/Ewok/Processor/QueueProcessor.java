@@ -43,7 +43,7 @@ public abstract class QueueProcessor implements Callable{
 	}
 	
 	/* Function Overloading, but no modify original */
-	public synchronized QueueEntry pop(){
+	public QueueEntry pop(){
 		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is locked.");
 		
 		QueueEntry	entry;
@@ -58,13 +58,13 @@ public abstract class QueueProcessor implements Callable{
 		return	entry;
 	}
 	
-	public synchronized void push(QueueEntry entry){
+	public void push(QueueEntry entry){
 		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is locked.");
 		this.queueList.push(entry);
 		GlobalContext.logQueueLock(qpName + String.valueOf(id) + "is unlocked.");
 	}
 	
-	public synchronized int getQSize(){
+	public int getQSize(){
 		return	this.queueList.size();
 	}
 	/* Function Overloading */

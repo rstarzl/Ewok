@@ -27,10 +27,14 @@ public class CrawlerDriver extends Thread{
 		/* Connect LogFiles */
 		GlobalContext.connectLogFiles();
 		/* Connect LogFiles */
+		
+		/* It is for Non-Thread */
+		initNonThread();
+		/* It is for Non-Thread */
 	}
 
 
-	private void nonThreadWork() {
+	private void initNonThread() {
 		/* Instance Target Queue */
 		TargetQueueProcessor	tp = new TargetQueueProcessor("TP" ,0);
 		GlobalContext.getTargetQP().add(tp);
@@ -47,7 +51,10 @@ public class CrawlerDriver extends Thread{
 		RenderingQueueProcessor	rp = new RenderingQueueProcessor("RQ", 0);
 		GlobalContext.getRenderingQP().add(rp);
 		/* Instance Rendering Queue */
-				
+	}
+
+
+	private void nonThreadWork() {		
 		while(true){
 			GlobalContext.getAvailableTargetQL().internalRun();
 			GlobalContext.getAvailableClassifierQL().internalRun();
@@ -92,7 +99,7 @@ public class CrawlerDriver extends Thread{
 	
 	@Override
 	public void run() {
-		// TODO:external control method
+		// TODO:external control method		
 //		threadWork();
 		nonThreadWork();
 	}

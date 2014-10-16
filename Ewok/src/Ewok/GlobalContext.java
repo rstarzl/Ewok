@@ -36,7 +36,7 @@ public class GlobalContext {
 	
 	public static BufferedReader loadSnapShot(String fileName) {
 		try {
-			snapShotReader = new BufferedReader(new FileReader("fileName"));
+			snapShotReader = new BufferedReader(new FileReader(fileName));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

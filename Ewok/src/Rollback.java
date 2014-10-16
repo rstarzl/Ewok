@@ -51,9 +51,9 @@ public class Rollback {
 				}
 				
 				// + or -
-				if (item[1].equals("+")){
+				if (item[0].equals("+")){
 					selectedQ.put(item[2].trim(), 0);
-				} else if (item[1].equals("-")){
+				} else if (item[0].equals("-")){
 					selectedQ.remove(item[2].trim());
 				}
 			}

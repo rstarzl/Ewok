@@ -23,6 +23,7 @@ public class Ewok {
 			rollback.rollbackEachQ();
 		} else {
 			Rollback	rollback = new Rollback("seed");
+//			Rollback	rollback = new Rollback("SnapShot");
 			rollback.rollbackEachQ();
 		}
 		
