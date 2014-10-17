@@ -12,11 +12,11 @@ import org.apache.commons.lang3.StringEscapeUtils;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import Ewok.GlobalContext;
 import Ewok.Processor.QueueEntry;
 import Ewok.Render.Article;
 
 public class MySQLDB implements PhysicalDB{
-	static private String DBName="webcrawler_v01";
 	static private java.sql.Connection conn;
 	
 	private String 		tableName=null;
@@ -127,12 +127,11 @@ public class MySQLDB implements PhysicalDB{
 
 	public static void connectMySQLDB(){
 		java.sql.Statement stmt;
-		//String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test";
-//		String jdbcUrl = "jdbc:mysql://192.168.1.7:3306/test?characterEncoding=utf8";
-		String jdbcUrl = "jdbc:mysql://localhost:3333/webcrawler_v01?characterEncoding=utf8";
+		String jdbcUrl = GlobalContext.JDBC_URL;
+		String DBName = GlobalContext.DB_NAME;
 		
-		String userID = "root";
-		String userPass = "1q2w3e";
+		String userID = GlobalContext.USER_ID;
+		String userPass = GlobalContext.USER_PASS;
 		
 		try{
 			conn = DriverManager.getConnection(jdbcUrl, userID, userPass);

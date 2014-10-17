@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -117,6 +116,11 @@ public class GlobalContext {
 	public static TYPE_OF_DB getSelectedDb() {
 		return SELECTED_DB;
 	}
+	
+	public static final String JDBC_URL = "jdbc:mysql://localhost:3333/webcrawler_v01?characterEncoding=utf8";
+	public static final String DB_NAME = "webcrawler_v01"; 
+	public static final String USER_ID = "root";
+	public static final String USER_PASS = "1q2w3e";
 
 	/* DB */
 
