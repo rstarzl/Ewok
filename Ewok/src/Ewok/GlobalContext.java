@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -14,6 +15,7 @@ import Ewok.DB.MeaningfulDB;
 import Ewok.DB.MySQLDB;
 import Ewok.DB.URLDB;
 import Ewok.Processor.ClassifierQueueProcessor;
+import Ewok.Processor.QueueEntry;
 import Ewok.Processor.RenderingQueueProcessor;
 import Ewok.Processor.TargetQueueProcessor;
 import Ewok.Utils.ExceptionInvalidForm;
@@ -51,19 +53,39 @@ public class GlobalContext {
 	}
 	public static void reSnapShotEachQueue(){
 		createSnapShot();
+		// Temp reset commonLog for reduce log size.
+		try {
+			logCommon = new BufferedWriter(new FileWriter("Common.log", false));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		TargetQueueProcessor	tp = getAvailableTargetQL();
+		ArrayList<QueueEntry>	tpEntries = new ArrayList<QueueEntry>();
 		while(tp.getQSize() != 0){
-			tp.push(tp.pop());
+			tpEntries.add(tp.pop());
+		}
+		for (QueueEntry entry : tpEntries){
+			tp.push(entry);
 		}
 		
 		ClassifierQueueProcessor	cp = getAvailableClassifierQL();
+		ArrayList<QueueEntry>	cpEntries = new ArrayList<QueueEntry>();
 		while(cp.getQSize() != 0){
-			cp.push(cp.pop());
+			cpEntries.add(cp.pop());
 		}
+		for (QueueEntry entry : cpEntries){
+			cp.push(entry);
+		}
+
 		
 		RenderingQueueProcessor	rp = getAvailableRenderingQL();
+		ArrayList<QueueEntry>	rpEntries = new ArrayList<QueueEntry>();
 		while(rp.getQSize() != 0){
-			rp.push(rp.pop());
+			rpEntries.add(rp.pop());
+		}
+		for (QueueEntry entry : rpEntries){
+			rp.push(entry);
 		}
 	}
 	
@@ -111,7 +133,7 @@ public class GlobalContext {
 	};
 
 	// private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
-	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MYSQL;
+	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
 
 	public static TYPE_OF_DB getSelectedDb() {
 		return SELECTED_DB;
@@ -231,11 +253,11 @@ public class GlobalContext {
 		return "["+(new SimpleDateFormat("yyyy-MM-dd HH:mm")).format(new Date())+"] ";
 	}
 	public static synchronized void logQueueLock(String msg) {
-		logWriter(getTime()+msg, logQueueLock);
+//		logWriter(getTime()+msg, logQueueLock);
 	}
 
 	public static synchronized void logTransQueue(String msg) {
-		logWriter(getTime()+msg, logTransQueue);
+//		logWriter(getTime()+msg, logTransQueue);
 	}
 
 	public static synchronized void logCommon(String msg) {
