@@ -60,6 +60,8 @@ public class GlobalContext {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// Temp reset commonLog for reduce log size.
+		
 		TargetQueueProcessor	tp = getAvailableTargetQL();
 		ArrayList<QueueEntry>	tpEntries = new ArrayList<QueueEntry>();
 		while(tp.getQSize() != 0){
@@ -133,7 +135,7 @@ public class GlobalContext {
 	};
 
 	// private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
-	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MEM;
+	private static final TYPE_OF_DB SELECTED_DB = TYPE_OF_DB.MYSQL;
 
 	public static TYPE_OF_DB getSelectedDb() {
 		return SELECTED_DB;
