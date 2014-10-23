@@ -55,7 +55,12 @@ public class Rollback {
 				
 				// + or -
 				if (item[0].equals("+")){
-					selectedQ.put(item[2].trim(), URLType.valueOf(item[3]));
+					if (item.length > 3){// for consistency to Old version. 
+						selectedQ.put(item[2].trim(), URLType.valueOf(item[3]));
+					} else {
+						selectedQ.put(item[2].trim(), URLType.UnKnown);
+					}
+					
 				} else if (item[0].equals("-")){
 					selectedQ.remove(item[2].trim());
 				}
