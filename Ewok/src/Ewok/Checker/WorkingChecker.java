@@ -8,14 +8,8 @@ package Ewok.Checker;
 //  @ Author : Member
 //
 //
-import java.util.ArrayList;
-
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
-
-import Ewok.GlobalContext;
+import Ewok.GlobalContext.URLType;
 import Ewok.Processor.QueueEntry;
-import Ewok.RegionFilter.URLInfo.URLType;
-import Ewok.DB.*;
 
 
 

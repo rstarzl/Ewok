@@ -1,8 +1,9 @@
 package Ewok.RegionFilter;
 
+import Ewok.GlobalContext.URLType;
+
 public class URLInfo {
 	private String url;
-	public enum URLType { PageNavi, NewsArticle }
 	private URLType urlType;
 	
 	public URLInfo(String url, URLType	urlType){

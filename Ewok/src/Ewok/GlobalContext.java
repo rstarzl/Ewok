@@ -110,6 +110,8 @@ public class GlobalContext {
 	public static final TYPE_OF_SITE SELECTED_SITE[] = { TYPE_OF_SITE.DAUM,
 			TYPE_OF_SITE.NATE, TYPE_OF_SITE.NAVER };
 	
+	public static enum URLType { PageNavi, NewsArticle, UnKnown};
+	
 	// HTML UNIT Wait Time//
 	static public final long WAIT_TIME_SECEND = 80;
 	

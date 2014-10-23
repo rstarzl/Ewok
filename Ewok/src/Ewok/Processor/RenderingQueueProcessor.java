@@ -31,7 +31,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 	@Override
 	public void push(QueueEntry entry){
 		super.push(entry);
-		GlobalContext.snapShotWriter("+, RP, " + entry.getSiteURL());
+		GlobalContext.snapShotWriter("+, RP, " + entry.getSiteURL() + ", " + entry.getUrlType());
 	}
 	
 	/* @ modified by JS */
@@ -58,7 +58,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					GlobalContext.logCommon(workingItem.getSiteURL() + "<-- Sport section article");
-					GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL());
+					GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 					continue;
 				}
 				
@@ -69,7 +69,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				
 				// 3. DB Access
 				GlobalContext.getMeaningfulDB().add(workingItem);
-				GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL());
+				GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 				GlobalContext.logCommon("RP : " + workingItem.getArticle().title + "\t" + this.getQSize());
 				System.out.print("CollectedArticleCount : " + (collectedArticleCount++) + "\r");
 			}

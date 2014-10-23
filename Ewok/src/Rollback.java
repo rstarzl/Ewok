@@ -5,13 +5,16 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import Ewok.GlobalContext;
+import Ewok.GlobalContext.TYPE_OF_SITE;
+import Ewok.GlobalContext.URLType;
 import Ewok.Processor.QueueEntry;
+import Ewok.RegionFilter.URLInfo;
 
 
 public class Rollback {
-	private HashMap<String, Integer> tpList = new HashMap<String, Integer>();
-	private HashMap<String, Integer> cpList = new HashMap<String, Integer>();
-	private HashMap<String, Integer> rpList = new HashMap<String, Integer>();
+	private HashMap<String, URLType> tpList = new HashMap<String, URLType>();
+	private HashMap<String, URLType> cpList = new HashMap<String, URLType>();
+	private HashMap<String, URLType> rpList = new HashMap<String, URLType>();
 	private BufferedReader reader;
 
 	
@@ -41,7 +44,7 @@ public class Rollback {
 			while((line=reader.readLine())!=null){
 				String[] item = line.split(", ");
 				// Choose Q
-				HashMap<String, Integer> selectedQ = null;
+				HashMap<String, URLType> selectedQ = null;
 				if (item[1].equals("TP")){
 					selectedQ = tpList;
 				} else if (item[1].equals("CP")){
@@ -52,7 +55,7 @@ public class Rollback {
 				
 				// + or -
 				if (item[0].equals("+")){
-					selectedQ.put(item[2].trim(), 0);
+					selectedQ.put(item[2].trim(), URLType.valueOf(item[3]));
 				} else if (item[0].equals("-")){
 					selectedQ.remove(item[2].trim());
 				}
@@ -66,6 +69,7 @@ public class Rollback {
 	private void assignQueue() {
 		for (String url: tpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
+			entry.setURLInfo(new URLInfo(url, tpList.get(url)));
 			if (GlobalContext.getURLDB().query(url) != null){
 				GlobalContext.getURLDB().delete(entry);
 			}
@@ -74,6 +78,7 @@ public class Rollback {
 		
 		for (String url: cpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
+			entry.setURLInfo(new URLInfo(url, cpList.get(url)));
 			if (GlobalContext.getURLDB().query(url) != null){
 				GlobalContext.getURLDB().delete(entry);
 			}
@@ -82,6 +87,7 @@ public class Rollback {
 	
 		for (String url: rpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
+			entry.setURLInfo(new URLInfo(url, rpList.get(url)));
 			if (GlobalContext.getURLDB().query(url) != null){
 				GlobalContext.getURLDB().delete(entry);
 			}

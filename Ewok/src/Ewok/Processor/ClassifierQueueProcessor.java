@@ -27,7 +27,7 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 			return;	// drop.
 		}
 		super.push(entry);
-		GlobalContext.snapShotWriter("+, CP, " + entry.getSiteURL());
+		GlobalContext.snapShotWriter("+, CP, " + entry.getSiteURL() + ", " + entry.getUrlType());
 		//DB에 url을 저장하는 동작은 target/render queue에 push할 때 duplicate이 아닌 경우에만 db에 저장한다.(효정)
 //		GlobalContext.getURLDB().add(entry);
 	}
@@ -63,7 +63,7 @@ public class ClassifierQueueProcessor extends QueueProcessor{
 				} else {
 					GlobalContext.getAvailableTargetQL().push(workingItem);
 				}
-				GlobalContext.snapShotWriter("-, CP, " + workingItem.getSiteURL());
+				GlobalContext.snapShotWriter("-, CP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 				GlobalContext.logCommon("CP : " + workingItem.getSiteURL() + "\t" + workingItem.getUrlType() + "\t" + this.getQSize());
 			}
 		}

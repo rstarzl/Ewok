@@ -46,7 +46,7 @@ public class RenderTest {
 	public void test3() {
 		RenderDriver driver = new RenderDriver();
 		
-		QueueEntry entry = new QueueEntry(targetedURL);
+		QueueEntry entry = new QueueEntry("http://news.nate.com/view/20141018n02134?mid=n0201");
 		
 		try {
 			driver.render(entry);
@@ -56,15 +56,15 @@ public class RenderTest {
 		}
 		System.out.println(1);
 		
-		QueueEntry entry1 = new QueueEntry("http://news.nate.com/view/20141002n24969?mid=n0201");
-		
-		try {
-			driver.render(entry1);
-		} catch (RenderTerminatedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(2);
+//		QueueEntry entry1 = new QueueEntry("http://news.nate.com/view/20141002n24969?mid=n0201");
+//		
+//		try {
+//			driver.render(entry1);
+//		} catch (RenderTerminatedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(2);
 	}
 
 }

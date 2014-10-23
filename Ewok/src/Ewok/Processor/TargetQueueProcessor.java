@@ -32,7 +32,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 			return;	// drop.
 		}
 		super.push(entry);
-		GlobalContext.snapShotWriter("+, TP, " + entry.getSiteURL());
+		GlobalContext.snapShotWriter("+, TP, " + entry.getSiteURL() + ", " + entry.getUrlType());
 	}
 	
 	/* @ modified by JS */
@@ -67,7 +67,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 					GlobalContext.logCommon("TP : " + entry.getSiteURL() + "\t" +entry.getUrlType() + "\t" + this.getQSize());
 					GlobalContext.getAvailableClassifierQL().push(entry);
 				}
-				GlobalContext.snapShotWriter("-, TP, " + workingItem.getSiteURL());
+				GlobalContext.snapShotWriter("-, TP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 			}
 		}
 	}

@@ -1,14 +1,10 @@
 package Ewok.RegionFilter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import Ewok.RegionFilter.URLInfo.URLType;
+import Ewok.GlobalContext.URLType;
 
-import com.gargoylesoftware.htmlunit.StringWebResponse;
 import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLAnchorElement;
 
 //  @ Project : Ewok
 //  @ File Name : NateRegionFilter.java

@@ -2,7 +2,7 @@ package Ewok.RegionFilter;
 
 import java.util.ArrayList;
 
-import Ewok.RegionFilter.URLInfo.URLType;
+import Ewok.GlobalContext.URLType;
 
 import com.gargoylesoftware.htmlunit.html.DomElement;
 
