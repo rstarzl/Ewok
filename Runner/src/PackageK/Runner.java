@@ -1,5 +1,6 @@
 package PackageK;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
@@ -7,18 +8,25 @@ import java.util.Vector;
 public class Runner {
 	private Vector<SiteRunner>	vecSite = new Vector<SiteRunner>();
 	private AccessDB	dbPoint;
+	private HeartBeatMaster heartBeatMaster;	
 	
 	public Runner(){
 		dbPoint = new AccessDB();
 		dbPoint.connect();
+		try {
+			heartBeatMaster = new HeartBeatMaster();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		init();
 	}
 	
 	private void init(){
 		// 인스턴스 3개 만듬.
-		vecSite.add(new SiteRunner("Naver"));
-		vecSite.add(new SiteRunner("Daum"));
-		vecSite.add(new SiteRunner("Nate"));
+		vecSite.add(new SiteRunner("Naver", heartBeatMaster));
+		vecSite.add(new SiteRunner("Daum", heartBeatMaster));
+		vecSite.add(new SiteRunner("Nate", heartBeatMaster));
 	}
 	
 	public void run(){

@@ -24,4 +24,8 @@ public class URLInfo {
 		this.urlType = urlType;
 	}
 	
+	@Override
+	public String toString(){
+		return	url + ", " + urlType;
+	}
 }

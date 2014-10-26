@@ -5,4 +5,7 @@ public class Configure {
 	static public final String DB_NAME = "webcrawler_v01";
 	static public final String USER_ID = "root";
 	static public final String USER_PASS = "1q2w3e";
+	
+	static public final int HEART_BEAT_PORT = 50001;
+	static public final int HEART_BEAT_LIMIT = 5 * (60 * 1000);
 }
