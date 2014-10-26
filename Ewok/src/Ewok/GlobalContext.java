@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -95,12 +97,36 @@ public class GlobalContext {
 		try {
 			snapShotWriter.write(msg+"\r\n");
 			snapShotWriter.flush();
+			heartBeat();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	/* Temp Snapshot */
 	
+	/* Connet Heart Beat Server */
+	private static Socket socket;
+	private static BufferedWriter	heartBeat;
+	public static void connectHeartBeatServer(){
+		try {
+			socket = new Socket("192.168.1.10" , 50001);
+			heartBeat = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private static void heartBeat(){
+		try {
+			heartBeat.write("HeartBeat");
+			heartBeat.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	/* Connet Heart Beat Server */
 	
 	/* Setting variable for Workflow. */
 	public static enum TYPE_OF_SITE {

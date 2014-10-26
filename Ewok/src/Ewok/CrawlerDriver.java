@@ -19,6 +19,9 @@ public class CrawlerDriver extends Thread{
 	private ExecutorService eservice;
 			
 	public CrawlerDriver(){
+		/* Connet Heart Beat Server */
+		GlobalContext.connectHeartBeatServer();
+		/* Connet Heart Beat Server */
 		
 		/* Connect DB */
 		GlobalContext.connectDB();
