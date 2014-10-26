@@ -9,6 +9,7 @@ public class Runner {
 	private AccessDB	dbPoint;
 	
 	public Runner(){
+		dbPoint = new AccessDB();
 		dbPoint.connect();
 		init();
 	}

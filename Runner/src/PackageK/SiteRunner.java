@@ -12,10 +12,12 @@ public class SiteRunner {
 	public SiteRunner(String siteName){
 		this.siteName = siteName;
 		if (!checkFolder()){
-			System.out.println("Not enough Requirement");
+			System.out.println("Not enough Requirement, " + siteName);
 			System.exit(1);
 		}
 		this.path = "./" + siteName + "/";
+		
+		run();
 	}
 
 	public boolean isAlive(){
