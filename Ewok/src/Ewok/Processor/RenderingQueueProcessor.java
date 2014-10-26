@@ -47,7 +47,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 		while(this.getQSize() != 0){
 			System.gc();
 			
-			sleep(100);
+			sleep(1000);
 			
 			QueueEntry	workingItem = this.pop();
 			if (workingItem != null){

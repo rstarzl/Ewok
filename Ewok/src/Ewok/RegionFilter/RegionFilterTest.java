@@ -90,7 +90,7 @@ public class RegionFilterTest {
 	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"; // 
 
 	@org.junit.Test
-	public void test4() {
+	public void test4() throws Exception{
 		NateRegionFilter nateRF = new NateRegionFilter();
 		ArrayList<URLInfo> testArray = nateRF.filter(test);
 		for (int i = 0; i < testArray.size(); i++) {

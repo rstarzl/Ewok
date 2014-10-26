@@ -35,8 +35,12 @@ public class RegionFilterDriver {
 		}
 	}
 
-	public ArrayList<URLInfo> filter(QueueEntry entry) throws FilterTerminatedException{
-		return regionFilters.get(entry.getSiteName()).filter(entry.getSiteURL());
+	public ArrayList<URLInfo> filter(QueueEntry entry) throws FilterTerminatedException{		
+		try {
+			return regionFilters.get(entry.getSiteName()).filter(entry.getSiteURL());
+		} catch (Exception e) {
+			throw	new FilterTerminatedException();
+		}
 	}
 	
 	

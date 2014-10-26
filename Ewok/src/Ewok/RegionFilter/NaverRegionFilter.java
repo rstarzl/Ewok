@@ -16,14 +16,14 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 
 public class NaverRegionFilter extends RegionFilter {
 	
-	public ArrayList<URLInfo> filter(String urlAddress) {
+	public ArrayList<URLInfo> filter(String urlAddress) throws Exception{
 		HTMLContent html = new HTMLContent(urlAddress);
 		
 		return filter1(html);
 	}
 
 	// OPTION1: For extracting all the targeted URLs in given HTMLpage
-	public ArrayList<URLInfo> filter1(HTMLContent html) {
+	public ArrayList<URLInfo> filter1(HTMLContent html) throws Exception{
 		ArrayList<URLInfo> urlList = new ArrayList<URLInfo>();
 		
 		html.regionFilteredList = html.pageHTML.getElementsByTagName("a");

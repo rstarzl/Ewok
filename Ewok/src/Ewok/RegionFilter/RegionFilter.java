@@ -11,7 +11,7 @@ import Ewok.Render.NonTargetException;
 //  @ Author : Kiheung Park
 
 public abstract class RegionFilter extends Thread{
-	abstract public ArrayList<URLInfo> filter(String urlAddress);
+	abstract public ArrayList<URLInfo> filter(String urlAddress) throws Exception;
 	
 	private String targetedURL;
 	private ArrayList<URLInfo> curResult;
@@ -25,10 +25,10 @@ public abstract class RegionFilter extends Thread{
 		return curResult;
 	}
 	
-	//for thread.
-	public void run(){
-		curResult = filter(this.targetedURL);
-	}
+//	//for thread.
+//	public void run(){
+//		curResult = filter(this.targetedURL);
+//	}
 
 //	public ArrayList<String> filter(QueueEntry entry); 
 }

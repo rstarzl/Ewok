@@ -36,8 +36,8 @@ public class RenderDriver {
 
 	public void render(QueueEntry entry) throws RenderTerminatedException{
 		try {
-			entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL()));
-		} catch (NonTargetException e) {
+			entry.setArticle(renders.get(entry.getSiteName()).render(entry.getSiteURL())); 
+		} catch (Exception e) {
 			throw new RenderTerminatedException(); 
 		}
 	}

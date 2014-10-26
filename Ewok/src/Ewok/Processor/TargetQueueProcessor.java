@@ -44,7 +44,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 	
 	public void internalRun(){
 		while(this.getQSize() != 0){
-			sleep(100);
+			sleep(1000);
 			
 			//GC
 			System.gc();

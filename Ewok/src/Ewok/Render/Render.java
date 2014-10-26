@@ -11,7 +11,7 @@ import Ewok.RegionFilter.HTMLContent;
 */
 
 public abstract class Render extends Thread{
-	abstract public Article render(String targetedURL) throws NonTargetException; // Interface
+	abstract public Article render(String targetedURL) throws NonTargetException, Exception; // Interface
 	
 	private String targetedURL;
 	private Article curResult;
@@ -25,14 +25,14 @@ public abstract class Render extends Thread{
 		return curResult; 
 	}
 	
-	//for thread.
-	public void run(){
-		try {
-			curResult = render(this.targetedURL);
-		} catch (NonTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			curResult = null;
-		}
-	}
+//	//for thread.
+//	public void run(){
+//		try {
+//			curResult = render(this.targetedURL);
+//		} catch (NonTargetException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			curResult = null;
+//		}
+//	}
 }

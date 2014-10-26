@@ -16,7 +16,7 @@ import Ewok.RegionFilter.HTMLContent;
 //  @ Author : Member
 public class DaumNewsRender extends Render {
 	HtmlPage targetedPage = null;
-	public Article render(String targetedURL) throws NonTargetException{
+	public Article render(String targetedURL) throws NonTargetException, Exception{
 		java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
 	    java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
 		
