@@ -1,4 +1,7 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +23,25 @@ public class Rollback {
 	
 	
 	public Rollback(String fileName){
+		// 원본 복사.
+		File file = new File(fileName);
+		if (file.isFile()){
+			try {
+		         FileInputStream fis = new FileInputStream(fileName);
+		         FileOutputStream fos = new FileOutputStream(fileName + "_old");
+		 
+		         int data = 0;
+		         while ((data = fis.read()) != -1) {
+		            fos.write(data);
+		         }
+		         fis.close();
+		         fos.close();
+			} catch (IOException e) {
+		         e.printStackTrace();
+		    }
+		}
+		
+		
 		reader = GlobalContext.loadSnapShot(fileName);
 	}
 
@@ -75,27 +97,27 @@ public class Rollback {
 		for (String url: tpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
 			entry.setURLInfo(new URLInfo(url, tpList.get(url)));
-			if (GlobalContext.getURLDB().query(url) != null){
-				GlobalContext.getURLDB().delete(entry);
-			}
+//			if (GlobalContext.getURLDB().query(url) != null){
+//				GlobalContext.getURLDB().delete(entry);
+//			}
 			GlobalContext.getAvailableTargetQL().push(entry);
 		}
 		
 		for (String url: cpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
 			entry.setURLInfo(new URLInfo(url, cpList.get(url)));
-			if (GlobalContext.getURLDB().query(url) != null){
-				GlobalContext.getURLDB().delete(entry);
-			}
+//			if (GlobalContext.getURLDB().query(url) != null){
+//				GlobalContext.getURLDB().delete(entry);
+//			}
 			GlobalContext.getAvailableClassifierQL().push(entry);
 		}
 	
 		for (String url: rpList.keySet()){
 			QueueEntry entry = new QueueEntry(url);
 			entry.setURLInfo(new URLInfo(url, rpList.get(url)));
-			if (GlobalContext.getURLDB().query(url) != null){
-				GlobalContext.getURLDB().delete(entry);
-			}
+//			if (GlobalContext.getURLDB().query(url) != null){
+//				GlobalContext.getURLDB().delete(entry);
+//			}
 			GlobalContext.getAvailableRenderingQL().push(entry);
 		}
 	}

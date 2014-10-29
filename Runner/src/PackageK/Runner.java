@@ -24,9 +24,9 @@ public class Runner {
 	
 	private void init(){
 		// 인스턴스 3개 만듬.
-		vecSite.add(new SiteRunner("Naver", heartBeatMaster));
-		vecSite.add(new SiteRunner("Daum", heartBeatMaster));
-		vecSite.add(new SiteRunner("Nate", heartBeatMaster));
+		vecSite.add(new SiteRunner("Naver"));
+		vecSite.add(new SiteRunner("Daum"));
+		vecSite.add(new SiteRunner("Nate"));
 	}
 	
 	public void run(){

@@ -117,14 +117,15 @@ public class GlobalContext {
 		}
 	}
 	private static void heartBeat(){
-		try {
-			heartBeat.write("HeartBeat");
-			heartBeat.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		System.out.println("HeartBeat");
+//		try {
+//			heartBeat.write("HeartBeat");
+//			heartBeat.flush();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 	}
 	/* Connet Heart Beat Server */
 	

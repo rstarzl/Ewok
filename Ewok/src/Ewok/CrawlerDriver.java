@@ -20,7 +20,7 @@ public class CrawlerDriver extends Thread{
 			
 	public CrawlerDriver(){
 		/* Connet Heart Beat Server */
-		GlobalContext.connectHeartBeatServer();
+//		GlobalContext.connectHeartBeatServer();
 		/* Connet Heart Beat Server */
 		
 		/* Connect DB */
@@ -59,9 +59,9 @@ public class CrawlerDriver extends Thread{
 
 	private void nonThreadWork() {		
 		while(true){
+			GlobalContext.getAvailableRenderingQL().internalRun();
 			GlobalContext.getAvailableTargetQL().internalRun();
 			GlobalContext.getAvailableClassifierQL().internalRun();
-			GlobalContext.getAvailableRenderingQL().internalRun();
 			GlobalContext.reSnapShotEachQueue();
 		}
 	}

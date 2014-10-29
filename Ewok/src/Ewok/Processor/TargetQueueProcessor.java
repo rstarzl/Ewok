@@ -58,6 +58,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 					linkList = regionFilter.filter(workingItem);
 				} catch (FilterTerminatedException e) {
 					e.printStackTrace();
+					System.err.println(workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 					continue;
 				}
 				// 2. Assigning Work.
@@ -68,6 +69,7 @@ public class TargetQueueProcessor extends QueueProcessor {
 					GlobalContext.getAvailableClassifierQL().push(entry);
 				}
 				GlobalContext.snapShotWriter("-, TP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
+				GlobalContext.getURLDB().add(workingItem);
 			}
 		}
 	}

@@ -11,6 +11,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Ewok.Processor.QueueEntry;
+
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.StringWebResponse;
@@ -89,10 +91,30 @@ public class RegionFilterTest {
 //	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141006"; // PASS
 	String test = "http://news.nate.com/recent?cate=pol&mid=n0201&type=c&date=20141008"; // 
 
+//	@org.junit.Test
+//	public void test4() throws Exception{
+//		NateRegionFilter nateRF = new NateRegionFilter();
+//		ArrayList<URLInfo> testArray = nateRF.filter("http://media.daum.net/society/all/#page=1&type=tit_cont");
+//		for (int i = 0; i < testArray.size(); i++) {
+//			if (testArray != null) {
+//				System.out.println(testArray.get(i).getUrl() + "\t" + testArray.get(i).getUrlType());
+//			} else {
+//				fail("filter1 method fail!!!");
+//			}
+//		}
+//	}
+
 	@org.junit.Test
-	public void test4() throws Exception{
-		NateRegionFilter nateRF = new NateRegionFilter();
-		ArrayList<URLInfo> testArray = nateRF.filter(test);
+	public void test5(){
+		RegionFilterDriver rf = new RegionFilterDriver();
+		ArrayList<URLInfo> testArray = null;
+		try {
+			testArray = rf.filter(new QueueEntry("http://media.daum.net/society/all/#page=1&type=tit_cont"));
+		} catch (FilterTerminatedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		} 
 		for (int i = 0; i < testArray.size(); i++) {
 			if (testArray != null) {
 				System.out.println(testArray.get(i).getUrl() + "\t" + testArray.get(i).getUrlType());

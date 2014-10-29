@@ -57,6 +57,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				} catch (RenderTerminatedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					System.err.println(workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 					GlobalContext.logCommon(workingItem.getSiteURL() + "<-- Sport section article");
 					GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 					continue;
@@ -68,6 +69,7 @@ public class RenderingQueueProcessor extends QueueProcessor {
 				}
 				
 				// 3. DB Access
+				GlobalContext.getURLDB().add(workingItem);
 				GlobalContext.getMeaningfulDB().add(workingItem);
 				GlobalContext.snapShotWriter("-, RP, " + workingItem.getSiteURL() + ", " + workingItem.getUrlType());
 				GlobalContext.logCommon("RP : " + workingItem.getArticle().title + "\t" + this.getQSize());

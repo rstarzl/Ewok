@@ -81,6 +81,7 @@ public class HTMLContent {
 
 		    webClient.setCssErrorHandler(eh);
 //		    webClient.setThrowExceptionOnScriptError(false);
+//			webClient.getOptions().setThrowExceptionOnScriptError(true);	//modified by SC
 			webClient.getOptions().setThrowExceptionOnScriptError(false);
 //			webClient.setThrowExceptionOnFailingStatusCode(false);
 		    webClient.getOptions().setThrowExceptionOnFailingStatusCode(true);

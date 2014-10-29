@@ -8,18 +8,18 @@ public class SiteRunner {
 	private String siteName;
 	private String path;
 	private int		runningCount = 0;
-	private Process process = null;
+//	private Process process = null;
 	private HeartBeatThread	heartBeatThread = null;
-	private HeartBeatMaster heartBeatMaster;
+//	private HeartBeatMaster heartBeatMaster;
 		
-	public SiteRunner(String siteName, HeartBeatMaster heartBeatMaster){
+	public SiteRunner(String siteName){
 		this.siteName = siteName;
 		if (!checkFolder()){
 			System.out.println("Not enough Requirement, " + siteName);
 			System.exit(1);
 		}
 		this.path = "./" + siteName + "/";
-		this.heartBeatMaster = heartBeatMaster;
+//		this.heartBeatMaster = heartBeatMaster;
 
 		run();
 	}
@@ -35,20 +35,27 @@ public class SiteRunner {
 	// 실행 
 	public void run(){
 		// 씨드, 스냅샷 뭘로 실행?
+		
+		// 먼저 열고 기다릴 방안이 필요한가?
 		try {
-			if (process != null){
-				process.destroyForcibly();
+			if (heartBeatThread != null){
+				System.out.println("Before forceDown");
+				heartBeatThread.forceDown();
+				System.out.println("Done forceDown");
+				heartBeatThread = null;
 			}
+			
+			System.out.println("Wait Client.." + siteName);
+//			Socket conn = heartBeatMaster.accept();
 			
 			if (isSnapShot()){
-				process = new ProcessBuilder(path + "exeForSnapshot.bat").start();
+				heartBeatThread = new HeartBeatThread(new ProcessBuilder(path + "exeForSnapshot.bat").start());
 			} else {
-				process = new ProcessBuilder(path + "exeForSeed.bat").start();
+				heartBeatThread = new HeartBeatThread(new ProcessBuilder(path + "exeForSeed.bat").start());
 			}
-			
-			Socket conn = heartBeatMaster.accept();
-			heartBeatThread = new HeartBeatThread(conn);
 			heartBeatThread.start();
+			
+			System.out.println("Connected Client.." + siteName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package Ewok.Checker;
 
 import Ewok.GlobalContext;
+import Ewok.GlobalContext.URLType;
 import Ewok.Processor.QueueEntry;
 import Ewok.DB.*;
 
@@ -17,12 +18,16 @@ public class DuplicationURLChecker extends Checker {
 
 		// true, duplicated URL
 		// false, non-duplicated URL
-		if (GlobalContext.getURLDB().queryURLFromUrlString(entry.getSiteURL()) == null){
-			GlobalContext.getURLDB().add(entry);
-			return	false;
+		if (entry.getUrlType() != URLType.PageNavi){
+			if (GlobalContext.getURLDB().queryURLFromUrlString(entry.getSiteURL()) == null){
+				return	false;
+			} else {
+				return	true;
+			}
 		} else {
-			return	true;
+			return false;
 		}
+		
 //		return	false;
 	}
 }

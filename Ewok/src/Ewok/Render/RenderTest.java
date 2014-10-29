@@ -46,7 +46,7 @@ public class RenderTest {
 	public void test3() {
 		RenderDriver driver = new RenderDriver();
 		
-		QueueEntry entry = new QueueEntry("http://news.nate.com/view/20141018n02134?mid=n0201");
+		QueueEntry entry = new QueueEntry("http://media.daum.net/editorial/column/newsview?newsid=20140207204409273");
 		
 		try {
 			driver.render(entry);
