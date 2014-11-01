@@ -56,6 +56,7 @@ public class SiteRunner {
 			heartBeatThread.start();
 			
 			System.out.println("Connected Client.." + siteName);
+			System.err.println("=======Start " + siteName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

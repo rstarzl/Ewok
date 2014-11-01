@@ -116,8 +116,12 @@ public class GlobalContext {
 			e.printStackTrace();
 		}
 	}
+	
+	private static long lastestHeartbeatTime = 0;
 	private static void heartBeat(){
-		System.out.println("HeartBeat");
+		if (System.currentTimeMillis() - lastestHeartbeatTime > 100000){
+			System.out.println("HeartBeat");
+		}
 //		try {
 //			heartBeat.write("HeartBeat");
 //			heartBeat.flush();
